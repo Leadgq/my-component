@@ -1,0 +1,22 @@
+// 导入 Element Plus 基础样式
+@import 'element-plus/dist/index.css';
+
+// 自定义主题变量
+:root {
+  --my-primary-color: #409eff;
+  --my-success-color: #67c23a;
+  --my-warning-color: #e6a23c;
+  --my-danger-color: #f56c6c;
+  --my-border-radius: 4px;
+  --my-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// 导入组件样式
+@import './button.scss';
+// 导入更多组件样式...
+
+// 全局样式覆盖
+.el-button {
+  border-radius: var(--my-border-radius);
+  transition: var(--my-transition);
+}

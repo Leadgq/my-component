@@ -1,0 +1,36 @@
+{
+  "name": "@your-org/components",
+  "version": "1.0.0",
+  "description": "Vue 3 Component Library based on Element Plus",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "build": "pnpm -r --filter=./packages run build",
+    "play": "vite play",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "element-plus": "^2.6.0",
+    "sass-embedded": "^1.97.3",
+    "typescript": "^5.3.0",
+    "unplugin-vue-components": "^31.0.0",
+    "vite": "^5.0.0",
+    "vitepress": "^1.0.0",
+    "vue": "^3.3.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@unhead/vue"
+      ]
+    }
+  },
+  "dependencies": {
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
