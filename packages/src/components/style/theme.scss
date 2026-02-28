@@ -1,0 +1,20 @@
+$themes: (
+  light: (
+    primary-color: #ccc,
+    success-color: yellow,
+    danger-color: #FF4D4F,
+  ),
+  dark: (
+    primary-color: #1890FF,
+    success-color: #52C41A,
+    danger-color: #FF4D4F,
+  )
+);
+
+@each $theme, $vars in $themes {
+  .theme-#{$theme} {
+    @each $key, $value in $vars {
+      --#{$key}: #{$value};
+    }
+  }
+}

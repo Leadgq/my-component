@@ -1,0 +1,11 @@
+// 全局样式覆盖
+.el-button--primary  {
+    background-color: var(--primary-color);
+}
+
+.el-button--success {
+    background-color: var(--success-color);
+}
+.el-button--danger {
+    background-color: var(--danger-color);
+}

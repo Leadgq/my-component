@@ -1,12 +1,12 @@
 import type { App } from 'vue'
 
 
-import MyButton from './src/button/button.vue'
-import MyInput from './src/input/input.vue'
+import MyButton from './components/button/button.vue'
+import MyInput from './components/input/input.vue'
 
 
-import './src/style/index.scss'
-
+import './components/style/index.scss'
+import "./core"
 
 const components = {
   MyButton,
@@ -15,10 +15,10 @@ const components = {
 
 
 export { MyButton, MyInput }
+export * from './core' 
 
-
-export * from './src/button/button.ts'
-export * from './src/input/input.ts'
+export * from './components/button/button.ts'
+export * from './components/input/input.ts'
 
 export default {
   install(app: App) {

@@ -13,10 +13,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./../../packages/components/src/button/button.vue')['default']
+    Input: typeof import('./../../packages/components/src/input/input.vue')['default']
   }
 }
 
 // For TSX support
 declare global {
   const Button: typeof import('./../../packages/components/src/button/button.vue')['default']
+  const Input: typeof import('./../../packages/components/src/input/input.vue')['default']
 }
