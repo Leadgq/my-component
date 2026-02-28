@@ -1,7 +1,7 @@
 {
   "name": "element-two-test",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vue 3 Component Library based on Element Plus with custom styles and logic",
   "type": "module",
   "main": "dist/index.umd.js",
