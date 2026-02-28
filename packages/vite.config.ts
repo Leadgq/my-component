@@ -9,14 +9,14 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
-      include: ['src'],
+      include: ['components'],
       outDir: 'dist',
       rollupTypes: true,
     }),
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, 'components/index.ts'),
       name: 'MyComponents',
       formats: ['es', 'umd'],
       fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.js',
@@ -26,7 +26,7 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue',
-          'element-plus': 'ElementPlus',
+          'element-plus': 'ElementPlus'
         },
       },
     },

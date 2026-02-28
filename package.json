@@ -7,7 +7,7 @@
     "dev": "vite",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "build": "pnpm -r --filter=./packages run build",
+    "build": "cd packages && pnpm run build",
     "play": "vite play",
     "test": "vitest",
     "type-check": "vue-tsc --noEmit"

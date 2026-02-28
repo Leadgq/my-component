@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>组件库测试</h1>
-    <my-button type="success" @click="clickme" >主要按钮</my-button>
+    <my-button type="text" @click="clickme" >主要按钮</my-button>
     <my-button type="success">成功按钮</my-button>
     <my-button type="danger">危险按钮</my-button>
 
