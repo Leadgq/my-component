@@ -3,7 +3,6 @@ node_modules/
 pnpm-lock.yaml
 
 # 构建产物
-dist/
 build/
 
 # 文档生成

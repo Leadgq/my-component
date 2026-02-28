@@ -6,13 +6,14 @@
 
 <script setup>
 import { ref } from 'vue'
-import { MyButton } from '../../packages/components'
+import { MyButton } from '../../packages/dist/index.es.js'
+import '../../packages/dist/style.css'
 </script>
 
 <div class="demo">
-  <MyButton type="primary">主要按钮</MyButton>
-  <MyButton type="success">成功按钮</MyButton>
-  <MyButton type="danger">危险按钮</MyButton>
+  <MyButton type="primary" class="el-button--primary">主要按钮</MyButton>
+  <MyButton type="success" class="el-button--success">成功按钮</MyButton>
+  <MyButton type="danger" class="el-button--danger">危险按钮</MyButton>
 </div>
 
 ## 不同尺寸
