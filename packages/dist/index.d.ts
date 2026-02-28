@@ -5,7 +5,6 @@ import { ButtonType } from 'element-plus';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComponentSize } from 'element-plus';
-import { ComputedRef } from 'vue';
 import { DefineComponent } from 'vue';
 import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
@@ -82,8 +81,7 @@ export declare interface MyInputExpose {
 
 export declare function useTheme(): {
     theme: RemovableRef<string>;
-    isDark: ComputedRef<boolean>;
-    toggleTheme: () => void;
+    toggleTheme: (newTheme: string) => void;
     applyTheme: () => void;
 };
 

@@ -1,6 +1,6 @@
-import { defineComponent as D, openBlock as J, createBlock as V, unref as W, mergeProps as G, withCtx as H, renderSlot as Q, useAttrs as ae, useSlots as le, ref as N, resolveComponent as ue, createSlots as se, renderList as ce, normalizeProps as de, guardReactiveProps as fe, onMounted as K, nextTick as U, readonly as X, watch as $, getCurrentInstance as P, toRef as pe, customRef as me, getCurrentScope as ve, hasInjectionContext as Y, inject as ye, shallowRef as E, computed as C, toValue as h, watchEffect as he } from "vue";
-import { ElButton as ge } from "element-plus";
-const Se = /* @__PURE__ */ D({
+import { defineComponent as R, openBlock as W, createBlock as _, unref as A, mergeProps as I, withCtx as x, renderSlot as D, useAttrs as ee, useSlots as te, ref as M, resolveComponent as ne, createSlots as oe, renderList as re, normalizeProps as ie, guardReactiveProps as le, onMounted as ae, nextTick as J, readonly as V, watch as F, getCurrentInstance as ue, toRef as se, customRef as ce, shallowRef as fe, computed as G, toValue as h } from "vue";
+import { ElButton as de } from "element-plus";
+const pe = /* @__PURE__ */ R({
   __name: "button",
   props: {
     size: { default: "default" },
@@ -23,214 +23,168 @@ const Se = /* @__PURE__ */ D({
     tag: {}
   },
   setup(e) {
-    return (n, t) => (J(), V(W(ge), G({
+    return (o, t) => (W(), _(A(de), I({
       type: e.type,
       size: e.size,
       disabled: e.disabled,
       loading: e.loading,
       round: e.round,
       circle: e.circle
-    }, n.$attrs), {
-      default: H(() => [
-        Q(n.$slots, "default")
+    }, o.$attrs), {
+      default: x(() => [
+        D(o.$slots, "default")
       ]),
       _: 3
     }, 16, ["type", "size", "disabled", "loading", "round", "circle"]));
   }
-}), be = /* @__PURE__ */ D({
+}), me = /* @__PURE__ */ R({
   __name: "input",
-  setup(e, { expose: n }) {
-    const t = ae(), o = le(), r = N();
-    return n({
+  setup(e, { expose: o }) {
+    const t = ee(), n = te(), r = M();
+    return o({
       clear: () => {
-        var a;
-        return (a = r.value) == null ? void 0 : a.clear();
+        var l;
+        return (l = r.value) == null ? void 0 : l.clear();
       },
       select: () => {
-        var a;
-        return (a = r.value) == null ? void 0 : a.select();
+        var l;
+        return (l = r.value) == null ? void 0 : l.select();
       },
       focus: () => {
-        var a;
-        return (a = r.value) == null ? void 0 : a.focus();
+        var l;
+        return (l = r.value) == null ? void 0 : l.focus();
       },
       blur: () => {
-        var a;
-        return (a = r.value) == null ? void 0 : a.blur();
+        var l;
+        return (l = r.value) == null ? void 0 : l.blur();
       }
-    }), (a, d) => {
-      const m = ue("el-input");
-      return J(), V(m, G(W(t), {
+    }), (l, p) => {
+      const m = ne("el-input");
+      return W(), _(m, I(A(t), {
         ref_key: "elInputRef",
         ref: r
-      }), se({ _: 2 }, [
-        ce(W(o), (c, v) => ({
+      }), oe({ _: 2 }, [
+        re(A(n), (f, v) => ({
           name: v,
-          fn: H((s) => [
-            Q(a.$slots, v, de(fe(s)))
+          fn: x((s) => [
+            D(l.$slots, v, ie(le(s)))
           ])
         }))
       ]), 1040);
     };
   }
-}), A = /* @__PURE__ */ new WeakMap(), we = /* @__NO_SIDE_EFFECTS__ */ (...e) => {
-  var n;
-  const t = e[0], o = (n = P()) === null || n === void 0 ? void 0 : n.proxy, r = o ?? ve();
-  if (r == null && !Y()) throw new Error("injectLocal must be called in setup");
-  return r && A.has(r) && t in A.get(r) ? A.get(r)[t] : ye(...e);
-}, Me = typeof window < "u" && typeof document < "u";
+}), ye = typeof window < "u" && typeof document < "u";
 typeof WorkerGlobalScope < "u" && globalThis instanceof WorkerGlobalScope;
-const ke = Object.prototype.toString, Ee = (e) => ke.call(e) === "[object Object]", Be = () => {
+const ve = Object.prototype.toString, ge = (e) => ve.call(e) === "[object Object]", he = () => {
 };
-function Oe(...e) {
-  if (e.length !== 1) return pe(...e);
-  const n = e[0];
-  return typeof n == "function" ? X(me(() => ({
-    get: n,
-    set: Be
-  }))) : N(n);
+function Se(...e) {
+  if (e.length !== 1) return se(...e);
+  const o = e[0];
+  return typeof o == "function" ? V(ce(() => ({
+    get: o,
+    set: he
+  }))) : M(o);
 }
-function We(e, n) {
-  function t(...o) {
-    return new Promise((r, l) => {
-      Promise.resolve(e(() => n.apply(this, o), {
-        fn: n,
+function be(e, o) {
+  function t(...n) {
+    return new Promise((r, a) => {
+      Promise.resolve(e(() => o.apply(this, n), {
+        fn: o,
         thisArg: this,
-        args: o
-      })).then(r).catch(l);
+        args: n
+      })).then(r).catch(a);
     });
   }
   return t;
 }
-const Z = (e) => e();
-function Ce(e = Z, n = {}) {
-  const { initialState: t = "active" } = n, o = Oe(t === "active");
+const H = (e) => e();
+function we(e = H, o = {}) {
+  const { initialState: t = "active" } = o, n = Se(t === "active");
   function r() {
-    o.value = !1;
+    n.value = !1;
   }
-  function l() {
-    o.value = !0;
+  function a() {
+    n.value = !0;
   }
-  const a = (...d) => {
-    o.value && e(...d);
+  const l = (...p) => {
+    n.value && e(...p);
   };
   return {
-    isActive: X(o),
+    isActive: V(n),
     pause: r,
-    resume: l,
-    eventFilter: a
+    resume: a,
+    eventFilter: l
   };
 }
-function R(e) {
-  return e.endsWith("rem") ? Number.parseFloat(e) * 16 : Number.parseFloat(e);
-}
-function T(e) {
+function C(e) {
   return Array.isArray(e) ? e : [e];
 }
-function je(e) {
-  return P();
+function Ee(e) {
+  return ue();
 }
-function ze(e, n, t = {}) {
-  const { eventFilter: o = Z, ...r } = t;
-  return $(e, We(o, n), r);
+function Be(e, o, t = {}) {
+  const { eventFilter: n = H, ...r } = t;
+  return F(e, be(n, o), r);
 }
-function Ae(e, n, t = {}) {
-  const { eventFilter: o, initialState: r = "active", ...l } = t, { eventFilter: a, pause: d, resume: m, isActive: c } = Ce(o, { initialState: r });
+function Oe(e, o, t = {}) {
+  const { eventFilter: n, initialState: r = "active", ...a } = t, { eventFilter: l, pause: p, resume: m, isActive: f } = we(n, { initialState: r });
   return {
-    stop: ze(e, n, {
-      ...l,
-      eventFilter: a
+    stop: Be(e, o, {
+      ...a,
+      eventFilter: l
     }),
-    pause: d,
+    pause: p,
     resume: m,
-    isActive: c
+    isActive: f
   };
 }
-function Te(e, n = !0, t) {
-  je() ? K(e, t) : n ? e() : U(e);
+function Ae(e, o = !0, t) {
+  Ee() ? ae(e, t) : o ? e() : J(e);
 }
-function Fe(e, n, t) {
-  return $(e, n, {
+function ke(e, o, t) {
+  return F(e, o, {
     ...t,
     immediate: !0
   });
 }
-const w = Me ? window : void 0;
-function Ne(e) {
-  var n;
+const E = ye ? window : void 0;
+function Te(e) {
+  var o;
   const t = h(e);
-  return (n = t == null ? void 0 : t.$el) !== null && n !== void 0 ? n : t;
+  return (o = t == null ? void 0 : t.$el) !== null && o !== void 0 ? o : t;
 }
-function F(...e) {
-  const n = (o, r, l, a) => (o.addEventListener(r, l, a), () => o.removeEventListener(r, l, a)), t = C(() => {
-    const o = T(h(e[0])).filter((r) => r != null);
-    return o.every((r) => typeof r != "string") ? o : void 0;
+function L(...e) {
+  const o = (n, r, a, l) => (n.addEventListener(r, a, l), () => n.removeEventListener(r, a, l)), t = G(() => {
+    const n = C(h(e[0])).filter((r) => r != null);
+    return n.every((r) => typeof r != "string") ? n : void 0;
   });
-  return Fe(() => {
-    var o, r;
+  return ke(() => {
+    var n, r;
     return [
-      (o = (r = t.value) === null || r === void 0 ? void 0 : r.map((l) => Ne(l))) !== null && o !== void 0 ? o : [w].filter((l) => l != null),
-      T(h(t.value ? e[1] : e[0])),
-      T(W(t.value ? e[2] : e[1])),
+      (n = (r = t.value) === null || r === void 0 ? void 0 : r.map((a) => Te(a))) !== null && n !== void 0 ? n : [E].filter((a) => a != null),
+      C(h(t.value ? e[1] : e[0])),
+      C(A(t.value ? e[2] : e[1])),
       h(t.value ? e[3] : e[2])
     ];
-  }, ([o, r, l, a], d, m) => {
-    if (!(o != null && o.length) || !(r != null && r.length) || !(l != null && l.length)) return;
-    const c = Ee(a) ? { ...a } : a, v = o.flatMap((s) => r.flatMap((g) => l.map((f) => n(s, g, f, c))));
+  }, ([n, r, a, l], p, m) => {
+    if (!(n != null && n.length) || !(r != null && r.length) || !(a != null && a.length)) return;
+    const f = ge(l) ? { ...l } : l, v = n.flatMap((s) => r.flatMap((k) => a.map((S) => o(s, k, S, f))));
     m(() => {
       v.forEach((s) => s());
     });
   }, { flush: "post" });
 }
-// @__NO_SIDE_EFFECTS__
-function $e() {
-  const e = E(!1), n = P();
-  return n && K(() => {
-    e.value = !0;
-  }, n), e;
-}
-// @__NO_SIDE_EFFECTS__
-function Pe(e) {
-  const n = /* @__PURE__ */ $e();
-  return C(() => (n.value, !!e()));
-}
-const xe = Symbol("vueuse-ssr-width");
-// @__NO_SIDE_EFFECTS__
-function Ie() {
-  const e = Y() ? /* @__PURE__ */ we(xe, null) : null;
-  return typeof e == "number" ? e : void 0;
-}
-function Le(e, n = {}) {
-  const { window: t = w, ssrWidth: o = /* @__PURE__ */ Ie() } = n, r = /* @__PURE__ */ Pe(() => t && "matchMedia" in t && typeof t.matchMedia == "function"), l = E(typeof o == "number"), a = E(), d = E(!1), m = (c) => {
-    d.value = c.matches;
-  };
-  return he(() => {
-    if (l.value) {
-      l.value = !r.value, d.value = h(e).split(",").some((c) => {
-        const v = c.includes("not all"), s = c.match(/\(\s*min-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/), g = c.match(/\(\s*max-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
-        let f = !!(s || g);
-        return s && f && (f = o >= R(s[1])), g && f && (f = o <= R(g[1])), v ? !f : f;
-      });
-      return;
-    }
-    r.value && (a.value = t.matchMedia(h(e)), d.value = a.value.matches);
-  }), F(a, "change", m, { passive: !0 }), C(() => d.value);
-}
-const B = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, O = "__vueuse_ssr_handlers__", Re = /* @__PURE__ */ _e();
-function _e() {
+const B = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, O = "__vueuse_ssr_handlers__", ze = /* @__PURE__ */ Ce();
+function Ce() {
   return O in B || (B[O] = B[O] || {}), B[O];
 }
-function De(e, n) {
-  return Re[e] || n;
+function Me(e, o) {
+  return ze[e] || o;
 }
-// @__NO_SIDE_EFFECTS__
-function Je(e) {
-  return Le("(prefers-color-scheme: dark)", e);
-}
-function Ve(e) {
+function Fe(e) {
   return e == null ? "any" : e instanceof Set ? "set" : e instanceof Map ? "map" : e instanceof Date ? "date" : typeof e == "boolean" ? "boolean" : typeof e == "string" ? "string" : typeof e == "object" ? "object" : Number.isNaN(e) ? "any" : "number";
 }
-const Ge = {
+const $e = {
   boolean: {
     read: (e) => e === "true",
     write: (e) => String(e)
@@ -263,120 +217,125 @@ const Ge = {
     read: (e) => new Date(e),
     write: (e) => e.toISOString()
   }
-}, _ = "vueuse-storage";
-function He(e, n, t, o = {}) {
+}, P = "vueuse-storage";
+function je(e, o, t, n = {}) {
   var r;
-  const { flush: l = "pre", deep: a = !0, listenToStorageChanges: d = !0, writeDefaults: m = !0, mergeDefaults: c = !1, shallow: v, window: s = w, eventFilter: g, onError: f = (i) => {
+  const { flush: a = "pre", deep: l = !0, listenToStorageChanges: p = !0, writeDefaults: m = !0, mergeDefaults: f = !1, shallow: v, window: s = E, eventFilter: k, onError: S = (i) => {
     console.error(i);
-  }, initOnMounted: j } = o, b = (v ? E : N)(n), y = C(() => h(e));
+  }, initOnMounted: T } = n, g = (v ? fe : M)(o), d = G(() => h(e));
   if (!t) try {
-    t = De("getDefaultStorage", () => w == null ? void 0 : w.localStorage)();
+    t = Me("getDefaultStorage", () => E == null ? void 0 : E.localStorage)();
   } catch (i) {
-    f(i);
+    S(i);
   }
-  if (!t) return b;
-  const S = h(n), x = Ve(S), M = (r = o.serializer) !== null && r !== void 0 ? r : Ge[x], { pause: ee, resume: I } = Ae(b, (i) => oe(i), {
-    flush: l,
-    deep: a,
-    eventFilter: g
+  if (!t) return g;
+  const y = h(o), $ = Fe(y), b = (r = n.serializer) !== null && r !== void 0 ? r : $e[$], { pause: K, resume: j } = Oe(g, (i) => X(i), {
+    flush: a,
+    deep: l,
+    eventFilter: k
   });
-  $(y, () => k(), { flush: l });
+  F(d, () => w(), { flush: a });
   let z = !1;
-  const te = (i) => {
-    j && !z || k(i);
-  }, ne = (i) => {
-    j && !z || ie(i);
+  const Q = (i) => {
+    T && !z || w(i);
+  }, U = (i) => {
+    T && !z || Z(i);
   };
-  s && d && (t instanceof Storage ? F(s, "storage", te, { passive: !0 }) : F(s, _, ne)), j ? Te(() => {
-    z = !0, k();
-  }) : k();
-  function L(i, u) {
+  s && p && (t instanceof Storage ? L(s, "storage", Q, { passive: !0 }) : L(s, P, U)), T ? Ae(() => {
+    z = !0, w();
+  }) : w();
+  function N(i, u) {
     if (s) {
-      const p = {
-        key: y.value,
+      const c = {
+        key: d.value,
         oldValue: i,
         newValue: u,
         storageArea: t
       };
-      s.dispatchEvent(t instanceof Storage ? new StorageEvent("storage", p) : new CustomEvent(_, { detail: p }));
+      s.dispatchEvent(t instanceof Storage ? new StorageEvent("storage", c) : new CustomEvent(P, { detail: c }));
     }
   }
-  function oe(i) {
+  function X(i) {
     try {
-      const u = t.getItem(y.value);
+      const u = t.getItem(d.value);
       if (i == null)
-        L(u, null), t.removeItem(y.value);
+        N(u, null), t.removeItem(d.value);
       else {
-        const p = M.write(i);
-        u !== p && (t.setItem(y.value, p), L(u, p));
+        const c = b.write(i);
+        u !== c && (t.setItem(d.value, c), N(u, c));
       }
     } catch (u) {
-      f(u);
+      S(u);
     }
   }
-  function re(i) {
-    const u = i ? i.newValue : t.getItem(y.value);
+  function Y(i) {
+    const u = i ? i.newValue : t.getItem(d.value);
     if (u == null)
-      return m && S != null && t.setItem(y.value, M.write(S)), S;
-    if (!i && c) {
-      const p = M.read(u);
-      return typeof c == "function" ? c(p, S) : x === "object" && !Array.isArray(p) ? {
-        ...S,
-        ...p
-      } : p;
-    } else return typeof u != "string" ? u : M.read(u);
+      return m && y != null && t.setItem(d.value, b.write(y)), y;
+    if (!i && f) {
+      const c = b.read(u);
+      return typeof f == "function" ? f(c, y) : $ === "object" && !Array.isArray(c) ? {
+        ...y,
+        ...c
+      } : c;
+    } else return typeof u != "string" ? u : b.read(u);
   }
-  function k(i) {
+  function w(i) {
     if (!(i && i.storageArea !== t)) {
       if (i && i.key == null) {
-        b.value = S;
+        g.value = y;
         return;
       }
-      if (!(i && i.key !== y.value)) {
-        ee();
+      if (!(i && i.key !== d.value)) {
+        K();
         try {
-          const u = M.write(b.value);
-          (i === void 0 || (i == null ? void 0 : i.newValue) !== u) && (b.value = re(i));
+          const u = b.write(g.value);
+          (i === void 0 || (i == null ? void 0 : i.newValue) !== u) && (g.value = Y(i));
         } catch (u) {
-          f(u);
+          S(u);
         } finally {
-          i ? U(I) : I();
+          i ? J(j) : j();
         }
       }
     }
   }
-  function ie(i) {
-    k(i.detail);
+  function Z(i) {
+    w(i.detail);
   }
-  return b;
+  return g;
 }
-function Ue() {
-  const e = He("theme", "light"), n = /* @__PURE__ */ Je(), t = () => {
-    e.value = e.value === "light" ? "dark" : "light";
-  }, o = () => {
-    document.documentElement.classList.remove("theme-light", "theme-dark"), document.documentElement.classList.add(`theme-${e.value}`);
+function Pe() {
+  const e = je("theme", "light"), o = (n) => {
+    if (n !== e.value) {
+      if (!n)
+        throw new Error("newTheme is required");
+      e.value = n, t();
+    }
+  }, t = () => {
+    document.documentElement.classList.forEach((n) => {
+      n.startsWith("theme-") && document.documentElement.classList.remove(n);
+    }), e.value || (e.value = "light"), document.documentElement.classList.add(`theme-${e.value}`);
   };
-  return o(), {
+  return t(), {
     theme: e,
-    isDark: n,
-    toggleTheme: t,
-    applyTheme: o
+    toggleTheme: o,
+    applyTheme: t
   };
 }
 const q = {
-  MyButton: Se,
-  MyInput: be
-}, Xe = {
+  MyButton: pe,
+  MyInput: me
+}, Re = {
   install(e) {
-    Object.entries(q).forEach(([n, t]) => {
-      e.component(n, t);
+    Object.entries(q).forEach(([o, t]) => {
+      e.component(o, t);
     });
   }
-}, Ye = Object.keys(q);
+}, We = Object.keys(q);
 export {
-  Se as MyButton,
-  be as MyInput,
-  Ye as componentList,
-  Xe as default,
-  Ue as useTheme
+  pe as MyButton,
+  me as MyInput,
+  We as componentList,
+  Re as default,
+  Pe as useTheme
 };

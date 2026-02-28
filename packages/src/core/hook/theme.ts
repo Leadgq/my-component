@@ -4,6 +4,12 @@ export function useTheme() {
   const theme = useStorage("theme", "light");
 
   const toggleTheme = (newTheme: string) => {
+    if (newTheme === theme.value) {
+      return;
+    }
+    if(!newTheme){
+      throw new Error("newTheme is required");
+    }
     theme.value = newTheme;
     applyTheme();
   };

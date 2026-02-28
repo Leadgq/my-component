@@ -4,7 +4,7 @@
     <my-button type="primary" @click="clickme">主要按钮</my-button>
     <my-button type="success" @click="clickme">成功按钮</my-button>
     <my-button type="danger" @click="clickme">危险按钮</my-button>
-    <el-button type="primary">按钮</el-button>
+    <el-button type="primary" @click="testTheme">按钮</el-button>
   </div>
   <div class="container">
     <my-input v-model="inputValue" @input="handleChange" ref="inputRef">
@@ -28,9 +28,12 @@ import { MyInput } from '../../packages/src/components/input'
 import { useTheme } from '../../packages/src/core/hook/theme'
 import { ref } from 'vue'
 
-const { applyTheme } = useTheme()
+const { applyTheme,toggleTheme } = useTheme()
 applyTheme()
 
+function testTheme() {
+  toggleTheme("dark");
+}
 // 显式指定类型
 const inputRef = ref<InstanceType<typeof MyInput>>()
 
