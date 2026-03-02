@@ -1,20 +1,18 @@
-$themes: (
-  light: (
-    primary-color: #ccc,
-    success-color: yellow,
-    danger-color: #FF4D4F,
-  ),
-  dark: (
-    primary-color: #1890FF,
-    success-color: #52C41A,
-    danger-color: #FF4D4F,
-  )
+// 颜色变量定义
+$colors: (
+  primary-color: #4D6DE6,
+  primary-light-1: #6E80F7,
+  primary-light-2: #8FADFC,
+  primary-light-3: #ACC4FA,
+  primary-light-4: #C7DAFA,
+  primary-light-5: #E6EEFF,
+  success-color: #52C41A,
+  danger-color: #FF4D4F,
 );
 
-@each $theme, $vars in $themes {
-  .theme-#{$theme} {
-    @each $key, $value in $vars {
-      --#{$key}: #{$value};
-    }
+// 生成全局 CSS 变量
+:root {
+  @each $key, $value in $colors {
+    --#{$key}: #{$value};
   }
 }

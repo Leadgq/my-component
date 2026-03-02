@@ -4,7 +4,6 @@
     <my-button type="primary" @click="clickme">主要按钮</my-button>
     <my-button type="success" @click="clickme">成功按钮</my-button>
     <my-button type="danger" @click="clickme">危险按钮</my-button>
-    <el-button type="primary" @click="testTheme">按钮</el-button>
   </div>
   <div class="container">
     <my-input v-model="inputValue" @input="handleChange" ref="inputRef">
@@ -25,15 +24,9 @@
 <script lang="ts" setup>
 import { MyButton } from '../../packages/src/components/button'
 import { MyInput } from '../../packages/src/components/input'
-import { useTheme } from '../../packages/src/core/hook/theme'
 import { ref } from 'vue'
 
-const { applyTheme,toggleTheme } = useTheme()
-applyTheme()
 
-function testTheme() {
-  toggleTheme("light");
-}
 // 显式指定类型
 const inputRef = ref<InstanceType<typeof MyInput>>()
 
@@ -44,24 +37,15 @@ function handleChange(newValue: string) {
 }
 
 function clear() {
-  console.log(inputRef.value?.clear());
+  console.log(inputRef.value?.focus());
 }
 
 function clickme() {
   console.log('ok')
 }
 </script>
-<style scoped>
-.container {
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-button {
-  margin-right: 10px;
-  margin-bottom: 10px;
+<style>
+:root{
+  --primary-color: blue;
 }
 </style>

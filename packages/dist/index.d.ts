@@ -10,7 +10,6 @@ import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
 import { InputProps } from 'element-plus';
 import { PublicProps } from 'vue';
-import { RemovableRef } from '@vueuse/core';
 
 declare const __VLS_component: DefineComponent<ButtonProps_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ButtonProps_2> & Readonly<{}>, {
 size: ComponentSize;
@@ -78,11 +77,5 @@ export declare interface MyInputExpose {
     focus: () => void;
     blur: () => void;
 }
-
-export declare function useTheme(): {
-    theme: RemovableRef<string>;
-    toggleTheme: (newTheme: string) => void;
-    applyTheme: () => void;
-};
 
 export { }
