@@ -1,13 +1,58 @@
 // 颜色变量定义
 $colors: (
+  // 主色
   primary-color: #4D6DE6,
-  primary-light-1: #6E80F7,
-  primary-light-2: #8FADFC,
-  primary-light-3: #ACC4FA,
-  primary-light-4: #C7DAFA,
-  primary-light-5: #E6EEFF,
-  success-color: #52C41A,
-  danger-color: #FF4D4F,
+  primary-color-second: #6E80F7,
+  primary-light-third: #8FADFC,
+  primary-light-four: #ACC4FA,
+  primary-light-fifth: #C7DAFA,
+  primary-light-six: #E6EEFF,
+
+
+// 成功颜色
+  success-color: #42BA5B,
+  success-color-second: #2A9F47,
+  success-color-third: #5DC871,
+  success-color-four: #7BD689,
+  success-color-fifth: #9CE3A5,
+  success-color-six: #C9F0D1,
+  success-color-seventh: #E8FFE9,
+
+  // 危险颜色
+  danger-color: #E85050,
+  danger-color-second: #C13237,
+  danger-color-third: #F0726D,
+  danger-color-four: #F5938C,
+  danger-color-fifth: #F6B0A8,
+  danger-color-six: #FACEC8,
+  danger-color-seventh: #FFECE8,
+
+  // 警告颜色
+  warning-color: #ED892F,
+  warning-color-second: #C13237,
+  warning-color-third: #F1A152,
+  warning-color-four: #F4B976,
+  warning-color-fifth: #F8D09B,
+  warning-color-six: #FBE4C1,
+  warning-color-seventh: #FFF7E8,
+
+  // 灰色颜色
+  gray-color: rgba(78, 90, 106, 1),
+  gray-color-second: rgba(70, 79, 90, 1),
+  gray-color-third: rgba(133, 144, 157, 1),
+  gray-color-four: rgba(255, 255, 255, 1),
+  gray-color-fifth: rgba(227, 229, 234, 1),
+  gray-color-six: rgba(237, 239, 242, 1),
+  gray-color-seventh: rgba(245, 246, 247, 1),
+
+  // 中性色
+  neutral-color: #1D212A,
+  neutral-color-second: #272C38,
+  neutral-color-third: #4E5A6A,
+  neutral-color-four: #85909D,
+  neutral-color-fifth: #CACDD7,
+  neutral-color-six: #E6E7EA,
+  neutral-color-seventh: #F3F4F6,
 );
 
 // 生成全局 CSS 变量
