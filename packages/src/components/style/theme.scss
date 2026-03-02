@@ -1,58 +1,58 @@
 // 颜色变量定义
 $colors: (
   // 主色
-  primary-color: #4D6DE6,
-  primary-color-second: #6E80F7,
-  primary-light-third: #8FADFC,
-  primary-light-four: #ACC4FA,
-  primary-light-fifth: #C7DAFA,
-  primary-light-six: #E6EEFF,
+  primary-color: #4D6DE6,              // 主色
+  primary-color-dark: #334FCC,         // 主色-暗
+  primary-color-light: #6E80F7,        // 主色-亮
+  primary-color-light-2: #8FADFC,      // 主色-更亮
+  primary-color-light-3: #ACC4FA,      // 主色-最亮
+  primary-color-light-4: #C7DAFA,      // 主色-淡
+  primary-color-light-5: #E6EEFF,      // 主色-最淡
 
-
-// 成功颜色
-  success-color: #42BA5B,
-  success-color-second: #2A9F47,
-  success-color-third: #5DC871,
-  success-color-four: #7BD689,
-  success-color-fifth: #9CE3A5,
-  success-color-six: #C9F0D1,
-  success-color-seventh: #E8FFE9,
+  // 成功颜色
+  success-color: #42BA5B,              // 成功色
+  success-color-dark: #2A9F47,         // 成功色-暗
+  success-color-light: #5DC871,        // 成功色-亮
+  success-color-light-2: #7BD689,      // 成功色-更亮
+  success-color-light-3: #9CE3A5,      // 成功色-最亮
+  success-color-light-4: #C9F0D1,      // 成功色-淡
+  success-color-light-5: #E8FFE9,      // 成功色-最淡
 
   // 危险颜色
-  danger-color: #E85050,
-  danger-color-second: #C13237,
-  danger-color-third: #F0726D,
-  danger-color-four: #F5938C,
-  danger-color-fifth: #F6B0A8,
-  danger-color-six: #FACEC8,
-  danger-color-seventh: #FFECE8,
+  danger-color: #E85050,               // 危险色
+  danger-color-dark: #C13237,          // 危险色-暗
+  danger-color-light: #F0726D,         // 危险色-亮
+  danger-color-light-2: #F5938C,       // 危险色-更亮
+  danger-color-light-3: #F6B0A8,       // 危险色-最亮
+  danger-color-light-4: #FACEC8,       // 危险色-淡
+  danger-color-light-5: #FFECE8,       // 危险色-最淡
 
   // 警告颜色
-  warning-color: #ED892F,
-  warning-color-second: #C13237,
-  warning-color-third: #F1A152,
-  warning-color-four: #F4B976,
-  warning-color-fifth: #F8D09B,
-  warning-color-six: #FBE4C1,
-  warning-color-seventh: #FFF7E8,
+  warning-color: #ED892F,              // 警告色
+  warning-color-dark: #C13237,         // 警告色-暗
+  warning-color-light: #F1A152,        // 警告色-亮
+  warning-color-light-2: #F4B976,      // 警告色-更亮
+  warning-color-light-3: #F8D09B,      // 警告色-最亮
+  warning-color-light-4: #FBE4C1,      // 警告色-淡
+  warning-color-light-5: #FFF7E8,      // 警告色-最淡
 
   // 灰色颜色
-  gray-color: rgba(78, 90, 106, 1),
-  gray-color-second: rgba(70, 79, 90, 1),
-  gray-color-third: rgba(133, 144, 157, 1),
-  gray-color-four: rgba(255, 255, 255, 1),
-  gray-color-fifth: rgba(227, 229, 234, 1),
-  gray-color-six: rgba(237, 239, 242, 1),
-  gray-color-seventh: rgba(245, 246, 247, 1),
+  gray-color: rgba(78, 90, 106, 1),    // 灰色
+  gray-color-dark: rgba(70, 79, 90, 1), // 灰色-暗
+  gray-color-light: rgba(133, 144, 157, 1), // 灰色-亮
+  gray-color-light-2: rgba(227, 229, 234, 1), // 灰色-更亮
+  gray-color-light-3: rgba(237, 239, 242, 1), // 灰色-最亮
+  gray-color-light-4: rgba(245, 246, 247, 1), // 灰色-淡
+  gray-color-light-5: rgba(255, 255, 255, 1), // 灰色-最淡
 
   // 中性色
-  neutral-color: #1D212A,
-  neutral-color-second: #272C38,
-  neutral-color-third: #4E5A6A,
-  neutral-color-four: #85909D,
-  neutral-color-fifth: #CACDD7,
-  neutral-color-six: #E6E7EA,
-  neutral-color-seventh: #F3F4F6,
+  neutral-color: #1D212A,              // 中性色
+  neutral-color-dark: #272C38,         // 中性色-暗
+  neutral-color-light: #4E5A6A,        // 中性色-亮
+  neutral-color-light-2: #85909D,      // 中性色-更亮
+  neutral-color-light-3: #CACDD7,      // 中性色-最亮
+  neutral-color-light-4: #E6E7EA,      // 中性色-淡
+  neutral-color-light-5: #F3F4F6,      // 中性色-最淡
 );
 
 // 生成全局 CSS 变量
