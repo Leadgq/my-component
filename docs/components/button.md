@@ -16,6 +16,17 @@ import '../../packages/dist/style.css'
   <MyButton type="danger">危险按钮</MyButton>
 </div>
 
+```vue
+<template>
+  <MyButton type="primary">主要按钮</MyButton>
+  <MyButton type="success">成功按钮</MyButton>
+  <MyButton type="danger">危险按钮</MyButton>
+</template>
+<script setup>
+import { MyButton } from "@will-component";
+</script>
+```
+
 ## 不同尺寸
 
 <div class="demo">
@@ -30,21 +41,23 @@ import '../../packages/dist/style.css'
   <MyButton disabled>禁用按钮</MyButton>
 </div>
 
+## 新增属性
+
 ## API
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|------|--------|
-| `type` | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'default'` |
-| `size` | 按钮大小 | `'large' \| 'default' \| 'small'` | `'default'` |
-| `disabled` | 禁用状态 | `boolean` | `false` |
-| `loading` | 加载状态 | `boolean` | `false` |
-| `round` | 圆角按钮 | `boolean` | `false` |
-| `circle` | 圆形按钮 | `boolean` | `false` |
+| 参数       | 说明     | 类型                                                                  | 默认值      |
+| ---------- | -------- | --------------------------------------------------------------------- | ----------- |
+| `type`     | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'default'` |
+| `size`     | 按钮大小 | `'large' \| 'default' \| 'small'`                                     | `'default'` |
+| `disabled` | 禁用状态 | `boolean`                                                             | `false`     |
+| `loading`  | 加载状态 | `boolean`                                                             | `false`     |
+| `round`    | 圆角按钮 | `boolean`                                                             | `false`     |
+| `circle`   | 圆形按钮 | `boolean`                                                             | `false`     |
 
 ### Events
 
-| 事件名 | 说明 | 回调参数 |
-|--------|------|---------|
+| 事件名  | 说明     | 回调参数              |
+| ------- | -------- | --------------------- |
 | `click` | 点击事件 | `(event: MouseEvent)` |

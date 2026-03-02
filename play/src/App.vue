@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <h1>组件库测试</h1>
-    <my-button type="primary" @click="clickme">主要按钮</my-button>
-    <my-button type="success" @click="focus">获取焦点</my-button>
-    <my-button type="danger" @click="clickme">危险按钮</my-button>
+    <my-button type="success" @click="clickme" :badge="11" :disabled="true">主要按钮</my-button>
+    <my-button size="small" @click="clickme" :badgeIsDot="true">主要按钮</my-button>
   </div>
   <div class="container">
     <my-input v-model="inputValue" @input="handleChange" ref="inputRef">

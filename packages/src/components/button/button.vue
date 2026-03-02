@@ -21,3 +21,7 @@ withDefaults(defineProps<ButtonProps>(), {
   size: 'default'
 })
 </script>
+
+<style lang="scss" scoped>
+
+</style>
