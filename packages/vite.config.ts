@@ -31,7 +31,7 @@ export default defineConfig({
       fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.js',
     },
     rollupOptions: {
-      external: ['vue', 'element-plus'],
+      external: ['vue'],
       output: {
         globals: {
           vue: 'Vue',
