@@ -32,7 +32,7 @@ const { applyTheme,toggleTheme } = useTheme()
 applyTheme()
 
 function testTheme() {
-  toggleTheme("dark");
+  toggleTheme("light");
 }
 // 显式指定类型
 const inputRef = ref<InstanceType<typeof MyInput>>()
