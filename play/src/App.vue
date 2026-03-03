@@ -4,6 +4,13 @@
     <my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">主要按钮</my-button>
     <my-button :loading="true">加载中按钮</my-button>
     <my-button :loading-icon="Share" :loading="true">加载中按钮</my-button>
+    <my-button :loading="true">
+      <template #loading-icon>
+        <el-icon>
+          <Share />
+        </el-icon>
+      </template>
+    </my-button>
   </div>
   <div class="container">
     <my-input v-model="inputValue" @input="handleChange" ref="inputRef">

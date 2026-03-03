@@ -1,13 +1,14 @@
 <template>
   <template v-if="!isShowBadge">
-    <el-button :type="type"
-      v-bind="$attrs">
-      <slot />
+    <el-button :type="type" v-bind="$attrs" :loading="loading" :disabled="disabled" @click="emit('click')">
+      <template v-for="(slot, name) in slots" :key="name">
+        <slot :name="name" />
+      </template>
     </el-button>
   </template>
   <template v-else>
     <el-badge v-bind="$attrs">
-      <el-button :type="buttonType">
+      <el-button :type="buttonType" @click="emit('click')">
         <slot />
       </el-button>
     </el-badge>
@@ -16,11 +17,20 @@
 
 <script setup>
 import { ElButton, ElBadge } from 'element-plus'
-import { useAttrs } from 'vue';
+import { useAttrs, useSlots } from 'vue';
+const emit = defineEmits(['click'])
 const props = defineProps({
-  type:{
+  type: {
     type: String,
     default: 'default'
+  },
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   },
   isShowBadge: {
     type: Boolean,
@@ -31,4 +41,6 @@ const props = defineProps({
     default: 'primary'
   }
 })
+const $attrs = useAttrs()
+const slots = useSlots()
 </script>
