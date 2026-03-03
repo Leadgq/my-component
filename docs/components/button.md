@@ -11,7 +11,7 @@ import '../../packages/dist/style.css'
 </script>
 
 <div class="demo">
-  <MyButton type="primary" class="el-button--primary">主要按钮</MyButton>
+  <MyButton type="primary">主要按钮</MyButton>
   <MyButton type="success">成功按钮</MyButton>
   <MyButton type="danger">危险按钮</MyButton>
 </div>
@@ -30,34 +30,92 @@ import { MyButton } from "@will-component";
 ## 不同尺寸
 
 <div class="demo">
-  <MyButton size="small">小按钮</MyButton>
-  <MyButton size="default">默认按钮</MyButton>
-  <MyButton size="large">大按钮</MyButton>
+  <MyButton size="small" type="primary">小按钮</MyButton>
+  <MyButton size="default" type="primary">默认按钮</MyButton>
+  <MyButton size="large" type="primary">大按钮</MyButton>
 </div>
 
 ## 禁用状态
 
 <div class="demo">
-  <MyButton disabled>禁用按钮</MyButton>
+  <MyButton disabled type="primary">禁用按钮</MyButton>
+</div>
+
+## loading 状态
+
+<div class="demo">
+  <MyButton loading type="primary">加载中按钮</MyButton>
 </div>
 
 ## 新增属性
+
+### 按钮显示标记
+
+<my-button :value="100" :isShowBadge="true" :max="99" :buttonType="'primary'" style="margin-right: 50px;">
+主要按钮
+</my-button>
+<my-button :value="100" :isShowBadge="true" :max="99" :buttonType="'text'" style="margin-right: 50px;">
+文本
+</my-button>
+
+<my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">朴素级别</my-button>
+
+```vue
+<template>
+  <my-button
+    :value="100"
+    :isShowBadge="true"
+    :max="99"
+    :buttonType="'primary'"
+    style="margin-right: 30px;"
+  >
+    主要按钮
+  </my-button>
+  <my-button
+    :value="100"
+    :isShowBadge="true"
+    :max="99"
+    :buttonType="'text'"
+    style="margin-right: 30px;"
+  >
+    主要按钮
+  </my-button>
+
+  <my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'"
+    >朴素级别</my-button
+  >
+</template>
+
+<script setup>
+import { MyButton } from "@yo-component";
+</script>
+```
 
 ## API
 
 ### Props
 
-| 参数       | 说明     | 类型                                                                  | 默认值      |
-| ---------- | -------- | --------------------------------------------------------------------- | ----------- |
-| `type`     | 按钮类型 | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'default'` |
-| `size`     | 按钮大小 | `'large' \| 'default' \| 'small'`                                     | `'default'` |
-| `disabled` | 禁用状态 | `boolean`                                                             | `false`     |
-| `loading`  | 加载状态 | `boolean`                                                             | `false`     |
-| `round`    | 圆角按钮 | `boolean`                                                             | `false`     |
-| `circle`   | 圆形按钮 | `boolean`                                                             | `false`     |
+| 参数          | 说明       | 类型                                                                  | 默认值      |
+| ------------- | ---------- | --------------------------------------------------------------------- | ----------- |
+| `isShowBadge` | 显示标记   | `boolean`                                                             | `false`     |
+| `value`       | 标记内容   | `'number' \| 'string'`                                                | `0`         |
+| `max`         | 最大显示值 | `number`                                                              | `0`         |
+| `buttonType`  | 按钮类型(显示标记时)  | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'primary'` |
+| `size`        | 按钮大小   | `'large' \| 'default' \| 'small'`                                     | `'default'` |
+| `disabled`    | 禁用状态   | `boolean`                                                             | `false`     |
+| `loading`     | 加载状态   | `boolean`                                                             | `false`     |
+| `round`       | 圆角按钮   | `boolean`                                                             | `false`     |
+| `circle`      | 圆形按钮   | `boolean`                                                             | `false`     |
+| `color`       | 自定义颜色 | `string`                                                              | `''`        |
 
 ### Events
 
 | 事件名  | 说明     | 回调参数              |
 | ------- | -------- | --------------------- |
 | `click` | 点击事件 | `(event: MouseEvent)` |
+
+### slot
+
+| 名称    | 说明     |
+| ------- | -------- |
+| default | 按钮内容 |

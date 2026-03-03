@@ -17,6 +17,11 @@ export interface ButtonProps extends ElButtonProps {
    * 标记是否为点
    */
   badgeIsDot?: boolean
+
+  /**
+   * 是否显示标记
+   */
+  isShowBadge?: boolean
 }
 
 export type ButtonEmits = ElButtonEmits

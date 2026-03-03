@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <h1>组件库测试</h1>
-    <my-button type="success" @click="clickme" :badge="11" :disabled="true">主要按钮</my-button>
-    <my-button size="small" @click="clickme" :badgeIsDot="true">主要按钮</my-button>
+    <my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">主要按钮</my-button>
+    <my-button :loading="true">加载中按钮</my-button>
+    <my-button :loading-icon="Share" :loading="true">加载中按钮</my-button>
   </div>
   <div class="container">
     <my-input v-model="inputValue" @input="handleChange" ref="inputRef">
@@ -20,6 +21,7 @@
 <script lang="ts" setup>
 import { MyButton } from '../../packages/src/components/button'
 import { MyInput } from '../../packages/src/components/input'
+import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
 

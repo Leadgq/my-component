@@ -1,27 +1,34 @@
 <template>
-  <el-button
-    :type="type"
-    :size="size"
-    :disabled="disabled"
-    :loading="loading"
-    :round="round"
-    :circle="circle"
-    v-bind="$attrs"
-  >
-    <slot />
-  </el-button>
+  <template v-if="!isShowBadge">
+    <el-button :type="type"
+      v-bind="$attrs">
+      <slot />
+    </el-button>
+  </template>
+  <template v-else>
+    <el-badge v-bind="$attrs">
+      <el-button :type="buttonType">
+        <slot />
+      </el-button>
+    </el-badge>
+  </template>
 </template>
 
-<script setup lang="ts">
-import { ElButton } from 'element-plus'
-import type { ButtonProps } from './button.ts'
-
-withDefaults(defineProps<ButtonProps>(), {
-  type: 'primary',
-  size: 'default'
+<script setup>
+import { ElButton, ElBadge } from 'element-plus'
+import { useAttrs } from 'vue';
+const props = defineProps({
+  type:{
+    type: String,
+    default: 'default'
+  },
+  isShowBadge: {
+    type: Boolean,
+    default: false
+  },
+  buttonType: {
+    type: String,
+    default: 'primary'
+  }
 })
 </script>
-
-<style lang="scss" scoped>
-
-</style>

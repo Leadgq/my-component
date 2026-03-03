@@ -1,42 +1,25 @@
 import { App } from 'vue';
 import { ButtonEmits as ButtonEmits_2 } from 'element-plus';
 import { ButtonProps as ButtonProps_2 } from 'element-plus';
-import { ButtonType } from 'element-plus';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
-import { ComponentSize } from 'element-plus';
 import { DefineComponent } from 'vue';
 import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
 import { InputProps } from 'element-plus';
+import { default as MyButton } from './components/button/button.vue';
 import { PublicProps } from 'vue';
 
-declare const __VLS_component: DefineComponent<ButtonProps_2, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ButtonProps_2> & Readonly<{}>, {
-size: ComponentSize;
-type: ButtonType;
-}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-
-declare const __VLS_component_2: DefineComponent<    {}, {
+declare const __VLS_component: DefineComponent<    {}, {
 clear: () => void;
 select: () => void;
 focus: () => void;
 blur: () => void;
 }, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, any, any>;
 
-declare function __VLS_template(): {
-    attrs: Partial<{}>;
-    slots: {
-        default?(_: {}): any;
-    };
-    refs: {};
-    rootEl: any;
-};
-
-declare function __VLS_template_2(): any;
+declare function __VLS_template(): any;
 
 declare type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-
-declare type __VLS_TemplateResult_2 = ReturnType<typeof __VLS_template_2>;
 
 declare type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
@@ -44,15 +27,30 @@ declare type __VLS_WithTemplateSlots<T, S> = T & {
     };
 };
 
-declare type __VLS_WithTemplateSlots_2<T, S> = T & {
-    new (): {
-        $slots: S;
-    };
-};
-
 export declare type ButtonEmits = ButtonEmits_2;
 
-export declare type ButtonProps = ButtonProps_2;
+export declare interface ButtonProps extends ButtonProps_2 {
+    /**
+     * 按钮标记
+     */
+    badge?: string | number;
+    /**
+     * 标记类型
+     */
+    badgeType?: 'primary' | 'success' | 'warning' | 'danger' | 'info';
+    /**
+     * 标记位置
+     */
+    badgePosition?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+    /**
+     * 标记是否为点
+     */
+    badgeIsDot?: boolean;
+    /**
+     * 是否显示标记
+     */
+    isShowBadge?: boolean;
+}
 
 export declare const componentList: string[];
 
@@ -67,9 +65,9 @@ export { InputInstance }
 
 export { InputProps }
 
-export declare const MyButton: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+export { MyButton }
 
-export declare const MyInput: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
+export declare const MyInput: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 export declare interface MyInputExpose {
     clear: () => void;
