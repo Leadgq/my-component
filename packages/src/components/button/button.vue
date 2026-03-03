@@ -1,8 +1,13 @@
 <template>
   <template v-if="!isShowBadge">
     <el-button :type="type" v-bind="$attrs" :loading="loading" :disabled="disabled" @click="emit('click')">
-      <template v-for="(_, name) in slots" :key="name">
-        <slot :name="name" />
+      <template v-for="(_, name) in slots" :key="name" #[name]="slotData">
+        <template v-if="name === 'default'">
+          <slot :name="name" />
+        </template>
+        <template v-else>
+          <slot :name="name" v-bind="slotData" />
+        </template>
       </template>
     </el-button>
   </template>

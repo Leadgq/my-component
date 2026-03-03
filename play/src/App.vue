@@ -23,15 +23,23 @@
       </template>
     </my-input>
   </div>
+  <div class="container">
+    <my-select v-model="selectValue" placeholder="请选择">
+      <el-option label="选项1" value="1" />
+      <el-option label="选项2" value="2" />
+      <el-option label="选项3" value="3" />
+    </my-select>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { MyButton } from '../../packages/src/components/button'
 import { MyInput } from '../../packages/src/components/input'
+import { MySelect } from '../../packages/src/components/select'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
-
+const selectValue = ref('1')
 // 显式指定类型
 const inputRef = ref<InstanceType<typeof MyInput>>()
 
