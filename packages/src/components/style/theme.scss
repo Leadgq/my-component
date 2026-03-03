@@ -15,6 +15,8 @@ $colors: (
   // 主色-淡
   primary-color-light-5: #e6eeff,
 
+  primary-color-disabled: #ADBEFF,
+
   // 主色-最淡
   // 成功颜色
   success-color: #42ba5b,
@@ -30,6 +32,8 @@ $colors: (
   success-color-light-4: #c9f0d1,
   // 成功色-淡
   success-color-light-5: #e8ffe9,
+
+  success-color-disabled: #ABE7B8,
 
   // 成功色-最淡
   // 危险颜色
@@ -47,11 +51,13 @@ $colors: (
   // 危险色-淡
   danger-color-light-5: #ffece8,
 
+  danger-color-disabled: #F6B0A8,
+
   // 危险色-最淡
   // 警告颜色
   warning-color: #ed892f,
   // 警告色
-  warning-color-dark: #c13237,
+  warning-color-dark: #c3651d,
   // 警告色-暗
   warning-color-light: #f1a152,
   // 警告色-亮
@@ -62,6 +68,8 @@ $colors: (
   warning-color-light-4: #fbe4c1,
   // 警告色-淡
   warning-color-light-5: #fff7e8,
+
+  warning-color-disabled: #F8D09B,
 
   // 警告色-最淡
   // 灰色颜色

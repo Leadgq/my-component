@@ -4,14 +4,44 @@
     &:hover {
         background-color: var(--primary-color-dark);
     }
+    &:disabled {
+        background-color: var(--primary-color-disabled);
+        &:hover {
+            background-color: var(--primary-color-disabled);
+        }
+    }
 }
 
 .el-button--success {
-    // background-color: var(--success-color);
+    background-color: var(--success-color);
+    &:hover {
+        background-color: var(--success-color-dark);
+    }
+    &:disabled {
+        background-color: var(--success-color-disabled);
+        &:hover {
+            background-color: var(--success-color-disabled);
+        }
+    }
 }
 .el-button--danger {
-    // background-color: var(--danger-color);
+    background-color: var(--danger-color);
+    &:hover {
+        background-color: var(--danger-color-dark);
+    }
+    &:disabled {
+        background-color: var(--danger-color-disabled);
+        &:hover {
+            background-color: var(--danger-color-disabled);
+        }
+    }
 }
 
-.el-button--small {
+.el-button--default {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    &:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
 }
