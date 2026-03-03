@@ -1,6 +1,9 @@
 // 全局样式覆盖
-.el-button--primary  {
-    // background-color: var(--primary-color);
+.el-button--primary {
+    background-color: var(--primary-color);
+    &:hover {
+        background-color: var(--primary-color-dark);
+    }
 }
 
 .el-button--success {

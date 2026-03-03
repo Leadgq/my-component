@@ -3,6 +3,7 @@
     <h1>组件库测试</h1>
     <div class="container">
      <MyInput v-model="value" placeholder="请输入" style="width: 240px" clearable/>
+     <MyButton type="primary">主要按钮</MyButton>
     </div>
   </div>
 </template>
@@ -11,6 +12,7 @@
 
 import { ref } from 'vue';
 import { MyInput } from '../../packages/src/components/input'
+import { MyButton } from '../../packages/src/components/button'
 
 const value = ref('')
 </script>
