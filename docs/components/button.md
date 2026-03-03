@@ -13,7 +13,7 @@ import '../../packages/dist/style.css'
 <div class="demo">
   <MyButton type="primary">主要按钮</MyButton>
   <MyButton type="success">成功按钮</MyButton>
-  <MyButton type="danger">危险按钮</MyButton>
+  <MyButton type="danger">超多字超多字超多字超多字超多字超多字超多字超多字</MyButton>
 </div>
 
 ```vue
