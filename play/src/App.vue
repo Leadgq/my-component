@@ -1,59 +1,102 @@
 <template>
   <div class="container">
     <h1>组件库测试</h1>
-    <my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">主要按钮</my-button>
-    <my-button :loading="true">加载中按钮</my-button>
-    <my-button :loading-icon="Share" :loading="true">加载中按钮</my-button>
-    <my-button :loading="true">
-      <template #loading-icon>
-        <el-icon>
-          <Share />
-        </el-icon>
-      </template>
-    </my-button>
-  </div>
-  <div class="container">
-    <my-input v-model="inputValue" @input="handleChange" ref="inputRef" clearable>
-      <template #prepend>
-        <el-select v-model="inputValue" placeholder="请选择">
-          <el-option label="选项1" value="1" />
-          <el-option label="选项2" value="2" />
-          <el-option label="选项3" value="3" />
-        </el-select>
-      </template>
-    </my-input>
-  </div>
-  <div class="container">
-    <my-select v-model="selectValue" placeholder="请选择">
-      <el-option label="选项1" value="1" />
-      <el-option label="选项2" value="2" />
-      <el-option label="选项3" value="3" />
-    </my-select>
+    <div class="container">
+      <my-select v-model="value" multiple filterable remote reserve-keyword placeholder="Please enter a keyword"
+        remote-show-suffix :remote-method="remoteMethod" :loading="loading" style="width: 240px" :options="options">
+      </my-select>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { MyButton } from '../../packages/src/components/button'
-import { MyInput } from '../../packages/src/components/input'
+
 import { MySelect } from '../../packages/src/components/select'
-import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
-import { ref } from 'vue'
 
-const selectValue = ref('1')
-// 显式指定类型
-const inputRef = ref<InstanceType<typeof MyInput>>()
+import { onMounted, ref } from 'vue'
 
-const inputValue = ref()
-
-function handleChange(newValue: string) {
-  console.log('inputValue 变化了:', newValue)
+interface ListItem {
+  value: string
+  label: string
 }
 
-function focus() {
-  inputRef.value?.focus()
+const list = ref<ListItem[]>([])
+const options = ref<ListItem[]>([])
+const value = ref<string[]>([])
+const loading = ref(false)
+
+
+
+onMounted(() => {
+  list.value = states.map((item) => {
+    return { value: `value:${item}`, label: `label:${item}` }
+  })
+})
+
+const remoteMethod = (query: string) => {
+  if (query) {
+    loading.value = true
+    setTimeout(() => {
+      loading.value = false
+      options.value = list.value.filter((item) => {
+        return item.label.toLowerCase().includes(query.toLowerCase())
+      })
+    }, 200)
+  } else {
+    options.value = []
+  }
 }
 
-function clickme() {
-  console.log('ok')
-}
+const states = [
+  'Alabama',
+  'Alaska',
+  'Arizona',
+  'Arkansas',
+  'California',
+  'Colorado',
+  'Connecticut',
+  'Delaware',
+  'Florida',
+  'Georgia',
+  'Hawaii',
+  'Idaho',
+  'Illinois',
+  'Indiana',
+  'Iowa',
+  'Kansas',
+  'Kentucky',
+  'Louisiana',
+  'Maine',
+  'Maryland',
+  'Massachusetts',
+  'Michigan',
+  'Minnesota',
+  'Mississippi',
+  'Missouri',
+  'Montana',
+  'Nebraska',
+  'Nevada',
+  'New Hampshire',
+  'New Jersey',
+  'New Mexico',
+  'New York',
+  'North Carolina',
+  'North Dakota',
+  'Ohio',
+  'Oklahoma',
+  'Oregon',
+  'Pennsylvania',
+  'Rhode Island',
+  'South Carolina',
+  'South Dakota',
+  'Tennessee',
+  'Texas',
+  'Utah',
+  'Vermont',
+  'Virginia',
+  'Washington',
+  'West Virginia',
+  'Wisconsin',
+  'Wyoming',
+]
 </script>
