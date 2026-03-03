@@ -29,28 +29,7 @@ declare type __VLS_WithTemplateSlots<T, S> = T & {
 
 export declare type ButtonEmits = ButtonEmits_2;
 
-export declare interface ButtonProps extends ButtonProps_2 {
-    /**
-     * 按钮标记
-     */
-    badge?: string | number;
-    /**
-     * 标记类型
-     */
-    badgeType?: 'primary' | 'success' | 'warning' | 'danger' | 'info';
-    /**
-     * 标记位置
-     */
-    badgePosition?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-    /**
-     * 标记是否为点
-     */
-    badgeIsDot?: boolean;
-    /**
-     * 是否显示标记
-     */
-    isShowBadge?: boolean;
-}
+export declare type ButtonProps = ButtonProps_2;
 
 export declare const componentList: string[];
 

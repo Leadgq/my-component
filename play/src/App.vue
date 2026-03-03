@@ -13,7 +13,7 @@
     </my-button>
   </div>
   <div class="container">
-    <my-input v-model="inputValue" @input="handleChange" ref="inputRef">
+    <my-input v-model="inputValue" @input="handleChange" ref="inputRef" clearable>
       <template #prepend>
         <el-select v-model="inputValue" placeholder="请选择">
           <el-option label="选项1" value="1" />

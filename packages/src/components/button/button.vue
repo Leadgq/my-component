@@ -1,7 +1,7 @@
 <template>
   <template v-if="!isShowBadge">
     <el-button :type="type" v-bind="$attrs" :loading="loading" :disabled="disabled" @click="emit('click')">
-      <template v-for="(slot, name) in slots" :key="name">
+      <template v-for="(_, name) in slots" :key="name">
         <slot :name="name" />
       </template>
     </el-button>

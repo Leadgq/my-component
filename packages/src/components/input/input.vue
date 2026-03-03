@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAttrs, useSlots, ref } from 'vue'
 import type { InputInstance } from 'element-plus'
+import  { ElInput } from 'element-plus'
 
 const attrs = useAttrs()
 const slots = useSlots()
@@ -12,6 +13,7 @@ interface MyInputExpose {
   focus: () => void
   blur: () => void
 }
+
 
 const expose: MyInputExpose = {
   clear: () => elInputRef.value?.clear(),
