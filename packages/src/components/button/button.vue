@@ -1,12 +1,6 @@
 <template>
   <template v-if="!isShowBadge">
-    <el-button :type="type" v-bind="$attrs" :loading="loading" :disabled="disabled" @click="emit('click')"
-      :class="{
-        'default-is-disabled-success': disabled && type === 'default' && disableTheme === 'success',
-        'default-is-disabled-danger': disabled && type === 'default' && disableTheme === 'danger',
-        'default-is-disabled-warning': disabled && type === 'default' && disableTheme === 'warning'
-       }"
-    >
+    <el-button :type="props.type" v-bind="$attrs" :loading="loading" :disabled="disabled" @click="emit('click')">
       <template v-for="(_, name) in slots" :key="name" #[name]="slotData">
         <template v-if="name === 'default'">
           <slot :name="name" />
@@ -19,7 +13,7 @@
   </template>
   <template v-else>
     <el-badge v-bind="$attrs">
-      <el-button :type="buttonType" @click="emit('click')">
+      <el-button :type="props.buttonType" @click="emit('click')">
         <slot />
       </el-button>
     </el-badge>
@@ -30,12 +24,10 @@
 import { ElButton, ElBadge } from 'element-plus'
 import { useAttrs, useSlots } from 'vue';
 const emit = defineEmits(['click'])
+const $attrs = useAttrs()
+const slots = useSlots()
 const props = defineProps({
   type: {
-    type: String,
-    default: 'default'
-  },
-  disableTheme:{
     type: String,
     default: 'default'
   },
@@ -56,6 +48,5 @@ const props = defineProps({
     default: 'primary'
   }
 })
-const $attrs = useAttrs()
-const slots = useSlots()
+console.log(props.disabledTheme);
 </script>

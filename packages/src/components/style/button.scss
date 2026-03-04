@@ -2,7 +2,7 @@ $padding: 8px 16px;
 .base-button {
     padding: $padding;
 }
-// 全局样式覆盖
+
 .el-button--primary {
     background-color: var(--primary-color);
     @extend .base-button;
@@ -13,6 +13,22 @@ $padding: 8px 16px;
         background-color: var(--primary-color-disabled);
         &:hover {
             background-color: var(--primary-color-disabled);
+        }
+    }
+    &.is-plain {
+        background-color: transparent;
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        &:disabled {
+            background-color: transparent;
+            color: var(--primary-color-disabled);
+            &:hover {
+                background-color: transparent;
+            }
         }
     }
 }
@@ -29,6 +45,22 @@ $padding: 8px 16px;
             background-color: var(--success-color-disabled);
         }
     }
+    &.is-plain {
+        background-color: transparent;
+        color: var(--success-color);
+        border-color: var(--success-color);
+        &:hover {
+            background-color: var(--success-color);
+            color: #fff;
+        }
+        &:disabled {
+            background-color: transparent;
+            color: var(--success-color-disabled);
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
 }
 .el-button--danger {
     @extend .base-button;
@@ -42,6 +74,22 @@ $padding: 8px 16px;
             background-color: var(--danger-color-disabled);
         }
     }
+    &.is-plain {
+        background-color: transparent;
+        color: var(--danger-color);
+        border-color: var(--danger-color);
+        &:hover {
+            background-color: var(--danger-color);
+            color: #fff;
+        }
+        &:disabled {
+            background-color: transparent;
+            color: var(--danger-color-disabled);
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
 }
 
 .el-button--default {
@@ -49,8 +97,8 @@ $padding: 8px 16px;
     border-color: var(--primary-color);
     color: var(--primary-color);
     &:hover {
-        // background-color: var(--primary-color);
-        // color: #fff;
+        background-color: var(--primary-color);
+        color: #fff;
     }
     &:disabled {
         border-color: var(--default-disabled-border-color);
@@ -60,28 +108,34 @@ $padding: 8px 16px;
             color: var(--default-disabled-text-color);
         }
     }
-    &.default-is-disabled-success {
-        color: var(--success-color-disabled);
-        border-color: var(--success-color-disabled);
+}
+
+.el-button--warning {
+    @extend .base-button;
+    background-color: var(--warning-color);
+    &:hover {
+        background-color: var(--warning-color-dark);
+    }
+    &:disabled {
+        background-color: var(--warning-color-disabled);
         &:hover {
-            color: var(--success-color-disabled);
-            border-color: var(--success-color-disabled);
+            background-color: var(--warning-color-disabled);
         }
     }
-    &.default-is-disabled-danger {
-        color: var(--danger-color-disabled);
-        border-color: var(--danger-color-disabled);
+    &.is-plain {
+        background-color: transparent;
+        color: var(--warning-color);
+        border-color: var(--warning-color);
         &:hover {
-            color: var(--danger-color-disabled);
-            border-color: var(--danger-color-disabled);
+            background-color: var(--warning-color);
+            color: #fff;
         }
-    }
-    &.default-is-disabled-warning {
-        color: var(--warning-color-disabled);
-        border-color: var(--warning-color-disabled);
-        &:hover {
+        &:disabled {
+            background-color: transparent;
             color: var(--warning-color-disabled);
-            border-color: var(--warning-color-disabled);
+            &:hover {
+                background-color: transparent;
+            }
         }
     }
 }
