@@ -6,16 +6,17 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoInput, YoButton } from '../../packages/dist/index.es.js'
+import { YoInput, YoButton } from '../../../packages/dist/index.es.js'
 import { Calendar } from '@element-plus/icons-vue'
-import '../../packages/dist/style.css'
-const inputValue = ref('')
+import '../../../packages/dist/style.css'
+const basicInput = ref('')
 
-const inputValue2 = ref('')
+const inputValue2 = ref('处于只读状态')
 const inputValue3 = ref('')
 const textareaValue = ref('')
 
 const  inputRef = ref(null)
+const prefixSuffixInput = ref('')
 
 const input1 = ref('')
 
@@ -25,7 +26,10 @@ function clearInput2() {
 </script>
 
 <div class="demo">
-    <YoInput v-model="inputValue"  style="width: 240px" ></YoInput>
+     <div class="test-section">    
+            <YoInput v-model="basicInput" placeholder="请输入内容" style="width: 240px" />
+            <p>输入值: {{ basicInput }}</p>
+   </div>
 </div>
 
 ```vue
@@ -37,30 +41,29 @@ import { YoInput } from "@will-component";
 </script>
 ```
 
-## 占位符
+## 禁用状态
 
 <div class="demo">
-    <YoInput v-model="inputValue" placeholder="请输入" style="width: 240px" ></YoInput>
+       <YoInput placeholder="禁用输入框" :disabled="true" style="width: 240px" />
 </div>
 
 ```vue
 <template>
-  <YoInput v-model="inputValue" placeholder="请输入" ref="inputRef"></YoInput>
+  <YoInput v-model="inputValue" placeholder="请输入"></YoInput>
 </template>
 ```
 
-## 清空
+## 只读状态
 
 <div class="demo">
-    <YoInput v-model="inputValue2" placeholder="请输入" style="width: 240px" clearable></YoInput>
-    <YoButton type="primary" @click="clearInput2">清空</YoButton>
+    <YoInput v-model="inputValue2" placeholder="请输入" style="width: 240px" readonly></YoInput>
 </div>
 
 ```vue
 <template>
   <YoInput v-model="inputValue" placeholder="请输入" ref="inputRef"></YoInput>
   <YoButton type="primary" @click="clearInput2">清空</YoButton>
-</template> 
+</template>
 <script setup>
 import { YoInput, YoButton } from "@will-component";
 function clearInput3() {
@@ -109,48 +112,58 @@ import { YoInput } from "@will-component";
 </script>
 ```
 
-## 带图标的输入框
+## 带前缀和后缀的输入框
 
 <div class="demo">
-    <YoInput    v-model="input1"
-          class="responsive-input"
-          placeholder="Pick a date"
-          :suffix-icon="Calendar"
-          style="width: 240px"
-          ></YoInput>
-             <YoInput  
-               v-model="input1"
-          class="responsive-input"
-          placeholder="Pick a date"
-          :suffix-icon="Calendar"
-          style="width: 240px"
-          >
-            <template #suffix>
-            <el-icon class="el-input__icon"><calendar /></el-icon>
-          </template>
-          </YoInput> 
+     <YoInput  placeholder="带前缀和后缀" v-model="prefixSuffixInput">
+                <template #prefix>
+                    <span>@</span>
+                </template>
+                <template #suffix>
+                    <span>.com</span>
+                </template>
+            </YoInput>
 </div>
 
 ```vue
 <template>
-  <YoInput
-    v-model="input1"
-    class="responsive-input"
-    placeholder="Pick a date"
-    :suffix-icon="Calendar"
-    style="width: 240px"
-  ></YoInput>
+  <YoInput placeholder="带前缀和后缀" v-model="prefixSuffixInput">
+    <template #prefix>
+      <span>@</span>
+    </template>
+    <template #suffix>
+      <span>.com</span>
+    </template>
+  </YoInput>
 </template>
 <script setup>
 import { YoInput } from "@will-component";
-import { Calendar } from "@element-plus/icons-vue";
 </script>
+```
+
+## 大小
+
+<div>
+        <YoInput size="small" placeholder="Please Input" />
+            <YoInput size="medium" placeholder="Please Input" />
+            <YoInput size="large" placeholder="Please Input" />
+
+</div>
+
+```vue
+<template>
+  <div>
+    <YoInput size="small" placeholder="Please Input" />
+    <YoInput size="medium" placeholder="Please Input" />
+    <YoInput size="large" placeholder="Please Input" />
+  </div>
+</template>
 ```
 
 ## 文本域
 
 <div class="demo">
-    <YoInput v-model="textareaValue" placeholder="请输入" style="width: 240px" type="textarea"></YoInput>
+    <YoInput v-model="textareaValue" placeholder="请输入" maxlength="30" show-word-limit  style="width: 240px" type="textarea"></YoInput>
 </div>
 
 ```vue
@@ -159,6 +172,7 @@ import { Calendar } from "@element-plus/icons-vue";
     v-model="textareaValue"
     placeholder="请输入"
     style="width: 240px"
+    maxlength="30"
     type="textarea"
   ></YoInput>
 </template>
@@ -166,8 +180,6 @@ import { Calendar } from "@element-plus/icons-vue";
 import { YoInput } from "@will-component";
 </script>
 ```
-
-
 
 ## 属性
 

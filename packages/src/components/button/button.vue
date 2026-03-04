@@ -48,5 +48,4 @@ const props = defineProps({
     default: 'primary'
   }
 })
-console.log(props.disabledTheme);
 </script>
