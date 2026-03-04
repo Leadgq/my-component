@@ -1,4 +1,3 @@
-import { App } from 'vue';
 import { ButtonEmits as ButtonEmits_2 } from 'element-plus';
 import { ButtonProps as ButtonProps_2 } from 'element-plus';
 import { ComponentOptionsMixin } from 'vue';
@@ -8,7 +7,7 @@ import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
 import { InputProps } from 'element-plus';
 import { PublicProps } from 'vue';
-import { default as YoButton } from './components/button/button.vue';
+import { default as YoButton } from './button/button.vue';
 
 declare const __VLS_component: DefineComponent<    {}, {
 clear: () => void;
@@ -32,11 +31,6 @@ export declare type ButtonEmits = ButtonEmits_2;
 export declare type ButtonProps = ButtonProps_2;
 
 export declare const componentList: string[];
-
-declare const _default: {
-    install(app: App): void;
-};
-export default _default;
 
 export { InputEmits }
 
