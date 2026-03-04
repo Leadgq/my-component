@@ -2,11 +2,14 @@
   <div class="container">
     <h1>组件库测试</h1>
     <div class="container">
-     <MyInput v-model="value" placeholder="请输入" style="width: 240px" clearable/>
-     <MyButton type="primary" disabled>主要按钮</MyButton>
-     <MyButton type="default" disabled>默认按钮</MyButton>
-     <MyButton type="success" disabled>成功按钮</MyButton>
-     <MyButton type="danger" disabled>危险按钮</MyButton>
+
+
+      <MyButton type="default">朴素默认</MyButton>
+      <MyButton type="default" disabled>朴素禁用</MyButton>
+      <MyButton type="default" disableTheme="success">朴素禁止成功</MyButton>
+      <MyButton type="default" disableTheme="danger">朴素禁止危险</MyButton>
+      <MyButton type="default" disableTheme="warning">朴素禁止警告</MyButton>
+
     </div>
   </div>
 </template>

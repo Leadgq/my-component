@@ -47,6 +47,30 @@ import { MyButton } from "@will-component";
   <MyButton loading type="primary">加载中按钮</MyButton>
 </div>
 
+## 朴素按钮禁止状态
+
+<div class="demo">
+      <MyButton type="default" disabled >朴素成功</MyButton>
+     <MyButton type="default" disabled disableTheme="success">朴素禁止成功</MyButton>
+     <MyButton type="default" disabled disableTheme="danger">朴素禁止危险</MyButton>
+     <MyButton type="default" disabled disableTheme="warning">朴素禁止警告</MyButton>
+</div>
+
+```vue
+<template>
+  <MyButton type="default" disabled>朴素成功</MyButton>
+  <MyButton type="default" disabled disableTheme="success"
+    >朴素禁止成功</MyButton
+  >
+  <MyButton type="default" disabled disableTheme="danger"
+    >朴素禁止危险</MyButton
+  >
+  <MyButton type="default" disabled disableTheme="warning"
+    >朴素禁止警告</MyButton
+  >
+</template>
+```
+
 ## 新增属性
 
 ### 按钮显示标记
@@ -95,18 +119,18 @@ import { MyButton } from "@yo-component";
 
 ### Props
 
-| 参数          | 说明       | 类型                                                                  | 默认值      |
-| ------------- | ---------- | --------------------------------------------------------------------- | ----------- |
-| `isShowBadge` | 显示标记   | `boolean`                                                             | `false`     |
-| `value`       | 标记内容   | `'number' \| 'string'`                                                | `0`         |
-| `max`         | 最大显示值 | `number`                                                              | `0`         |
-| `buttonType`  | 按钮类型(显示标记时)  | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'primary'` |
-| `size`        | 按钮大小   | `'large' \| 'default' \| 'small'`                                     | `'default'` |
-| `disabled`    | 禁用状态   | `boolean`                                                             | `false`     |
-| `loading`     | 加载状态   | `boolean`                                                             | `false`     |
-| `round`       | 圆角按钮   | `boolean`                                                             | `false`     |
-| `circle`      | 圆形按钮   | `boolean`                                                             | `false`     |
-| `color`       | 自定义颜色 | `string`                                                              | `''`        |
+| 参数          | 说明                 | 类型                                                                  | 默认值      |
+| ------------- | -------------------- | --------------------------------------------------------------------- | ----------- |
+| `isShowBadge` | 显示标记             | `boolean`                                                             | `false`     |
+| `value`       | 标记内容             | `'number' \| 'string'`                                                | `0`         |
+| `max`         | 最大显示值           | `number`                                                              | `0`         |
+| `buttonType`  | 按钮类型(显示标记时) | `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'` | `'primary'` |
+| `size`        | 按钮大小             | `'large' \| 'default' \| 'small'`                                     | `'default'` |
+| `disabled`    | 禁用状态             | `boolean`                                                             | `false`     |
+| `loading`     | 加载状态             | `boolean`                                                             | `false`     |
+| `round`       | 圆角按钮             | `boolean`                                                             | `false`     |
+| `circle`      | 圆形按钮             | `boolean`                                                             | `false`     |
+| `color`       | 自定义颜色           | `string`                                                              | `''`        |
 
 ### Events
 
