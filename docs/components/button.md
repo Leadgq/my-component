@@ -6,87 +6,137 @@
 
 <script setup>
 import { ref } from 'vue'
-import { MyButton } from '../../packages/dist/index.es.js'
+import { YoButton } from '../../packages/dist/index.es.js'
 import '../../packages/dist/style.css'
 </script>
 
 <div class="demo">
-  <MyButton type="primary">主要按钮</MyButton>
-  <MyButton type="success">成功按钮</MyButton>
-  <MyButton type="danger">超多字超多字超多字超多字超多字超多字超多字超多字</MyButton>
+    <div class="button-row">
+      <yo-button type="primary">Primary</yo-button>
+      <yo-button type="success">Success</yo-button>
+      <yo-button type="warning">Warning</yo-button>
+      <yo-button type="danger">Danger</yo-button>
+    </div>
 </div>
 
 ```vue
 <template>
-  <MyButton type="primary">主要按钮</MyButton>
-  <MyButton type="success">成功按钮</MyButton>
-  <MyButton type="danger">危险按钮</MyButton>
+  <div class="button-row">
+    <yo-button type="primary">Primary</yo-button>
+    <yo-button type="success">Success</yo-button>
+    <yo-button type="warning">Warning</yo-button>
+    <yo-button type="danger">Danger</yo-button>
+  </div>
 </template>
 <script setup>
-import { MyButton } from "@will-component";
+import { YoButton } from "../../packages/dist/index.es.js";
+import "../../packages/dist/style.css";
 </script>
 ```
 
-## 不同尺寸
+## 朴素按钮
 
-<div class="demo">
-  <MyButton size="small" type="primary">小按钮</MyButton>
-  <MyButton size="default" type="primary">默认按钮</MyButton>
-  <MyButton size="large" type="primary">大按钮</MyButton>
-</div>
-
-## 禁用状态
-
-<div class="demo">
-  <MyButton disabled type="primary">禁用按钮</MyButton>
-</div>
-
-## loading 状态
-
-<div class="demo">
-  <MyButton loading type="primary">加载中按钮</MyButton>
-</div>
-
-## 朴素按钮禁止状态
-
-<div class="demo">
-      <MyButton type="default" disabled >朴素成功</MyButton>
-     <MyButton type="default" disabled disableTheme="success">朴素禁止成功</MyButton>
-     <MyButton type="default" disabled disableTheme="danger">朴素禁止危险</MyButton>
-     <MyButton type="default" disabled disableTheme="warning">朴素禁止警告</MyButton>
+<div>
+    <div class="button-row">
+      <yo-button type="primary" plain>Primary</yo-button>
+      <yo-button type="success" plain>Success</yo-button>
+      <yo-button type="warning" plain>Warning</yo-button>
+      <yo-button type="danger" plain>Danger</yo-button>
+    </div>
 </div>
 
 ```vue
 <template>
-  <MyButton type="default" disabled>朴素成功</MyButton>
-  <MyButton type="default" disabled disableTheme="success"
-    >朴素禁止成功</MyButton
-  >
-  <MyButton type="default" disabled disableTheme="danger"
-    >朴素禁止危险</MyButton
-  >
-  <MyButton type="default" disabled disableTheme="warning"
-    >朴素禁止警告</MyButton
-  >
+  <div class="button-row">
+    <yo-button type="primary" plain>Primary</yo-button>
+    <yo-button type="success" plain>Success</yo-button>
+    <yo-button type="warning" plain>Warning</yo-button>
+    <yo-button type="danger" plain>Danger</yo-button>
+  </div>
 </template>
+<script setup>
+import { YoButton } from "../../packages/dist/index.es.js"; 
+import "../../packages/dist/style.css";
+</script>
+```
+
+## 朴素按钮禁止
+
+<div>
+    <div class="button-row">
+      <yo-button type="primary" plain disabled>Primary</yo-button>
+      <yo-button type="success" plain disabled>Success</yo-button>
+      <yo-button type="warning" plain disabled>Warning</yo-button>
+      <yo-button type="danger" plain disabled>Danger</yo-button>
+    </div>
+</div>
+
+```vue
+<template>
+  <div class="button-row">
+    <yo-button type="primary" plain disabled>Primary</yo-button>
+    <yo-button type="success" plain disabled>Success</yo-button>  
+    <yo-button type="warning" plain disabled>Warning</yo-button>
+    <yo-button type="danger" plain disabled>Danger</yo-button>
+  </div>
+</template>
+<script setup>
+import { YoButton } from "../../packages/dist/index.es.js"; 
+import "../../packages/dist/style.css";
+</script>
+```
+
+## loading
+
+<div>
+    <div class="button-row">
+      <yo-button type="primary" :loading="true">Primary</yo-button>
+      <yo-button type="success" :loading="true">Success</yo-button>
+      <yo-button type="warning" :loading="true">Warning</yo-button>
+      <yo-button type="danger" :loading="true">Danger</yo-button>
+    </div>
+</div>
+
+## 朴素按钮 loading
+
+<div>
+    <div class="button-row">
+      <yo-button type="primary" plain :loading="true">Primary</yo-button>
+      <yo-button type="success" plain :loading="true">Success</yo-button>
+      <yo-button type="warning" plain :loading="true">Warning</yo-button>
+      <yo-button type="danger" plain :loading="true">Danger</yo-button>
+    </div>
+</div>
+
+```vue
+<template>
+  <div class="button-row">
+    <yo-button type="primary" plain :loading="true">Primary</yo-button>
+    <yo-button type="success" plain :loading="true">Success</yo-button>
+    <yo-button type="warning" plain :loading="true">Warning</yo-button>
+    <yo-button type="danger" plain :loading="true">Danger</yo-button>
+  </div>
+</template>
+<script setup>
+import { YoButton } from "../../packages/dist/index.es.js"; 
+import "../../packages/dist/style.css";
+</script>
 ```
 
 ## 新增属性
 
-### 按钮显示标记
-
-<my-button :value="100" :isShowBadge="true" :max="99" :buttonType="'primary'" style="margin-right: 50px;">
+<yo-button :value="100" :isShowBadge="true" :max="99" :buttonType="'primary'" style="margin-right: 50px;">  
 主要按钮
-</my-button>
-<my-button :value="100" :isShowBadge="true" :max="99" :buttonType="'text'" style="margin-right: 50px;">
+</yo-button>
+<yo-button :value="100" :isShowBadge="true" :max="99" :buttonType="'text'" style="margin-right: 50px;">
 文本
-</my-button>
+</yo-button>
 
-<my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">朴素级别</my-button>
+<yo-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">朴素级别</yo-button>
 
 ```vue
 <template>
-  <my-button
+  <yo-button
     :value="100"
     :isShowBadge="true"
     :max="99"
@@ -94,24 +144,25 @@ import { MyButton } from "@will-component";
     style="margin-right: 30px;"
   >
     主要按钮
-  </my-button>
-  <my-button
+  </yo-button>
+  <yo-button
     :value="100"
     :isShowBadge="true"
     :max="99"
     :buttonType="'text'"
     style="margin-right: 30px;"
   >
-    主要按钮
-  </my-button>
+    文本按钮
+  </yo-button>
 
-  <my-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'"
-    >朴素级别</my-button
+  <yo-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'"
+    >朴素级别</yo-button
   >
 </template>
 
 <script setup>
-import { MyButton } from "@yo-component";
+import { YoButton } from "../../packages/dist/index.es.js"; 
+import "../../packages/dist/style.css";
 </script>
 ```
 

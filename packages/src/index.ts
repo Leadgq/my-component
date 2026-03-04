@@ -1,20 +1,21 @@
 import type { App } from 'vue'
 
 
-import MyButton from './components/button/button.vue'
-import MyInput from './components/input/input.vue'
+import YoButton from './components/button/button.vue'
+import YoInput from './components/input/input.vue'
 
 
 import './components/style/index.scss'
 import "./core"
 
+
 const components = {
-  MyButton,
-  MyInput,
+  YoButton,
+  YoInput,
 } as const
 
 
-export { MyButton, MyInput }
+export { YoButton, YoInput }
 export * from './core' 
 
 export * from './components/button/button.ts'

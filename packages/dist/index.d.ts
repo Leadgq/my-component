@@ -7,8 +7,8 @@ import { DefineComponent } from 'vue';
 import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
 import { InputProps } from 'element-plus';
-import { default as MyButton } from './components/button/button.vue';
 import { PublicProps } from 'vue';
+import { default as YoButton } from './components/button/button.vue';
 
 declare const __VLS_component: DefineComponent<    {}, {
 clear: () => void;
@@ -44,15 +44,15 @@ export { InputInstance }
 
 export { InputProps }
 
-export { MyButton }
-
-export declare const MyInput: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
-
 export declare interface MyInputExpose {
     clear: () => void;
     select: () => void;
     focus: () => void;
     blur: () => void;
 }
+
+export { YoButton }
+
+export declare const YoInput: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 export { }

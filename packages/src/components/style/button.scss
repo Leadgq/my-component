@@ -26,10 +26,17 @@ $padding: 8px 16px;
         &:disabled {
             background-color: transparent;
             color: var(--primary-color-disabled);
+            border-color: var(--primary-color-disabled);
             &:hover {
                 background-color: transparent;
             }
         }
+        &.is-loading {
+            border-color: var(--primary-color-disabled);
+        }
+    }
+    &.is-loading {
+        border-color: transparent;
     }
 }
 
@@ -56,10 +63,17 @@ $padding: 8px 16px;
         &:disabled {
             background-color: transparent;
             color: var(--success-color-disabled);
+            border-color: var(--success-color-disabled);
             &:hover {
                 background-color: transparent;
             }
         }
+        &.is-loading {
+            border-color: var(--success-color-disabled);
+        }
+    }
+    &.is-loading {
+        border-color: transparent;
     }
 }
 .el-button--danger {
@@ -85,10 +99,17 @@ $padding: 8px 16px;
         &:disabled {
             background-color: transparent;
             color: var(--danger-color-disabled);
+            border-color: var(--danger-color-disabled);
             &:hover {
                 background-color: transparent;
             }
         }
+        &.is-loading {
+            border-color: var(--danger-color-disabled);
+        }
+    }
+    &.is-loading {
+        border-color: transparent;
     }
 }
 
@@ -107,6 +128,9 @@ $padding: 8px 16px;
             border-color: var(--default-disabled-hover-border-color);
             color: var(--default-disabled-text-color);
         }
+    }
+    &.is-loading {
+        border-color: transparent;
     }
 }
 
@@ -133,9 +157,16 @@ $padding: 8px 16px;
         &:disabled {
             background-color: transparent;
             color: var(--warning-color-disabled);
+            border-color: var(--warning-color-disabled);
             &:hover {
                 background-color: transparent;
             }
         }
+        &.is-loading {
+            border-color: var(--warning-color-disabled);
+        }
+    }
+    &.is-loading {
+        border-color: transparent;
     }
 }
