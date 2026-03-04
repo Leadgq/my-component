@@ -12,13 +12,17 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('./../../packages/components/src/button/button.vue')['default']
-    Input: typeof import('./../../packages/components/src/input/input.vue')['default']
+    Button: typeof import('./../../packages/src/components/button/button.vue')['default']
+    Input: typeof import('./../../packages/src/components/input/input.vue')['default']
+    Search: typeof import('./../../packages/src/components/search/search.vue')['default']
+    Select: typeof import('./../../packages/src/components/select/select.vue')['default']
   }
 }
 
 // For TSX support
 declare global {
-  const Button: typeof import('./../../packages/components/src/button/button.vue')['default']
-  const Input: typeof import('./../../packages/components/src/input/input.vue')['default']
+  const Button: typeof import('./../../packages/src/components/button/button.vue')['default']
+  const Input: typeof import('./../../packages/src/components/input/input.vue')['default']
+  const Search: typeof import('./../../packages/src/components/search/search.vue')['default']
+  const Select: typeof import('./../../packages/src/components/select/select.vue')['default']
 }
