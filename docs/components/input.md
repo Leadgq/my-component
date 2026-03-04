@@ -6,7 +6,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { MyInput, MyButton } from '../../packages/dist/index.es.js'
+import { YoInput, YoButton } from '../../packages/dist/index.es.js'
 import { Calendar } from '@element-plus/icons-vue'
 import '../../packages/dist/style.css'
 const inputValue = ref('')
@@ -25,44 +25,44 @@ function clearInput2() {
 </script>
 
 <div class="demo">
-    <MyInput v-model="inputValue"  style="width: 240px" ></MyInput>
+    <YoInput v-model="inputValue"  style="width: 240px" ></YoInput>
 </div>
 
 ```vue
 <template>
-  <MyInput v-model="inputValue" @input="handleChange" ref="inputRef"></MyInput>
+  <YoInput v-model="inputValue" @input="handleChange" ref="inputRef"></YoInput>
 </template>
 <script setup>
-import { MyInput } from "@will-component";
+import { YoInput } from "@will-component";
 </script>
 ```
 
 ## 占位符
 
 <div class="demo">
-    <MyInput v-model="inputValue" placeholder="请输入" style="width: 240px" ></MyInput>
+    <YoInput v-model="inputValue" placeholder="请输入" style="width: 240px" ></YoInput>
 </div>
 
 ```vue
 <template>
-  <MyInput v-model="inputValue" placeholder="请输入" ref="inputRef"></MyInput>
+  <YoInput v-model="inputValue" placeholder="请输入" ref="inputRef"></YoInput>
 </template>
 ```
 
 ## 清空
 
 <div class="demo">
-    <MyInput v-model="inputValue2" placeholder="请输入" style="width: 240px" clearable></MyInput>
-    <MyButton type="primary" @click="clearInput2">清空</MyButton>
+    <YoInput v-model="inputValue2" placeholder="请输入" style="width: 240px" clearable></YoInput>
+    <YoButton type="primary" @click="clearInput2">清空</YoButton>
 </div>
 
 ```vue
 <template>
-  <MyInput v-model="inputValue" placeholder="请输入" ref="inputRef"></MyInput>
-  <MyButton type="primary" @click="clearInput2">清空</MyButton>
-</template>
+  <YoInput v-model="inputValue" placeholder="请输入" ref="inputRef"></YoInput>
+  <YoButton type="primary" @click="clearInput2">清空</YoButton>
+</template> 
 <script setup>
-import { MyInput, MyButton } from "@will-component";
+import { YoInput, YoButton } from "@will-component";
 function clearInput3() {
   inputValue.value = "";
 }
@@ -72,53 +72,53 @@ function clearInput3() {
 ## 密码
 
 <div class="demo">
-    <MyInput v-model="inputValue3" placeholder="请输入" style="width: 240px" show-password></MyInput>
+    <YoInput v-model="inputValue3" placeholder="请输入" style="width: 240px" show-password></YoInput>
 </div>
 
 ```vue
 <template>
-  <MyInput
+  <YoInput
     v-model="inputValue"
     placeholder="请输入"
     style="width: 240px"
     show-password
-  ></MyInput>
+  ></YoInput>
 </template>
 <script setup>
-import { MyInput } from "@will-component";
+import { YoInput } from "@will-component";
 </script>
 ```
 
 ## 禁用
 
 <div class="demo">
-    <MyInput v-model="inputValue" placeholder="请输入" style="width: 240px" disabled></MyInput>
+    <YoInput v-model="inputValue" placeholder="请输入" style="width: 240px" disabled></YoInput>
 </div>
 
 ```vue
 <template>
-  <MyInput
+  <YoInput
     v-model="inputValue"
     placeholder="请输入"
     style="width: 240px"
     disabled
-  ></MyInput>
+  ></YoInput>
 </template>
 <script setup>
-import { MyInput } from "@will-component";
+import { YoInput } from "@will-component";
 </script>
 ```
 
 ## 带图标的输入框
 
 <div class="demo">
-    <MyInput    v-model="input1"
+    <YoInput    v-model="input1"
           class="responsive-input"
           placeholder="Pick a date"
           :suffix-icon="Calendar"
           style="width: 240px"
-          ></MyInput>
-             <MyInput  
+          ></YoInput>
+             <YoInput  
                v-model="input1"
           class="responsive-input"
           placeholder="Pick a date"
@@ -128,21 +128,21 @@ import { MyInput } from "@will-component";
             <template #suffix>
             <el-icon class="el-input__icon"><calendar /></el-icon>
           </template>
-          </MyInput> 
+          </YoInput> 
 </div>
 
 ```vue
 <template>
-  <MyInput
+  <YoInput
     v-model="input1"
     class="responsive-input"
     placeholder="Pick a date"
     :suffix-icon="Calendar"
     style="width: 240px"
-  ></MyInput>
+  ></YoInput>
 </template>
 <script setup>
-import { MyInput } from "@will-component";
+import { YoInput } from "@will-component";
 import { Calendar } from "@element-plus/icons-vue";
 </script>
 ```
@@ -150,20 +150,20 @@ import { Calendar } from "@element-plus/icons-vue";
 ## 文本域
 
 <div class="demo">
-    <MyInput v-model="textareaValue" placeholder="请输入" style="width: 240px" type="textarea"></MyInput>
+    <YoInput v-model="textareaValue" placeholder="请输入" style="width: 240px" type="textarea"></YoInput>
 </div>
 
 ```vue
 <template>
-  <MyInput
+  <YoInput
     v-model="textareaValue"
     placeholder="请输入"
     style="width: 240px"
     type="textarea"
-  ></MyInput>
+  ></YoInput>
 </template>
 <script setup>
-import { MyInput } from "@will-component";
+import { YoInput } from "@will-component";
 </script>
 ```
 
