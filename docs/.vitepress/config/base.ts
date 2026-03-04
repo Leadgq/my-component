@@ -4,7 +4,7 @@ export const baseSidebar = [
     items: [
       { text: "按钮", link: "/components/base/button" },
       { text: "输入框", link: "/components/base/input" },
-      { text: "图标", link: "/components/base/icon" },
+      { text: "高级搜索", link: "/components/base/search" }
     ],
   },
 ];

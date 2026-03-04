@@ -16,7 +16,7 @@ export { YoButton, YoInput, YoSearch };
 
 export * from "./button/button.ts";
 export * from "./input/input.ts";
-// export * from "./search/search.ts";
+export * from "./search/search.ts";
 
 export default {
   install(app: App) {

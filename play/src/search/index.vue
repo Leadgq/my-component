@@ -9,12 +9,12 @@
     <YoSearch :width="'300px'" @search="handleSearch" placeholder="测试" type="number" :buttonType="'danger'"></YoSearch>
     <hr>
     <YoSearch :width="'300px'" @search="handleSearch" placeholder="测试" type="number" :buttonType="'danger'" disabled>
+      搜索顶顶顶
     </YoSearch>
     <hr>
-    <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch"></YoSearch>
+    <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch">触发方法触发方法触发方法触发方法</YoSearch>
     <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch" :buttonType="'danger'"></YoSearch>
     <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch" :buttonType="'danger'" plain></YoSearch>
-
   </div>
 </template>
 
