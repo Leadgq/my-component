@@ -6,8 +6,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoButton } from '../../packages/dist/index.es.js'
-import '../../packages/dist/style.css'
+import { YoButton } from '../../../packages/dist/index.es.js'
+import '../../../packages/dist/style.css'
 </script>
 
 <div class="demo">

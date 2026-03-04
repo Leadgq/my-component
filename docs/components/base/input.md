@@ -6,9 +6,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoInput, YoButton } from '../../packages/dist/index.es.js'
+import { YoInput, YoButton } from '../../../packages/dist/index.es.js'
 import { Calendar } from '@element-plus/icons-vue'
-import '../../packages/dist/style.css'
+import '../../../packages/dist/style.css'
 const inputValue = ref('')
 
 const inputValue2 = ref('')

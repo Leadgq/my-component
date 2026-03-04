@@ -1,33 +1,12 @@
-import type { App } from 'vue'
-
-
-import YoButton from './components/button/button.vue'
-import YoInput from './components/input/input.vue'
-
-
-import './components/style/index.scss'
-import "./core"
-
-
-const components = {
-  YoButton,
-  YoInput,
-} as const
-
-
-export { YoButton, YoInput }
-export * from './core' 
-
-export * from './components/button/button.ts'
-export * from './components/input/input.ts'
-
-export default {
-  install(app: App) {
-    Object.entries(components).forEach(([name, component]) => {
-      app.component(name, component)
-    })
-  },
-}
-
-// ============ 导出组件列表（用于文档生成） ============
-export const componentList = Object.keys(components)
+// 导入核心组件
+import "./core";
+// 导入业务组件
+import "./businessComponents";
+// 导入基础组件
+import "./components/index";
+// 导出核心方法
+export * from "./core";
+// 导出业务组件
+export * from "./businessComponents";
+// 导出基础组件
+export * from "./components/index";
