@@ -1,2 +1,2 @@
-export * from './hook/theme'
+export * from './hook'
 export * from './i18n'

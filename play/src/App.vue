@@ -1,67 +1,60 @@
 <template>
   <div class="container">
     <h1>组件库测试</h1>
-    <my-button type="primary" @click="clickme">主要按钮</my-button>
-    <my-button type="success" @click="clickme">成功按钮</my-button>
-    <my-button type="danger" @click="clickme">危险按钮</my-button>
-    <el-button type="primary" @click="testTheme">按钮</el-button>
-  </div>
-  <div class="container">
-    <my-input v-model="inputValue" @input="handleChange" ref="inputRef">
-      <template #prepend>
-        <el-select v-model="inputValue" placeholder="请选择">
-          <el-option label="选项1" value="1" />
-          <el-option label="选项2" value="2" />
-          <el-option label="选项3" value="3" />
-        </el-select>
-      </template>
-      <template #append>
-        <el-button type="success" @click="clear">追加按钮</el-button>
-      </template>
-    </my-input>
+
+    <div class="button-row">
+      <yo-button type="primary">Primary</yo-button>
+      <yo-button type="success">Success</yo-button>
+      <yo-button type="warning">Warning</yo-button>
+      <yo-button type="danger">Danger</yo-button>
+    </div>
+    <hr>
+    <div class="button-row">
+      <yo-button type="primary" plain>Primary</yo-button>
+      <yo-button type="success" plain>Success</yo-button>
+      <yo-button type="warning" plain>Warning</yo-button>
+      <yo-button type="danger" plain>Danger</yo-button>
+    </div>
+
+    <div class="button-row">
+      <yo-button type="primary" disabled>Primary</yo-button>
+      <yo-button type="success" disabled>Success</yo-button>
+      <yo-button type="warning" disabled>Warning</yo-button>
+      <yo-button type="danger" disabled>Danger</yo-button>
+      <yo-button type="danger" :loading="true">Danger</yo-button>
+      <yo-button type="primary" :loading="true">Primary</yo-button>
+      <yo-button type="success" :loading="true">Success</yo-button> 
+      <yo-button type="warning" :loading="true">Warning</yo-button>
+
+
+      <yo-button type="primary" plain :loading="true">Primary</yo-button>
+      <yo-button type="success" plain :loading="true">Success</yo-button>
+      <yo-button type="warning" plain :loading="true">Warning</yo-button> 
+      <yo-button type="danger" plain :loading="true">Danger</yo-button>
+    </div>
+    <div class="button-row">
+      <yo-button type="primary" plain disabled>Primary</yo-button>
+      <yo-button type="success" plain disabled>Success</yo-button>    
+      <yo-button type="warning" plain disabled>Warning</yo-button>
+      <yo-button type="danger" plain disabled>Danger</yo-button>
+    </div>
+
+    <yo-button :value="100" :isShowBadge="true" :max="99" :buttonType="'primary'"
+      style="margin-right: 50px;">你好</yo-button>      
+    <yo-button :value="100" :isShowBadge="true" :max="99" :buttonType="'text'" style="margin-right: 50px;">
+      文本
+    </yo-button>
+
+    <yo-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">朴素级别</yo-button>
+
   </div>
 </template>
 
 <script lang="ts" setup>
-import { MyButton } from '../../packages/src/components/button'
-import { MyInput } from '../../packages/src/components/input'
-import { useTheme } from '../../packages/src/core/hook/theme'
-import { ref } from 'vue'
 
-const { applyTheme,toggleTheme } = useTheme()
-applyTheme()
+import { ref } from 'vue';
+import { yoInput } from '../../packages/src/components/input'
+import { YoButton } from '../../packages/src/components/button'
 
-function testTheme() {
-  toggleTheme("light");
-}
-// 显式指定类型
-const inputRef = ref<InstanceType<typeof MyInput>>()
-
-const inputValue = ref()
-
-function handleChange(newValue: string) {
-  console.log('inputValue 变化了:', newValue)
-}
-
-function clear() {
-  console.log(inputRef.value?.clear());
-}
-
-function clickme() {
-  console.log('ok')
-}
+const disabledTheme = ref('default')
 </script>
-<style scoped>
-.container {
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-button {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-</style>

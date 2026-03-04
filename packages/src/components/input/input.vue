@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAttrs, useSlots, ref } from 'vue'
 import type { InputInstance } from 'element-plus'
+import { ElInput } from 'element-plus'
 
 const attrs = useAttrs()
 const slots = useSlots()
@@ -13,6 +14,7 @@ interface MyInputExpose {
   blur: () => void
 }
 
+
 const expose: MyInputExpose = {
   clear: () => elInputRef.value?.clear(),
   select: () => elInputRef.value?.select(),
@@ -24,9 +26,14 @@ defineExpose(expose)
 </script>
 
 <template>
-    <el-input v-bind="attrs" ref="elInputRef">
-        <template v-for="(_, name) in slots" #[name]="slotData">
-            <slot :name="name" v-bind="slotData" />
-        </template>
-    </el-input>
+  <el-input v-bind="attrs" ref="elInputRef">
+    <template v-for="(_, name) in slots" #[name]="slotData">
+      <template v-if="name === 'default'">
+        <slot :name="name" />
+      </template>
+      <template v-else>
+        <slot :name="name" v-bind="slotData" />
+      </template>
+    </template>
+  </el-input>
 </template>
