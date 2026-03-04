@@ -11,7 +11,10 @@
     <YoSearch :width="'300px'" @search="handleSearch" placeholder="测试" type="number" :buttonType="'danger'" disabled>
     </YoSearch>
     <hr>
-    <YoSearch :isSearchModel="false" @advancedSearch="handleAdvancedSearch"></YoSearch>
+    <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch"></YoSearch>
+    <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch" :buttonType="'danger'"></YoSearch>
+    <YoSearch :isSearchModel="false" @advanced-search="handleAdvancedSearch" :buttonType="'danger'" plain></YoSearch>
+
   </div>
 </template>
 

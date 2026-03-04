@@ -7,7 +7,7 @@ import { InputEmits } from 'element-plus';
 import { InputInstance } from 'element-plus';
 import { InputProps } from 'element-plus';
 import { PublicProps } from 'vue';
-import { searchProps } from './search';
+import { searchProps } from './search.ts';
 import { default as YoButton } from './button/button.vue';
 
 declare const __VLS_component: DefineComponent<    {}, {
