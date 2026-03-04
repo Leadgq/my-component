@@ -142,6 +142,7 @@ const handleSearch = (val) => {
 | `isSearchModel` | 是否搜索模式 | `boolean` | `true`      |
 | `width`         | 输入框宽度   | `string`  | `'240px'`   |
 | `placeholder`   | 占位符       | `string`  | `''`        |
+| `plain`         | 朴素搜索     | `boolean` | `false`     |
 | `type`          | 输入框类型   | `string`  | `'text'`    |
 | `buttonType`    | 按钮类型     | `string`  | `'primary'` |
 | `disabled`      | 禁用状态     | `boolean` | `false`     |
