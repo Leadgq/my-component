@@ -180,6 +180,10 @@ import { YoInput } from "@will-component";
 import { YoInput } from "@will-component";
 </script>
 ```
+## tips
+
+- 和element-plus的input属性一致
+- 只是样式发生了变化
 
 ## 属性
 
