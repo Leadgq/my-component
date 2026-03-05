@@ -1,3 +1,2 @@
-import type { radioButtonPropsDefaults } from "element-plus";
-
-export type radioButtonPropsDefaultsType = typeof radioButtonPropsDefaults;
+import type { RadioButtonProps } from 'element-plus'
+export type MyRadioButtonProps = RadioButtonProps
