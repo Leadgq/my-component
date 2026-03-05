@@ -1,10 +1,12 @@
-import type { MyButton } from './button/button'
-import type { MyInput } from './input/input'
+import type { YoButton } from './button/button'
+import type { YoInput } from './input/input'
+import type { YoSearch } from './search/search'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    MyButton: typeof MyButton
-    MyInput: typeof MyInput
+    YoButton: typeof YoButton
+    YoInput: typeof YoInput
+    YoSearch: typeof YoSearch
   }
 }
 

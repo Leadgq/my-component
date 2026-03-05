@@ -96,4 +96,14 @@ export declare const YoInput: __VLS_WithTemplateSlots<typeof __VLS_component, __
 
 export declare const YoSearch: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
 
+export declare const YoTitle: DefineComponent<YoTitleProps, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<YoTitleProps> & Readonly<{}>, {
+content: string;
+titleLevel: "1" | "2" | "3" | 1 | 2 | 3;
+}, {}, {}, {}, string, ComponentProvideOptions, false, {}, HTMLDivElement>;
+
+declare type YoTitleProps = {
+    content: string;
+    titleLevel?: "1" | "2" | "3" | 1 | 2 | 3;
+};
+
 export { }

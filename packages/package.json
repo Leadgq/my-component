@@ -1,7 +1,7 @@
 {
   "name": "element-two-test",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vue 3 Component Library based on Element Plus with custom styles and logic",
   "type": "module",
   "main": "dist/index.umd.js",
@@ -39,11 +39,11 @@
   },
   "homepage": "https://github.com/Leadgq/vue3-component-library#readme",
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@vueuse/core": "^14.2.1",
     "element-plus": "^2.6.4",
     "vue": "^3.4.0",
-    "vue-i18n": "12.0.0-alpha.3",
-    "@element-plus/icons-vue": "^2.3.1"
+    "vue-i18n": "12.0.0-alpha.3"
   },
   "peerDependencies": {
     "element-plus": "^2.6.4",

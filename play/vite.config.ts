@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     Components({
-      dirs: ['../packages/components/src'],  // 扫描您的组件目录
+      dirs: ['../packages/src/businessComponents', '../packages/src/components'],  // 扫描您的组件目录
       dts: 'src/components.d.ts',            // 生成类型文件
       extensions: ['vue'],
     }),
