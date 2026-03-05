@@ -1,6 +1,6 @@
 <template>
   <div>
-    <YoRadioGroup v-model="radio1">
+    <YoRadioGroup v-model="radio1"  @change="handleChange">
       <YoRadio value="1" size="large">Option 1</YoRadio>
       <YoRadio value="2" size="large">Option 2</YoRadio>
       <YoRadioButton label="New York" value="New York" />
@@ -20,4 +20,7 @@ const radio1 = ref('1')
 watch(()=>radio1.value, (newVal, oldVal) => {
   console.log(newVal, oldVal)
 })
+const handleChange = (val) => {
+  console.log(val)
+}
 </script>
