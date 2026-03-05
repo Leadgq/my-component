@@ -1,5 +1,5 @@
 <template>
-  <btnTest v-if="false"></btnTest>
+  <btnTest v-if="true"></btnTest>
   <inputTest v-if="false"></inputTest>
   <searchTest v-if="false"></searchTest>
   <titleTest v-if="false"></titleTest>
