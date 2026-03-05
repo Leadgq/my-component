@@ -1,1 +1,4 @@
-export default {}
+import { YoTitle } from "./title";
+
+
+export { YoTitle };

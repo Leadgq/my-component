@@ -7,7 +7,10 @@ export default defineConfig({
   description: "Vue 3 Component Library based on Element Plus",
   base: "/my-component/",
   themeConfig: {
-    sidebar: [...baseSidebar, ...businessSidebar],
+    sidebar: {
+      "/components/base/": baseSidebar,
+      "/components/business/": businessSidebar,
+    },
     nav: [...nav, ...businessNav],
   },
 });
