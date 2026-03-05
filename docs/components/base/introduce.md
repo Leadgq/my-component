@@ -12,13 +12,15 @@ pnpm add yo-component-library
 yarn add yo-component-library
 ```
 
-```main.ts
-import { createApp } from 'vue'
-import App from './App.vue'
-import YoComponentLibrary from 'yo-component-library'
-import 'yo-component-library/dist/style.css'
-
-const app = createApp(App)
-app.use(YoComponentLibrary)
-app.mount('#app')
+```ts
+import { createApp } from "vue";
+import App from "./App.vue";
+// 当前包的样式需要手动引入
+import YoComponentLibrary from "yo-component-library";
+// 上述的导入可以不要,因为包内部已经做了自动注册
+import "yo-component-library/dist/style.css";
+// 但是建议引入
+const app = createApp(App);
+app.use(YoComponentLibrary);
+app.mount("#app");
 ```
