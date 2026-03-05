@@ -14,6 +14,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./../../packages/src/components/button/button.vue')['default']
     Input: typeof import('./../../packages/src/components/input/input.vue')['default']
+    Radio: typeof import('./../../packages/src/components/radio/radio.vue')['default']
+    RadioButton: typeof import('./../../packages/src/components/radio/radioButton.vue')['default']
+    RadioGroup: typeof import('./../../packages/src/components/radio/radioGroup.vue')['default']
     Search: typeof import('./../../packages/src/components/search/search.vue')['default']
     Select: typeof import('./../../packages/src/components/select/select.vue')['default']
     Title: typeof import('./../../packages/src/businessComponents/title/title.vue')['default']
@@ -24,6 +27,9 @@ declare module 'vue' {
 declare global {
   const Button: typeof import('./../../packages/src/components/button/button.vue')['default']
   const Input: typeof import('./../../packages/src/components/input/input.vue')['default']
+  const Radio: typeof import('./../../packages/src/components/radio/radio.vue')['default']
+  const RadioButton: typeof import('./../../packages/src/components/radio/radioButton.vue')['default']
+  const RadioGroup: typeof import('./../../packages/src/components/radio/radioGroup.vue')['default']
   const Search: typeof import('./../../packages/src/components/search/search.vue')['default']
   const Select: typeof import('./../../packages/src/components/select/select.vue')['default']
   const Title: typeof import('./../../packages/src/businessComponents/title/title.vue')['default']
