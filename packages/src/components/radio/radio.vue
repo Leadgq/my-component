@@ -1,13 +1,9 @@
 <template>
-    <el-radio-group v-bind="$attrs">
+    <el-radio v-bind="$attrs">
         <slot></slot>
-    </el-radio-group>
+    </el-radio>
 </template>
 
-
 <script setup lang="ts">
-
-
-
-
+import { ElRadio } from 'element-plus';
 </script>

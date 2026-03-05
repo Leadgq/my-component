@@ -1,17 +1,23 @@
 <template>
   <div>
-    <YoRadio v-model="radio1" >
-        <el-radio value="1" size="large">Option 1</el-radio>
-        <el-radio value="2" size="large">Option 2</el-radio>
-    </YoRadio>
+    <YoRadioGroup v-model="radio1">
+      <YoRadio value="1" size="large">Option 1</YoRadio>
+      <YoRadio value="2" size="large">Option 2</YoRadio>
+      <YoRadioButton label="New York" value="New York" />
+      <YoRadioButton label="Washington" value="Washington" />
+      <YoRadioButton label="Los Angeles" value="Los Angeles" />
+      <YoRadioButton label="Chicago" value="Chicago" />
+    </YoRadioGroup>
   </div>
 </template>
 
 
 <script setup>
-import { YoRadio } from '../../../packages/src/components/radio'
-import { ref } from 'vue'
+import { YoRadioGroup, YoRadio, YoRadioButton } from '../../../packages/src/components/radio'
+import { ref, watch } from 'vue'
 
 const radio1 = ref('1')
+watch(()=>radio1.value, (newVal, oldVal) => {
+  console.log(newVal, oldVal)
+})
 </script>
-
