@@ -78,6 +78,7 @@ const radio1 = ref("New York");
 ## tips 
 
 - 和element-plus的radio属性一致
+- 只是样式发生了变化
 
 ## 属性
 
