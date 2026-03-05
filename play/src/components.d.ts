@@ -16,6 +16,7 @@ declare module 'vue' {
     Input: typeof import('./../../packages/src/components/input/input.vue')['default']
     Search: typeof import('./../../packages/src/components/search/search.vue')['default']
     Select: typeof import('./../../packages/src/components/select/select.vue')['default']
+    Title: typeof import('./../../packages/src/businessComponents/title/title.vue')['default']
   }
 }
 
@@ -25,4 +26,5 @@ declare global {
   const Input: typeof import('./../../packages/src/components/input/input.vue')['default']
   const Search: typeof import('./../../packages/src/components/search/search.vue')['default']
   const Select: typeof import('./../../packages/src/components/select/select.vue')['default']
+  const Title: typeof import('./../../packages/src/businessComponents/title/title.vue')['default']
 }
