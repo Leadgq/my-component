@@ -7,7 +7,22 @@ import { YoRadioGroup, YoRadioButton, YoRadio } from "./radio/index.ts";
 import { YoTitle } from "../businessComponents";
 import "./style/index.scss";
 
+import * as ElementPlus from 'element-plus'
+
+// 获取所有组件 todo
+
+const elComponents = {}
+for (const key in ElementPlus) {
+  if (key.startsWith('El')) {
+    const newKey = 'Yo' + key.substring(2) // 将 'El' 前缀替换为 'Yo' 前缀
+    elComponents[newKey] = ElementPlus[key]
+  }
+}
+
+console.log(elComponents);
+
 const components = {
+  ...elComponents,
   YoRadioGroup,
   YoRadio,
   YoRadioButton,
