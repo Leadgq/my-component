@@ -9,7 +9,7 @@
 import { computed } from 'vue'
 
 
-defineProps({
+const props= defineProps({
     content: {
         type: String,
         default: ''

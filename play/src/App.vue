@@ -1,9 +1,9 @@
 <template>
-  <btnTest v-if="true"></btnTest>
-  <inputTest v-if="false"></inputTest>
-  <searchTest v-if="false"></searchTest>
-  <titleTest v-if="false"></titleTest>
-  <radioTest v-if="true"></radioTest>
+  <!-- <btnTest v-if="true"></btnTest> -->
+  <inputTest v-if="true"></inputTest>
+  <searchTest v-if="true"></searchTest>
+  <titleTest v-if="true"></titleTest>
+  <!-- <radioTest v-if="true"></radioTest> -->
 </template>
 <script setup>
 import btnTest from "../src/button-test/index.vue"
