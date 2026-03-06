@@ -5,6 +5,6 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup >
 import { ElRadioGroup } from  "element-plus"
 </script>
