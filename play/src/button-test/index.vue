@@ -47,10 +47,15 @@
 
     <yo-button :value="11" :isShowBadge="true" :max="99" :buttonType="'default'">朴素级别</yo-button>
 
+  <yo-text class="mx-1" type="danger">Default</yo-text>
+
+  <yo-rate v-model="value" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { YoButton } from '../../../packages/src/components/button'
+import { ref } from 'vue';
 
+// import { YoButton } from '../../../packages/src/components/button'
+const value = ref(5)
 </script>
