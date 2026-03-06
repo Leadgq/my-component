@@ -15,11 +15,11 @@ const HE = {
     }
   },
   setup(e) {
-    const t = C(() => Number(props.titleLevel));
-    return (n, a) => (x(), F("div", {
-      class: T(["yo-title flex align-center", `yo-title-level-${t.value}`])
+    const t = e, n = C(() => Number(t.titleLevel));
+    return (a, l) => (x(), F("div", {
+      class: T(["yo-title flex align-center", `yo-title-level-${n.value}`])
     }, [
-      t.value === 1 ? (x(), F("span", HE)) : ee("", !0),
+      n.value === 1 ? (x(), F("span", HE)) : ee("", !0),
       vt(" " + he(e.content), 1)
     ], 2));
   }
@@ -54878,16 +54878,17 @@ const xW = (e, t) => {
       default: "text"
     }
   },
-  setup(e) {
-    const t = ka(), n = en(), a = L(""), l = () => emit("search", a.value), r = () => emit("advancedSearch");
-    return (s, i) => e.isSearchModel ? (x(), te(o(OE), Je({
+  emits: ["search", "advancedSearch"],
+  setup(e, { emit: t }) {
+    const n = ka(), a = en(), l = L(""), r = t, s = () => r("search", l.value), i = () => r("advancedSearch");
+    return (u, c) => e.isSearchModel ? (x(), te(o(OE), Je({
       key: 0,
-      modelValue: a.value,
-      "onUpdate:modelValue": i[0] || (i[0] = (u) => a.value = u),
+      modelValue: l.value,
+      "onUpdate:modelValue": c[0] || (c[0] = (d) => l.value = d),
       class: "search-input",
       style: { width: e.width },
       placeholder: e.placeholder
-    }, o(t), { type: e.type }), {
+    }, o(n), { type: e.type }), {
       prefix: J(() => [
         X(o(Ce), null, {
           default: J(() => [
@@ -54899,10 +54900,10 @@ const xW = (e, t) => {
       suffix: J(() => [
         X(o(nf), Je({
           type: e.buttonType,
-          onClick: l
-        }, o(t)), {
+          onClick: s
+        }, o(n)), {
           default: J(() => [
-            o(n).default ? Q(s.$slots, "default", { key: 0 }) : (x(), F(Ae, { key: 1 }, [
+            o(a).default ? Q(u.$slots, "default", { key: 0 }) : (x(), F(Ae, { key: 1 }, [
               vt(" 搜索 ")
             ], 64))
           ]),
@@ -54913,9 +54914,9 @@ const xW = (e, t) => {
     }, 16, ["modelValue", "style", "placeholder", "type"])) : (x(), te(o(nf), Je({
       key: 1,
       type: e.buttonType
-    }, o(t), { onClick: r }), {
+    }, o(n), { onClick: i }), {
       default: J(() => [
-        o(n).default ? Q(s.$slots, "default", { key: 0 }) : (x(), F(Ae, { key: 1 }, [
+        o(a).default ? Q(u.$slots, "default", { key: 0 }) : (x(), F(Ae, { key: 1 }, [
           vt(" 高级搜索 ")
         ], 64)),
         X(o(Ce), { class: "el-icon--right" }, {
