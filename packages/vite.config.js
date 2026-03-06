@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import dts from 'vite-plugin-dts'
 import path from 'path'
 import ElementPlus from 'unplugin-element-plus/vite'
 
@@ -9,11 +8,6 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    dts({
-      include: ['src'],
-      outDir: 'dist',
-      rollupTypes: true,
-    }),
     ElementPlus({
       useSource: true,
     }),
@@ -25,7 +19,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, 'src/index.js'),
       name: 'MyComponents',
       formats: ['es', 'umd'],
       fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.js',
