@@ -10,7 +10,7 @@ export default defineConfig({
     vueJsx(),
     ElementPlus({
       useSource: true,
-    }),
+    })
   ],
   resolve: {
     alias: {
@@ -19,10 +19,12 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.js'),
+      entry: {
+        index: path.resolve(__dirname, 'src/index.js'),
+        locale: path.resolve(__dirname, 'src/core/i18n/index.js'),
+      },
       name: 'MyComponents',
-      formats: ['es', 'umd'],
-      fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.js',
+      formats: ['es']
     },
     rollupOptions: {
       external: ['vue'],
@@ -30,8 +32,8 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           'element-plus': 'ElementPlus'
-        },
-      },
+        }
+      }
     },
   },
 })
