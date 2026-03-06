@@ -1,28 +1,17 @@
-<script setup lang="ts">
+<script setup>
 import { useAttrs, useSlots, ref } from 'vue'
-import type { InputInstance } from 'element-plus'
 import { ElInput } from 'element-plus'
 
 const attrs = useAttrs()
 const slots = useSlots()
-const elInputRef = ref<InputInstance>()
+const elInputRef = ref()
 
-interface MyInputExpose {
-  clear: () => void
-  select: () => void
-  focus: () => void
-  blur: () => void
-}
-
-
-const expose: MyInputExpose = {
+defineExpose({
   clear: () => elInputRef.value?.clear(),
   select: () => elInputRef.value?.select(),
   focus: () => elInputRef.value?.focus(),
   blur: () => elInputRef.value?.blur(),
-}
-
-defineExpose(expose)
+})
 </script>
 
 <template>

@@ -32,29 +32,36 @@
     </template>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, useAttrs, useSlots } from "vue"
 import { Search, ArrowDown } from "@element-plus/icons-vue"
 import { ElIcon } from "element-plus"
 import { YoInput } from "../input"
 import { YoButton } from "../button"
-import type { searchProps } from "./search.ts"
-
 const attrs = useAttrs()
 const slots = useSlots()
 const searchValue = ref("")
-
-const emit = defineEmits<{
-    (e: 'search', v: string): void
-    (e: 'advancedSearch'): void
-}>()
-
-const props = withDefaults(defineProps<searchProps>(), {
-    width: "240px",
-    placeholder: "请输入",
-    isSearchModel: true,
-    buttonType: "primary",
-    type: "text"
+defineProps({
+    width: {
+        type: String,
+        default: "240px"
+    },
+    placeholder: {
+        type: String,
+        default: "请输入"
+    },
+    isSearchModel: {
+        type: Boolean,
+        default: true
+    },
+    buttonType: {
+        type: String,
+        default: "primary"
+    },
+    type: {
+        type: String,
+        default: "text"
+    },
 })
 
 const handleSearch = () => emit("search", searchValue.value)

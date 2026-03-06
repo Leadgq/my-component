@@ -4,6 +4,6 @@
     </el-radio>
 </template>
 
-<script setup lang="ts">
+<script setup >
 import { ElRadio } from 'element-plus';
 </script>

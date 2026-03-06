@@ -1,9 +1,7 @@
-import type { App } from "vue";
-
 import YoButton from "./button/button.vue";
 import YoInput from "./input/input.vue";
 import YoSearch from "./search/search.vue";
-import { YoRadioGroup, YoRadioButton, YoRadio } from "./radio/index.ts";
+import { YoRadioGroup, YoRadioButton, YoRadio } from "./radio";
 import { YoTitle } from "../businessComponents";
 import "./style/index.scss";
 
@@ -19,7 +17,7 @@ for (const key in ElementPlus) {
   }
 }
 
-console.log(elComponents);
+
 
 const components = {
   ...elComponents,
@@ -30,7 +28,7 @@ const components = {
   YoInput,
   YoSearch,
   YoTitle,
-} as const;
+}
 
 export {
   YoButton,
@@ -42,18 +40,12 @@ export {
   YoRadioButton,
 };
 
-export * from "./button/button.ts";
-export * from "./input/input.ts";
-export * from "./search/search.ts";
-export * from "./radio/index.ts";
-export * from "../businessComponents/index.ts";
-
 export default {
-  install(app: App) {
+  install(app) {
     Object.entries(components).forEach(([name, component]) => {
       app.component(name, component);
     });
-  },
+  }
 };
 
 // ============ 导出组件列表（用于文档生成） ============

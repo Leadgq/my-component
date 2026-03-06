@@ -4,12 +4,21 @@
         {{ content }}
     </div>
 </template>
-<script setup lang="ts">
-import { YoTitleProps } from './title'
+<script setup>
+
 import { computed } from 'vue'
-const props = withDefaults(defineProps<YoTitleProps>(), {
-    content: '',
-    titleLevel: 1
+
+
+defineProps({
+    content: {
+        type: String,
+        default: ''
+    },
+    titleLevel: {
+        type: Number,
+        default: 1
+    }
 })
+
 const level = computed(() => Number(props.titleLevel))
 </script>
