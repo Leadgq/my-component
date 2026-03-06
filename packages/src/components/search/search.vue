@@ -41,6 +41,7 @@ import { YoButton } from "../button"
 const attrs = useAttrs()
 const slots = useSlots()
 const searchValue = ref("")
+const emit = defineEmits(["search", "advancedSearch"])
 defineProps({
     width: {
         type: String,
