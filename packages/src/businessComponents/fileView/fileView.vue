@@ -12,13 +12,13 @@
 
 <script setup>
 import { ElDrawer } from "element-plus"
-import { computed, ref } from 'vue'
-import FileSaver from 'file-saver'
-import VueOfficeDocx from '@vue-office/docx/lib/v3/vue-office-docx.mjs';
-import vueOfficeXlsx from '@vue-office/excel/lib/v3/vue-office-excel.mjs';
-import vueOfficePdf from '@vue-office/pdf/lib/v3/vue-office-pdf.mjs';
+import { computed, ref, defineAsyncComponent } from 'vue'
 import '@vue-office/docx/lib/v3/index.css';
 import '@vue-office/excel/lib/v3/index.css';
+
+const VueOfficeDocx = defineAsyncComponent(() => import('@vue-office/docx/lib/v3/vue-office-docx.mjs'));
+const vueOfficeXlsx = defineAsyncComponent(() => import('@vue-office/excel/lib/v3/vue-office-excel.mjs'));
+const vueOfficePdf = defineAsyncComponent(() => import('@vue-office/pdf/lib/v3/vue-office-pdf.mjs'));
 
 
 const options = ref({
@@ -51,7 +51,8 @@ const drawer = ref(false)
 const src = ref()
 
 
-const downLoadFille = (url, fileName) => {
+const downLoadFille = async (url, fileName) => {
+    const FileSaver = (await import('file-saver')).default;
     FileSaver.saveAs(url, fileName);
 }
 

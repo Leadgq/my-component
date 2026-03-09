@@ -3,6 +3,9 @@ import { YoPictureView } from "../../businessComponents";
 import { createVNode } from "vue";
 
 export function usePictureView(container) {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+        return { showPictures: () => { }, showPicture: () => { }, destroyViewJs: () => { } };
+    }
     const vNode = createVNode(YoPictureView)
     render(vNode, container || document.body)
     return {
