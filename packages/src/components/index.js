@@ -2,12 +2,10 @@ import YoButton from "./button/button.vue";
 import YoInput from "./input/input.vue";
 import YoSearch from "./search/search.vue";
 import { YoRadioGroup, YoRadioButton, YoRadio } from "./radio";
-import { YoTitle } from "../businessComponents";
+import { YoTitle, YoPictureView ,YoFileView} from "../businessComponents";
 import "./style/index.scss";
-
 import * as ElementPlus from 'element-plus'
 
-// 获取所有组件 todo
 
 const elComponents = {}
 for (const key in ElementPlus) {
@@ -28,7 +26,10 @@ const components = {
   YoInput,
   YoSearch,
   YoTitle,
+  YoPictureView,
+  YoFileView,
 }
+
 
 export {
   YoButton,
@@ -38,13 +39,22 @@ export {
   YoRadioGroup,
   YoRadio,
   YoRadioButton,
+  YoPictureView,
+  YoFileView,
 };
 
 export default {
-  install(app) {
+  install(app, options = {}) {
+    // 注册所有组件
     Object.entries(components).forEach(([name, component]) => {
       app.component(name, component);
     });
+
+    if (options.locale) {
+      app.use(ElementPlus, {
+        locale: options.locale, // 传入语言包
+      })
+    }
   }
 };
 

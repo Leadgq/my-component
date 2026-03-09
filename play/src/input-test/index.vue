@@ -105,7 +105,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-// import { YoInput } from '../../../packages/src/components/input'
+
 // 基本输入
 const basicInput = ref('')
 

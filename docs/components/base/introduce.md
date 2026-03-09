@@ -7,20 +7,47 @@
 ## 使用方式
 
 ```bash
-npm install yo-component-library
-pnpm add yo-component-library
-yarn add yo-component-library
+npm install yo-pc-ui
+pnpm add yo-pc-ui
+yarn add yo-pc-ui
 ```
 
 ```ts
 import { createApp } from "vue";
+// 随便起
+import YoUi from "../../packages/dist/index.js";
+import { zhCn } from "../../packages/dist/locale.js";
 import App from "./App.vue";
-// 当前包的样式需要手动引入
-import YoComponentLibrary from "yo-component-library";
-// 上述的导入可以不要,因为包内部已经做了自动注册
-import "yo-component-library/dist/style.css";
-// 但是建议引入
+import "../../packages/dist/style.css";
+
 const app = createApp(App);
-app.use(YoComponentLibrary);
+
+// 多语言配置
+app.use(YoUi, {
+  locale: zhCn,
+});
 app.mount("#app");
+```
+
+## 多语言
+
+- zhCn 中文
+- en 英文
+- ja 日文
+- ko 韩文
+
+```bash
+目前只有这四个语言,新增语言在i18n中配置
+```
+
+```js
+export {
+  zhCn,
+  en,
+  ja,
+  ko,
+  // 新增语言
+  // 例如:
+  // fr 法语
+} from 'element-plus/es/locales'
 ```

@@ -6,7 +6,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoButton } from '../../../packages/dist/index.es.js'
+import { YoButton } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 </script>
 
@@ -29,8 +29,7 @@ import '../../../packages/dist/style.css'
   </div>
 </template>
 <script setup>
-import { YoButton } from "../../packages/dist/index.es.js";
-import "../../packages/dist/style.css";
+
 </script>
 ```
 
@@ -55,8 +54,7 @@ import "../../packages/dist/style.css";
   </div>
 </template>
 <script setup>
-import { YoButton } from "../../packages/dist/index.es.js"; 
-import "../../packages/dist/style.css";
+
 </script>
 ```
 
@@ -81,8 +79,7 @@ import "../../packages/dist/style.css";
   </div>
 </template>
 <script setup>
-import { YoButton } from "../../packages/dist/index.es.js"; 
-import "../../packages/dist/style.css";
+
 </script>
 ```
 
@@ -118,8 +115,7 @@ import "../../packages/dist/style.css";
   </div>
 </template>
 <script setup>
-import { YoButton } from "../../packages/dist/index.es.js"; 
-import "../../packages/dist/style.css";
+
 </script>
 ```
 
@@ -161,8 +157,7 @@ import "../../packages/dist/style.css";
 </template>
 
 <script setup>
-import { YoButton } from "../../packages/dist/index.es.js"; 
-import "../../packages/dist/style.css";
+
 </script>
 ```
 

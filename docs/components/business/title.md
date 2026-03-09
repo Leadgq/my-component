@@ -6,7 +6,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoTitle } from '../../../packages/dist/index.es.js'
+import { YoTitle } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 </script>
 
@@ -23,7 +23,7 @@ import '../../../packages/dist/style.css'
   </div>
 </template>
 <script setup>
-import { YoTitle } from "../../packages/dist/index.es.js";
+
 </script>
 ```
 
@@ -42,7 +42,7 @@ import { YoTitle } from "../../packages/dist/index.es.js";
   </div>
 </template>
 <script setup>
-import { YoTitle } from "../../packages/dist/index.es.js";
+
 </script>
 ```
 
@@ -61,10 +61,30 @@ import { YoTitle } from "../../packages/dist/index.es.js";
   </div>
 </template>
 <script setup>
-import { YoTitle } from "../../packages/dist/index.es.js";
+
 </script>
 ```
 
+## 插槽
+
+<div class="demo">
+    <div class="button-row">
+      <yo-title content="委托代理信息" :titleLevel="1">插槽内容</yo-title>
+    </div>
+</div>
+
+```vue
+<template>
+  <div class="button-row">
+    <yo-title content="委托代理信息" :titleLevel="1" flexEnd>
+      <div>插槽内容</div>
+    </yo-title>
+  </div>
+</template>
+<script setup>
+
+</script>
+```
 
 ### Props
 
@@ -72,3 +92,11 @@ import { YoTitle } from "../../packages/dist/index.es.js";
 | --------------- | ------------ | --------- | ----------- |
 | `content`       | 标题内容     | `string`  | `''`        |
 | `titleLevel`    | 标题等级     | `number`  | `1`         |
+
+### 插槽
+
+
+| 插槽            | 说明         | 类型      | 默认值      |
+| --------------- | ------------ | --------- | ----------- |
+| `default`       | 标题之后的内容     | `string`  | `''`        |
+

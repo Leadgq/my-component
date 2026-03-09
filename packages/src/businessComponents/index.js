@@ -1,4 +1,4 @@
 import { YoTitle } from "./title";
-
-
-export { YoTitle };
+import { YoPictureView } from "./pictureView";
+import { YoFileView } from "./fileView";
+export { YoTitle, YoPictureView, YoFileView };

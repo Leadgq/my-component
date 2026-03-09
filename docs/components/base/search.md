@@ -6,7 +6,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoSearch } from '../../../packages/dist/index.es.js'
+import { YoSearch } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 
 const handleSearch = (val) => {

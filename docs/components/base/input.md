@@ -6,8 +6,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoInput, YoButton } from '../../../packages/dist/index.es.js'
-import { Calendar } from '@element-plus/icons-vue'
+import { YoInput, YoButton } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 const basicInput = ref('')
 
@@ -36,9 +35,7 @@ function clearInput2() {
 <template>
   <YoInput v-model="inputValue" @input="handleChange" ref="inputRef"></YoInput>
 </template>
-<script setup>
-import { YoInput } from "@will-component";
-</script>
+<script setup></script>
 ```
 
 ## 禁用状态
@@ -65,7 +62,6 @@ import { YoInput } from "@will-component";
   <YoButton type="primary" @click="clearInput2">清空</YoButton>
 </template>
 <script setup>
-import { YoInput, YoButton } from "@will-component";
 function clearInput3() {
   inputValue.value = "";
 }
@@ -87,9 +83,7 @@ function clearInput3() {
     show-password
   ></YoInput>
 </template>
-<script setup>
-import { YoInput } from "@will-component";
-</script>
+<script setup></script>
 ```
 
 ## 禁用
@@ -107,9 +101,7 @@ import { YoInput } from "@will-component";
     disabled
   ></YoInput>
 </template>
-<script setup>
-import { YoInput } from "@will-component";
-</script>
+<script setup></script>
 ```
 
 ## 带前缀和后缀的输入框
@@ -136,9 +128,7 @@ import { YoInput } from "@will-component";
     </template>
   </YoInput>
 </template>
-<script setup>
-import { YoInput } from "@will-component";
-</script>
+<script setup></script>
 ```
 
 ## 大小
@@ -176,10 +166,9 @@ import { YoInput } from "@will-component";
     type="textarea"
   ></YoInput>
 </template>
-<script setup>
-import { YoInput } from "@will-component";
-</script>
+<script setup></script>
 ```
+
 ## tips
 
 - 和element-plus的input属性一致

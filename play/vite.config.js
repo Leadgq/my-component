@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 
 export default defineConfig({
+  assetsInclude: ['**/*.doc', '**/*.docx'],
   plugins: [
     vue(),
     vueJsx(),

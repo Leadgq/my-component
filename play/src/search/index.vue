@@ -20,7 +20,7 @@
 
 
 <script setup>
-import { YoSearch } from '../../../packages/src/components'
+
 
 function handleSearch(val) {
   console.log(val)

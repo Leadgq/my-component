@@ -39,10 +39,18 @@
   },
   "homepage": "https://github.com/Leadgq/vue3-component-library#readme",
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.1",
+    "@element-plus/icons-vue": "^2.3.2",
+    "@vue-office/docx": "^1.6.3",
+    "@vue-office/excel": "^1.7.14",
+    "@vue-office/pdf": "^2.0.10",
+    "@vue-office/pptx": "^1.0.1",
     "@vueuse/core": "^14.2.1",
-    "element-plus": "^2.6.4",
-    "vue": "^3.4.0",
+    "element-plus": "^2.13.5",
+    "file-saver": "^2.0.5",
+    "viewerjs": "^1.11.7",
+    "vite-plugin-static-copy": "^3.2.0",
+    "vue": "^3.5.29",
+    "vue-demi": "0.14.6",
     "vue-i18n": "12.0.0-alpha.3"
   },
   "peerDependencies": {
@@ -58,11 +66,11 @@
     }
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
     "vite-plugin-dts": "^4.5.4"
   }
 }

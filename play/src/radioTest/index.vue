@@ -13,7 +13,7 @@
 
 
 <script setup>
-import { YoRadioGroup, YoRadio, YoRadioButton } from '../../../packages/src/components/radio'
+
 import { ref, watch } from 'vue'
 
 const radio1 = ref('1')

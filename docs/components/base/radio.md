@@ -4,7 +4,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoRadioGroup, YoRadioButton,YoRadio } from '../../../packages/dist/index.es.js'
+import { YoRadioGroup, YoRadioButton,YoRadio } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 const radio1 = ref('1')
 </script>
@@ -29,7 +29,7 @@ const radio1 = ref('1')
 </template>
 <script setup>
 import { ref } from "vue";
-import { YoRadioGroup, YoRadioButton, YoRadio } from "element-plus-two";
+
 const radio1 = ref("New York");
 </script>
 ```
