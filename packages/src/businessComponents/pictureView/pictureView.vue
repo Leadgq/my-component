@@ -9,6 +9,7 @@
 <script setup>
 import { ref, nextTick, onBeforeUnmount } from 'vue';
 import 'viewerjs/dist/viewer.css';
+import Viewer from 'viewerjs';
 
 let singleImgViewer = null;
 const viewer = ref(null);
@@ -22,7 +23,6 @@ const initViewJs = async (option = {}, prevIndex = 0) => {
     await nextTick();
     container = viewer.value;
     if (typeof window === 'undefined') return;
-    const Viewer = (await import('viewerjs')).default;
     singleImgViewer = new Viewer(container, {
         container: customContainer || container,
         initialViewIndex: prevIndex,

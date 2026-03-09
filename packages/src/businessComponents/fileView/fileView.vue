@@ -1,12 +1,9 @@
 <template>
     <ElDrawer v-model="drawer" title="文件预览" size="100%" :z-index="999">
-        <vueOfficePdf style="height: 85vh" :src="src" @error="handleRenderError" @rendered="renderedHandler"
-            v-if="getFileSuffix === 'pdf'">
-        </vueOfficePdf>
-        <vue-office-xlsx :src="src" style="height: 85vh" @rendered="renderedHandler" @error="handleRenderError"
-            :options="options" v-if="getFileSuffix === 'xlsx' || getFileSuffix === 'xls'"></vue-office-xlsx>
-        <vue-office-docx :src="src" style="height: 85vh" @rendered="renderedHandler" @error="handleRenderError"
-            v-if="getFileSuffix === 'docx' || getFileSuffix === 'doc'"></vue-office-docx>
+        <component :is="componentSelect" :src="src" style="height: 85vh" @rendered="renderedHandler"
+            @error="handleRenderError" :options="options"
+            v-if="getFileSuffix === 'docx' || getFileSuffix === 'doc' || getFileSuffix === 'pdf' || getFileSuffix === 'xlsx' || getFileSuffix === 'xls'">
+        </component>
     </ElDrawer>
 </template>
 
@@ -20,6 +17,15 @@ const VueOfficeDocx = defineAsyncComponent(() => import('@vue-office/docx/lib/v3
 const vueOfficeXlsx = defineAsyncComponent(() => import('@vue-office/excel/lib/v3/vue-office-excel.mjs'));
 const vueOfficePdf = defineAsyncComponent(() => import('@vue-office/pdf/lib/v3/vue-office-pdf.mjs'));
 
+const componentSelect = computed(() => {
+    if (getFileSuffix.value === 'pdf') {
+        return vueOfficePdf
+    }
+    if (getFileSuffix.value === 'xlsx' || getFileSuffix.value === 'xls') {
+        return vueOfficeXlsx
+    }
+    return VueOfficeDocx
+})
 
 const options = ref({
     xls: false, // 预览xlsx文件设为false；预览xls文件设为true
@@ -76,6 +82,7 @@ const isFile = computed(() => {
 
 
 const previewFile = ({ src: source, fileName, down = false }) => {
+    console.log('执行了');
     if (!source) {
         throw new Error("文件地址不能为空")
     }
