@@ -1,4 +1,4 @@
-# 文件相关
+<!-- # 文件相关
 
 <script setup>
 import { ref } from 'vue'
@@ -139,4 +139,4 @@ function previewFileAndDownLoad() {
 | 参数            | 说明     | 类型       | 默认值                            |
 | --------------- | -------- | ---------- | --------------------------------- |
 | `previewFile`   | 预览文件 | `object`   | `{src:'',fileName:'',down:false}` |
-| `downLoadFille` | 下载文件 | `function` | `(src, fileName)=>{}`             |
+| `downLoadFille` | 下载文件 | `function` | `(src, fileName)=>{}`             | -->
