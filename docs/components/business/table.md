@@ -3,6 +3,7 @@
 封装自 `el-table` 的业务表格组件，支持**分页**、**序号列**、**多选**、**固定列**、**自定义渲染**、**插槽列**与**多级表头**，通过 `getTableFunction` 驱动数据加载。
 
 <script setup>
+import { withBase } from 'vitepress'
 import { YoTable } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 import { ref } from 'vue'
@@ -265,8 +266,8 @@ const columns = ref([
 </script>
 ```
 
-<a href=" /my-component/table.png" target="_blank">
-  <img src="/my-component/table.png" alt="多级表头示例" style="cursor:zoom-in;" />
+<a :href="withBase('/table.png')" target="_blank">
+  <img :src="withBase('/table.png')" alt="多级表头示例" style="cursor:zoom-in;" />
 </a>
 
 ## 多选（showCheckbox）
