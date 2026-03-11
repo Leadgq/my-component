@@ -4,12 +4,13 @@
 
         <div style="background: #fff; padding: 20px; border-radius: 4px; margin-bottom: 20px;">
             <h3>基础用法 (默认 3 列, span 8)</h3>
-            <YoDetailCol :rowData="baseData2" :label_width="150" />
+            <YoDetailCol :rowData="baseData" :label_width="150" />
         </div>
 
-        <div style="background: #fff; padding: 20px; border-radius: 4px; margin-bottom: 20px;">
+        <!-- <div style="background: #fff; padding: 20px; border-radius: 4px; margin-bottom: 20px;">
             <h3>基础用法 (默认 3 列, span 8)</h3>
-            <YoDetailCol :rowData="baseData" />
+            <YoDetailCol :rowData="baseData">
+            </YoDetailCol>
         </div>
 
         <div style="background: #fff; padding: 20px; border-radius: 4px; margin-bottom: 20px;">
@@ -20,7 +21,7 @@
         <div style="background: #fff; padding: 20px; border-radius: 4px;">
             <h3>高级用法：自定义 Render(h) 函数</h3>
             <YoDetailCol :rowData="renderData" :label_width="120" />
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -30,7 +31,24 @@ import { ElTag, ElButton, ElRate } from 'element-plus';
 import { YoDetailCol } from "../../../packages/src"
 
 const baseData = ref([
-    { title: '订单编号', value: 'ORD-20231025-001', key: 'no', span: 8, space: '40px', labelW: '170px' },
+    {
+        title: '订单编号', value: 'ORD-20231025-001', key: 'no', span: 8, space: '40px', labelW: '170px',
+        before: (props) => {
+            return (
+                <div>前面</div>
+            )
+        },
+        middle: (props) => {
+            return (
+                <div>中间</div>
+            )
+        },
+        after: (props) => {
+            return (
+                <div>后面</div>
+            )
+        },
+    },
     { title: '下单人', value: '张三疯', span: 8, key: 'name' },
     { title: '状态', value: '已付款', span: 8, key: 'stauts' },
     { title: '联系电话', value: '13800138000', span: 8, key: 'phone' },

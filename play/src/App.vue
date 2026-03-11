@@ -21,12 +21,13 @@
 <div>第一区域</div>
 <div>第一区域</div>
 </YoContent> -->
-  <!-- <YoContent :title="'这是标题'">
+<!-- <YoContent :title="'这是标题'">
     <YoTitle :content="'委托代理人信息'" :title-level="2"></YoTitle>
     <YoTitle :content="'委托代理人信息'" :title-level="2"></YoTitle>
-  </YoContent>
-  <detailColTest v-if="true"></detailColTest> -->
-  <tableTest></tableTest>
+  </YoContent> -->
+  <detailColTest v-if="true"></detailColTest>
+  <!-- <tableTest v-if="false">
+  </tableTest> -->
 </template>
 <script setup>
 import btnTest from "../src/button-test/index.vue"
@@ -35,8 +36,9 @@ import searchTest from "../src/search/index.vue"
 import titleTest from "../src/title-test/index.vue"
 import radioTest from "../src/radioTest/index.vue"
 import fileView from "../src/fileview/index.vue"
-import pictureTest from "../src/picture/index.vue"
+// import pictureTest from "../src/picture/index.vue"
 import tableTest from "../src/tableTest/index.vue"
+import detailColTest from "../src/detailCol-test/index.vue"
 </script>
 
 <style>

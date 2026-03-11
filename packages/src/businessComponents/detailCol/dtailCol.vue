@@ -4,19 +4,19 @@
             <template v-for="(li, ind) in normalizedRowData" :key="li.key || ind">
                 <div class="col_content_box" v-if="isShowItem(li)"
                     :style="{ gridColumn: 'span ' + (!li.span ? 8 : li.span) }">
-                    <slot v-if="li.isSlot && li.isSlot === 'before'" name="before"></slot>
+                    <RenderBefore v-if="li.before" :before="li.before" :data="li" />
                     <span class="detail_label" v-show="li.title" :style="{
                         width: li.labelW ? li.labelW : props.label_width + 'px',
-                        marginRight: li.space
+                        marginRight: li.space ? li.space : props.space + 'px'
                     }" v-html="li.title"></span>
-                    <slot v-if="li.isSlot && li.isSlot === 'middle'" name="middle"></slot>
+                    <RenderMiddle v-if="li.middle" :middle="li.middle" :data="li" />
                     <div class="value_w">
                         <RenderCell v-if="li.render" :render="li.render" :data="li" />
                         <template v-else>
                             <el-input :model-value="li.value" readonly disabled />
                         </template>
                     </div>
-                    <slot v-if="li.isSlot && li.isSlot === 'after'" name="after"></slot>
+                    <RenderAfter v-if="li.after" :after="li.after" :data="li" />
                 </div>
             </template>
         </div>
@@ -45,6 +45,18 @@ const isShowItem = (li) => {
 const normalizedRowData = computed(() => {
     return props.rowData.flat()
 })
+
+const RenderBefore = (props) => {
+    return props.before(props.data)
+}
+
+const RenderMiddle = (props) => {
+    return props.middle(props.data)
+}
+
+const RenderAfter = (props) => {
+    return props.after(props.data)
+}
 
 const RenderCell = (props) => {
     return props.render(props.data)
