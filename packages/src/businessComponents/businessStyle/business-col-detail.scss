@@ -1,0 +1,37 @@
+.detail-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 18px 40px;
+}
+
+.col_content_box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.detail_label {
+    flex-shrink: 0;
+    margin-right: 12px;
+    color: var(--detail-label-color);
+    font-size: var(--font-size-base);
+}
+
+.value_w {
+    flex: 1;
+    min-width: 0;
+
+    .el-input {
+        &.is-disabled {
+            .el-input__wrapper {
+                padding-left: 18px;
+                background: var(--detail-disabel-input-color);
+                color: var(--detail-disabel-input-text-color);
+            }
+
+            .el-input__inner {
+                background: var(--detail-disabel-input-color);
+            }
+        }
+    }
+}

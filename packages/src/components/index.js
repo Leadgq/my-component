@@ -2,7 +2,7 @@ import YoButton from "./button/button.vue";
 import YoInput from "./input/input.vue";
 import YoSearch from "./search/search.vue";
 import { YoRadioGroup, YoRadioButton, YoRadio } from "./radio";
-import { YoTitle, YoPictureView ,YoFileView} from "../businessComponents";
+import { YoTitle, YoPictureView, YoFileView } from "../businessComponents";
 import "./style/index.scss";
 import * as ElementPlus from 'element-plus'
 

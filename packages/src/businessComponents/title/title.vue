@@ -1,10 +1,10 @@
 <template>
     <div class="yo-title flex align-center">
         <div class="yo-title flex align-center" :class="`yo-title-level-${level}`">
-            <span class="title-flag" v-if="level === 1"></span>
+            <span class="title-flag"></span>
             {{ content }}
         </div>
-        <slot></slot>
+        <slot name="second"></slot>
     </div>
 </template>
 <script setup>

@@ -4,6 +4,10 @@ export const businessSidebar = [
         items: [
             { text: "标题", link: "/components/business/title" },
             { text: '文件', link: "/components/business/file" },
+            { text: 'YoContent', link: "/components/business/content" },
+            { text: 'YoHeader', link: "/components/business/header" },
+            { text: 'YoDetailCol', link: "/components/business/detailcol" },
+            { text: 'YoTable', link: "/components/business/table" },
             { text: "其他组件", link: "/components/business/other" },
         ]
     }

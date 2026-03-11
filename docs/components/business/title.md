@@ -69,15 +69,17 @@ import '../../../packages/dist/style.css'
 
 <div class="demo">
     <div class="button-row">
-      <yo-title content="委托代理信息" :titleLevel="1">插槽内容</yo-title>
+      <yo-title content="委托代理信息" :titleLevel="1">
+        <template #second>第二标题</template>
+      </yo-title>
     </div>
 </div>
 
 ```vue
 <template>
   <div class="button-row">
-    <yo-title content="委托代理信息" :titleLevel="1" flexEnd>
-      <div>插槽内容</div>
+    <yo-title content="委托代理信息" :titleLevel="1">
+        <template #second>第二标题</template>
     </yo-title>
   </div>
 </template>
@@ -98,5 +100,5 @@ import '../../../packages/dist/style.css'
 
 | 插槽            | 说明         | 类型      | 默认值      |
 | --------------- | ------------ | --------- | ----------- |
-| `default`       | 标题之后的内容     | `string`  | `''`        |
+| `second`       | 二级标题     | `string`  | `''`        |
 

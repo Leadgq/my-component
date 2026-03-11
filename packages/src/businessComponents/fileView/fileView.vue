@@ -1,8 +1,10 @@
 <template>
     <ElDrawer v-model="drawer" title="文件预览" size="100%" :z-index="999">
-            <component :is="getFileSuffix === 'pdf' ? vueOfficePdf : getFileSuffix === 'xlsx' || getFileSuffix === 'xls' ? vueOfficeXlsx : VueOfficeDocx"
-                :src="src" style="height: 85vh" @rendered="renderedHandler" @error="handleRenderError"
-                :options="options" v-if="getFileSuffix === 'docx' || getFileSuffix === 'doc' || getFileSuffix === 'pdf' || getFileSuffix === 'xlsx' || getFileSuffix === 'xls'"></component>
+        <component
+            :is="getFileSuffix === 'pdf' ? vueOfficePdf : getFileSuffix === 'xlsx' || getFileSuffix === 'xls' ? vueOfficeXlsx : VueOfficeDocx"
+            :src="src" style="height: 85vh" @rendered="renderedHandler" @error="handleRenderError" :options="options"
+            v-if="getFileSuffix === 'docx' || getFileSuffix === 'doc' || getFileSuffix === 'pdf' || getFileSuffix === 'xlsx' || getFileSuffix === 'xls'">
+        </component>
     </ElDrawer>
 </template>
 
@@ -72,7 +74,6 @@ const isFile = computed(() => {
 
 
 const previewFile = ({ src: source, fileName, down = false }) => {
-    console.log('执行了');
     if (!source) {
         throw new Error("文件地址不能为空")
     }
@@ -81,7 +82,6 @@ const previewFile = ({ src: source, fileName, down = false }) => {
         return;
     }
     src.value = source
-    console.log(getFileSuffix.value,src.value);
     if (isFile.value) {
         options.value.xls = getFileSuffix.value === 'xls';
         drawer.value = true;
