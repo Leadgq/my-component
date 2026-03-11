@@ -32,10 +32,13 @@ import { YoDetailCol } from "../../../packages/src"
 
 const baseData = ref([
     {
-        title: '订单编号', value: 'ORD-20231025-001', key: 'no', span: 8, space: '40px', labelW: '170px',
+        title: '订单编号', value: 'ORD-20231025-001',
+        key: 'no',
+        span: 8,
+        labelW: '170px',
         before: (props) => {
             return (
-                <div>前面</div>
+                <div style="color: red;">前面</div>
             )
         },
         middle: (props) => {
