@@ -265,6 +265,10 @@ const columns = ref([
 </script>
 ```
 
+<a href=" /my-component/table.png" target="_blank">
+  <img src="/my-component/table.png" alt="多级表头示例" style="cursor:zoom-in;" />
+</a>
+
 ## 多选（showCheckbox）
 
 设置 `showCheckbox` 属性显示全选框，通过组件 `ref` 调用 `getSelection()` 获取选中行数组。
