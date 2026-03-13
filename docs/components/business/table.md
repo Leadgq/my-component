@@ -26,11 +26,11 @@ const basicColumns = ref([
     { prop: 'email', label: '邮箱', showOverflowTooltip: true },
 ])
 
-const basicGetFn = ({ pageNum = 1, pageSize = 10 } = {}) =>
+const basicGetFn = ({ PageIndex = 1, PageSize = 10 } = {}) =>
     new Promise(resolve => setTimeout(() => {
         const total = basicData.value.length
-        const list  = basicData.value.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        resolve({ list, total })
+        const list  = basicData.value.slice((PageIndex - 1) * PageSize, PageIndex * PageSize)
+        resolve({ Data: { Items: list, TotalCount: total } })
     }, 300))
 
 /* ---------- render / slot 数据 ---------- */
@@ -57,11 +57,11 @@ const renderColumns = ref([
     },
 ])
 
-const renderGetFn = ({ pageNum = 1, pageSize = 10 } = {}) =>
+const renderGetFn = ({ PageIndex = 1, PageSize = 10 } = {}) =>
     new Promise(resolve => setTimeout(() => {
         const total = renderData.value.length
-        const list  = renderData.value.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        resolve({ list, total })
+        const list  = renderData.value.slice((PageIndex - 1) * PageSize, PageIndex * PageSize)
+        resolve({ Data: { Items: list, TotalCount: total } })
     }, 300))
 
 /* ---------- 多级表头数据 ---------- */
@@ -95,11 +95,11 @@ const multiColumns = ref([
     },
 ])
 
-const multiGetFn = ({ pageNum = 1, pageSize = 10 } = {}) =>
+const multiGetFn = ({ PageIndex = 1, PageSize = 10 } = {}) =>
     new Promise(resolve => setTimeout(() => {
         const total = multiData.value.length
-        const list  = multiData.value.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        resolve({ list, total })
+        const list  = multiData.value.slice((PageIndex - 1) * PageSize, PageIndex * PageSize)
+        resolve({ Data: { Items: list, TotalCount: total } })
     }, 300))
 
 /* ---------- 多选 ---------- */
@@ -115,11 +115,11 @@ const selColumns = ref([
     { prop: 'name', label: '姓名', width: 120 },
     { prop: 'dept', label: '部门' },
 ])
-const selGetFn = ({ pageNum = 1, pageSize = 10 } = {}) =>
+const selGetFn = ({ PageIndex = 1, PageSize = 10 } = {}) =>
     new Promise(resolve => setTimeout(() => {
         const total = selData.value.length
-        const list  = selData.value.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        resolve({ list, total })
+        const list  = selData.value.slice((PageIndex - 1) * PageSize, PageIndex * PageSize)
+        resolve({ Data: { Items: list, TotalCount: total } })
     }, 300))
 const selTableRef = ref(null)
 const onGetSelection = () => {
@@ -156,7 +156,7 @@ import { h } from 'vue'
 
 ## 基本用法
 
-传入 `getTableFunction` 与 `columns` 即可渲染带分页的表格。`getTableFunction` 接收 `{ pageNum, pageSize }` 参数，需返回 `{ list, total }` 格式（或直接返回数组）。
+传入 `getTableFunction` 与 `columns` 即可渲染带分页的表格。`getTableFunction` 接收 `{ PageIndex, PageSize }` 参数，需返回 `{ Data: { Items, TotalCount } }` 格式。
 
 <div class="demo">
     <YoTable :getTableFunction="basicGetFn" :columns="basicColumns" />
@@ -178,12 +178,12 @@ const columns = ref([
     { prop: 'email', label: '邮箱', showOverflowTooltip: true },
 ])
 
-// 接收 { pageNum, pageSize }，返回 { list, total }（或直接返回数组）
-const getTableFunction = ({ pageNum = 1, pageSize = 10 } = {}) => {
+// 接收 { PageIndex, PageSize }，返回 { Data: { Items, TotalCount } }
+const getTableFunction = ({ PageIndex = 1, PageSize = 10 } = {}) => {
     return new Promise(resolve => {
         const total = tableData.value.length
-        const list  = tableData.value.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        resolve({ list, total })
+        const list  = tableData.value.slice((PageIndex - 1) * PageSize, PageIndex * PageSize)
+        resolve({ Data: { Items: list, TotalCount: total } })
     })
 }
 </script>
@@ -369,16 +369,17 @@ const columns = ref([
 
 ### Props 属性
 
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `getTableFunction` | 数据获取函数，接收 `{ pageNum, pageSize }` 参数，需返回 `Promise<{ list, total }>` 或 `Promise<Array>` | `Function` | — |
-| `columns` | 列配置数组，详见[列配置项](#columns-列配置项) | `Array` | `[]` |
+| `getTableFunction` | 数据获取函数 | `Function` | — |
+| `columns` | 列配置数组 | `Array` | `[]` |
+| `cacheKey` | 缓存 Key，用于保存列展示配置及表格状态 | `String` | `''` |
+| `isCache` | 是否开启缓存功能 | `Boolean` | `false` |
+| `showSetting` | 是否开启列展示设置（齿轮图标） | `Boolean` | `false` |
 | `isShowPagination` | 是否显示分页 | `Boolean` | `true` |
-| `paginationOptions` | 分页初始值，`{ pageNum, pageSize, total }` | `Object` | `{ pageNum:1, pageSize:10, total:0 }` |
+| `paginationOptions` | 分页初始值 | `Object` | `{ pageNum:1, pageSize:10, total:0 }` |
 | `pageSizesOption` | 每页条数选择项 | `Array` | `[10, 20, 50, 100]` |
 | `showCheckbox` | 是否显示多选列 | `Boolean` | `false` |
 | `noWidth` | 序号列宽度（px） | `Number` | `60` |
-| `...el-table 原生属性` | 所有 `el-table` 支持的属性均可直接透传（如 `stripe`、`border`、`height` 等） | — | — |
+| `...el-table 原生属性` | 所有 `el-table` 支持的属性均可直接透传 | — | — |
 
 ### columns 列配置项
 
@@ -391,8 +392,9 @@ const columns = ref([
 | `fixed` | 固定列：`left` / `right` | `string` | — |
 | `render` | 自定义渲染函数 `(row) => VNode`，支持 JSX 或 `h()` | `Function` | — |
 | `isSlot` | 启用外部命名插槽，插槽名为该列的 `prop` 值，作用域变量为 `{ data }` | `boolean` | `false` |
-| `children` | 子列配置数组，配置后该列变为分组表头，支持任意深度嵌套 | `Array` | — |
-| `...el-table-column 原生属性` | 所有 `el-table-column` 支持的属性均可直接配置（如 `showOverflowTooltip`、`sortable` 等） | — | — |
+| `children` | 子列配置数组 | `Array` | — |
+| `showSetting` | 单独控制该列是否显示设置图标（通常用于操作列） | `boolean` | `false` |
+| `...el-table-column 原生属性` | 所有 `el-table-column` 支持的属性均可直接配置 | — | — |
 
 ### Methods 方法
 

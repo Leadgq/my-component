@@ -123,7 +123,7 @@ const basicData = ref([
 
 ## 自定义类型与内容
 
-另外，还可以配置各项是否可见 `isVisiable`，或是提供自定义行内插槽和 Render 函数。
+另外，还可以配置各项是否可见 `isVisiable`。当 `isVisiable` 显式设为 `false` 时，该项不会被渲染。
 
 <div class="demo">
     <div class="demo-inner">
@@ -144,8 +144,7 @@ const basicData = ref([
 import { ref } from 'vue';
 
 const renderData = ref([
-    // type: 'money' 表示此时金额类型的输入框处于只读但没有 disabled 的状态
-    { title: '账户余额', value: '25000.00', type: 'money' },
+    { title: '账户余额', value: '25000.00' },
     { title: '开户状态', value: '已开户' },
     // isVisiable: false 会隐藏该项
     { title: '备注', value: 'VIP 客户', isVisiable: false }
@@ -153,22 +152,39 @@ const renderData = ref([
 </script>
 ```
 
-## 自定义dender
+## 自定义 render
+
+通过 `render` 渲染函数，您可以完全自定义每个字段的展示效果。这在需要展示标签、按钮或复杂交互组件时非常有用。
 
 <YoDetailCol :rowData="customRenderData" />
 
 ```vue
-<YoDetailCol :rowData="customRenderData" />
+<template>
+  <YoDetailCol :rowData="customRenderData" />
+</template>
 
 <script setup lang="jsx">
-import { ref,h } from 'vue';
+import { ref, h } from 'vue';
+import { YoTag, YoButton } from 'yo-pc-ui';
 
 const customRenderData = ref([
-     {
+    {
+        title: '状态',
+        value: 1, // 1: 正常, 0: 停用, 2: 异常
+        render: (cellData) => {
+            const val = cellData.value;
+            const types = { 1: 'success', 0: 'danger', 2: 'warning' };
+            const labels = { 1: '正常', 0: '停用', 2: '异常' };
+            return h(YoTag, { 
+                type: types[val] || 'info', 
+                effect: 'dark' 
+            }, () => labels[val]);
+        }
+    },
+    {
         title: '信用评级',
         value: 4.5,
         render: (cellData) => {
-            console.log(cellData)
             return h(ElRate, {
                 modelValue: cellData.value,
                 disabled: true,
@@ -212,15 +228,18 @@ const customRenderData = ref([
 | `labelW` | 自定义当前单个标签文本的宽度，如不传则使用组件的 `label_width` 属性。 | `number` \| `string` | — |
 | `space` | 自定义当前单个标签距离右侧输入框的间距，对应 `margin-right`。 | `string` | — |
 | `isVisiable` | 当前项是否显示，如果显式设为 `false` 则不渲染该项。 | `boolean` | `true` |
-| `isSlot` | 定义是否提供插槽功能，支持的值为 `'before'` \| `'middle'` \| `'after'`，用于声明展示不同位置的命名插槽。 | `string` | — |
-| `render` | 支持 Vue 的 JSX Render 函数自定义渲染内容 `(data) => VNode`。使用此函数将替换掉系统自带的默认输入框内容。 | `function` | — |
+| `before` | 渲染函数，插入到该项最前面。函数签名：`(data) => VNode`。 | `function` | — |
+| `middle` | 渲染函数，插入在标签与内容框之间。函数签名：`(data) => VNode`。 | `function` | — |
+| `after` | 渲染函数，插入到该项最后面。函数签名：`(data) => VNode`。 | `function` | — |
+| `render` | 渲染函数，完全替换默认的 `el-input` 展示内容。函数签名：`(data) => VNode`。 | `function` | — |
 
-### Slots 插槽
+### 渲染函数扩展说明
 
-当 `rowData` 选项中开启了 `isSlot` 属性时，即表示启用了对于某一列特定位置的命名插槽，对应的可插接名称分别是：
+组件通过 `before`、`middle`、`after`、`render` 四个渲染函数属性来扩展每个字段项的渲染能力，**这些均为函数属性，不是 Vue 具名插槽**。
 
-| 插槽名 | 说明 |
-| --- | --- |
-| `before` | 当 `isSlot === 'before'` 时，插入到该项最前面的原生内容中。 |
-| `middle` | 当 `isSlot === 'middle'` 时，插入在标签与内容框之间。 |
-| `after` | 当 `isSlot === 'after'` 时，插入到该项最后的原生内容中。 |
+| 属性 | 插入位置 | 与 `render` 的关系 |
+| --- | --- | --- |
+| `before` | 整个字段项的最前面（标签之前） | 可与 `render` 同时使用 |
+| `middle` | 标签文本与值内容框之间 | 可与 `render` 同时使用 |
+| `after` | 整个字段项的最后面（值内容框之后） | 可与 `render` 同时使用 |
+| `render` | 完全替换默认的 `el-input` 显示区域 | 设置后不再渲染默认输入框 |

@@ -26,7 +26,8 @@
                 高级搜索
             </template>
             <el-icon class="el-icon--right">
-                <ArrowDown />
+                <ArrowDown v-if="direction === 'down'" />
+                <ArrowUp v-else />
             </el-icon>
         </YoButton>
     </template>
@@ -34,13 +35,13 @@
 
 <script setup>
 import { ref, useAttrs, useSlots } from "vue"
-import { Search, ArrowDown } from "@element-plus/icons-vue"
+import { Search, ArrowDown, ArrowUp } from "@element-plus/icons-vue"
 import { ElIcon } from "element-plus"
 import { YoInput } from "../input"
 import { YoButton } from "../button"
 const attrs = useAttrs()
 const slots = useSlots()
-const searchValue = ref("")
+const searchValue = defineModel()
 const emit = defineEmits(["search", "advancedSearch"])
 defineProps({
     width: {
@@ -63,6 +64,11 @@ defineProps({
         type: String,
         default: "text"
     },
+    // 方向
+    direction: {
+        type: String,
+        default: "down"
+    }
 })
 
 const handleSearch = () => emit("search", searchValue.value)

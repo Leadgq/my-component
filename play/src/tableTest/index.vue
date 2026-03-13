@@ -23,7 +23,8 @@ const getSelected = () => {
 const tableOption = {
     stripe: true,
     border: false,
-    height: 700
+    height: 700,
+    defaultSort: { prop: 'id', order: 'descending' }
 }
 
 const names = ['张三', '李四', '王五', '赵六', '陈七', '周八', '吴九', '郑十', '冯十一', '褚十二']
@@ -45,7 +46,7 @@ const tableData = ref(
 
 const columns = ref([
     { prop: 'id', label: 'ID', width: 80, align: 'center' },
-    { prop: 'name', label: '姓名', width: 150 },
+    { prop: 'name', label: '姓名', width: 150, isSlot: true },
     {
         label: '联系方式',
         children: [
@@ -53,7 +54,8 @@ const columns = ref([
                 prop: 'email',
                 label: '邮箱地址',
                 width: 300,
-                showOverflowTooltip: true, render(data) {
+                showOverflowTooltip: true,
+                render(data) {
                     return <span style="color:red">{data.email}</span>
                 }
             },
@@ -63,7 +65,14 @@ const columns = ref([
     {
         label: '财务信息',
         children: [
-            { prop: 'dept', label: '所属部门', width: 400 },
+            {
+                prop: 'dept',
+                label: '所属部门',
+                width: 400,
+                sortable: true, formatter: (v) => {
+                    return v.status
+                }
+            },
             { prop: 'amount', label: '金额（元）', width: 400, align: 'right' },
         ]
     },

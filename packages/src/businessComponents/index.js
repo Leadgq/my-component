@@ -5,4 +5,16 @@ import { YoContent } from "./content";
 import { YoHeader } from "./header";
 import { YoDetailCol } from "./detailCol";
 import { YoTable } from "./table"
-export { YoTitle, YoPictureView, YoFileView, YoContent, YoHeader, YoDetailCol, YoTable };
+import { YoQuery } from "./query"
+import { YoGrid } from "./grid"
+export {
+    YoTitle,
+    YoPictureView,
+    YoFileView,
+    YoContent,
+    YoHeader,
+    YoDetailCol,
+    YoTable,
+    YoQuery,
+    YoGrid
+};

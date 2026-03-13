@@ -1,33 +1,35 @@
 <template>
     <div class="yo-detail-col">
-        <div class="detail-grid-layout">
-            <template v-for="(li, ind) in normalizedRowData" :key="li.key || ind">
-                <div class="col_content_box" v-if="isShowItem(li)"
-                    :style="{ gridColumn: 'span ' + (!li.span ? 8 : li.span) }">
-                    <RenderBefore v-if="li.before" :before="li.before" :data="li" />
-                    <span class="detail_label" v-show="li.title" :style="{
-                        width: li.labelW ? li.labelW : props.label_width + 'px',
-                        marginRight: li.space ? li.space : props.space + 'px'
-                    }" v-html="li.title"></span>
-                    <RenderMiddle v-if="li.middle" :middle="li.middle" :data="li" />
-                    <div class="value_w">
-                        <RenderCell v-if="li.render" :render="li.render" :data="li" />
-                        <template v-else>
-                            <el-input :model-value="li.value" readonly disabled />
-                        </template>
+        <template v-for="(li, ind) in rowData" :key="li.key || ind">
+            <div :class="['row_container', props.layout === 'grid' ? 'grid-row' : 'flex-row']">
+                <template v-for="(newLi, newIndex) in li" :key="newIndex">
+                    <div :class="['col_content_box', (newLi.underLine || props.underLine) ? 'is-underline' : '']"
+                        v-if="isShowItem(newLi)" :style="getItemStyle(newLi)">
+                        <RenderBefore v-if="newLi.before" :before="newLi.before" :data="newLi" />
+                        <span :class="['detail_label', 'align-' + (newLi.labelAlign || props.labelAlign)]"
+                            v-show="newLi.title" :style="{
+                                width: newLi.labelW ? newLi.labelW : props.label_width + 'px',
+                                marginRight: newLi.space ? newLi.space : props.space + 'px'
+                            }" v-html="newLi.title"></span>
+                        <RenderMiddle v-if="newLi.middle" :middle="newLi.middle" :data="newLi" />
+                        <div :class="['value_w', 'align-' + (newLi.valueAlign || props.valueAlign)]">
+                            <RenderCell v-if="newLi.render" :render="newLi.render" :data="newLi" />
+                            <template v-else>
+                                <div v-html="newLi.value"></div>
+                            </template>
+                        </div>
+                        <RenderAfter v-if="newLi.after" :after="newLi.after" :data="newLi" />
                     </div>
-                    <RenderAfter v-if="li.after" :after="li.after" :data="li" />
-                </div>
-            </template>
-        </div>
+                </template>
+            </div>
+        </template>
     </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import { ElInput } from 'element-plus'
+
 const props = defineProps({
-    // 此时外界传入的是一维数组
     rowData: {
         type: Array,
         default: () => []
@@ -35,16 +37,50 @@ const props = defineProps({
     label_width: {
         type: Number,
         default: 70
+    },
+    layout: {
+        type: String,
+        default: 'grid', // 'grid' | 'flex'
+        validator: (val) => ['grid', 'flex'].includes(val)
+    },
+    labelAlign: {
+        type: String,
+        default: 'start', // 'start' | 'center' | 'end'
+        validator: (val) => ['start', 'center', 'end'].includes(val)
+    },
+    valueAlign: {
+        type: String,
+        default: 'start', // 'start' | 'center' | 'end'
+        validator: (val) => ['start', 'center', 'end'].includes(val)
+    },
+    underLine: {
+        type: Boolean,
+        default: false
+    },
+    space: {
+        type: [Number, String],
+        default: 12
     }
 })
+
+const getItemStyle = (li) => {
+    const span = li.span || 8
+    if (props.layout === 'grid') {
+        return {
+            gridColumn: `span ${span}`
+        }
+    } else {
+        // For flex, we map 24-column span to percentage
+        return {
+            width: `${(span / 24) * 100}%`
+        }
+    }
+}
 
 const isShowItem = (li) => {
     return li?.isVisiable !== false
 }
 
-const normalizedRowData = computed(() => {
-    return props.rowData.flat()
-})
 
 const RenderBefore = (props) => {
     return props.before(props.data)

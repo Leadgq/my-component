@@ -1,3 +1,9 @@
+<script>
+export default {
+  inheritAttrs: false,
+}
+</script>
+
 <script setup>
 import { useAttrs, useSlots, ref } from 'vue'
 import { ElInput } from 'element-plus'

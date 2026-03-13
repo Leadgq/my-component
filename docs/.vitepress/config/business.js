@@ -8,7 +8,9 @@ export const businessSidebar = [
             { text: 'YoHeader', link: "/components/business/header" },
             { text: 'YoDetailCol', link: "/components/business/detailcol" },
             { text: 'YoTable', link: "/components/business/table" },
+            { text: 'YoQuery', link: "/components/business/query" },
             { text: "其他组件", link: "/components/business/other" },
+
         ]
     }
 ];
