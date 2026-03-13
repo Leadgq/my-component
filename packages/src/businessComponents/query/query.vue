@@ -64,7 +64,7 @@
         </el-form>
 
         <!-- 确认和重置 -->
-        <div class="flex align-center justify-center footer" v-if="isShowSuperSearchArea">
+        <div class="flex align-center justify-center footer flex-end" v-if="isShowSuperSearchArea">
             <yo-button type="primary" @click="reload">重置</yo-button>
             <yo-button type="default" @click="search">搜索</yo-button>
         </div>
@@ -192,6 +192,12 @@ function useQueryCache(props, model, isShowSuperSearchArea) {
         cache.value = savedModel
     }
 
+    const addQuickSearchToCache = () => {
+        if (cache) {
+            cache.value[props.quickSearchKey] = props.model[props.quickSearchKey]
+        }
+    }
+
     const resetCache = () => {
         if (clonedValue.value) {
             Object.assign(model, clonedValue.value)
@@ -209,11 +215,12 @@ function useQueryCache(props, model, isShowSuperSearchArea) {
     return {
         saveCache,
         resetCache,
-        deleteCacheByKey
+        deleteCacheByKey,
+        addQuickSearchToCache
     }
 }
 
-const { saveCache, resetCache, deleteCacheByKey } = useQueryCache(props, props.model, isShowSuperSearchArea)
+const { saveCache, resetCache, deleteCacheByKey, addQuickSearchToCache } = useQueryCache(props, props.model, isShowSuperSearchArea)
 
 /**
  * 封装查询组件字段展示逻辑
@@ -266,6 +273,7 @@ const getFilteredModel = () => {
 }
 
 const advancedSearch = () => {
+    props.model[props.quickSearchKey] = ''
     //点击高级搜索删除快速搜索的缓存
     deleteCacheByKey(props.quickSearchKey)
     isShowSuperSearchArea.value = !isShowSuperSearchArea.value
@@ -358,6 +366,7 @@ function reload() {
 function quickSearch() {
     const val = props.model[props.quickSearchKey]
     const filteredModel = { [props.quickSearchKey]: val }
+    addQuickSearchToCache()
     emit('quickSearch', filteredModel)
 }
 
@@ -367,8 +376,7 @@ onMounted(() => {
 })
 
 watch(isShowSuperSearchArea, () => {
-    // 切换模式时，自动按当前模式重新过滤并通知外部
-    emit('search', getFilteredModel())
+ emit('search', getFilteredModel())  
 })
 
 // 组件提供移除特定key的方法

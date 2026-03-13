@@ -1,8 +1,15 @@
 <template>
     <div style="padding: 20px;">
-        <YoGrid :is-cache="true" :query-config="queryConfig" :query-model="searchForm" :table-columns="tableColumns"
-            :get-table-function="fetchData" query-title="转让申请审核" cache-key="grid-test-cache" :showSetting="true"
-            :queryShowSetting="true" query-quick-search-key="quickSearch"
+        <YoGrid :is-cache="true"
+         :query-config="queryConfig"
+          :query-model="searchForm" 
+          :table-columns="tableColumns"
+           :get-table-function="fetchData" 
+            query-title="转让申请审核"
+             cache-key="grid-test-cache"
+            :showSetting="true"
+            :queryShowSetting="true"
+             query-quick-search-key="quickSearch"
             :tableOption="{ height: 400, showCheckbox: true, stripe: false }">
             <!-- Query Slot -->
             <template #customField="{ model }">
