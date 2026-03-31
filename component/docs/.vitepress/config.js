@@ -13,4 +13,10 @@ export default defineConfig({
     },
     nav: [...nav, ...businessNav],
   },
+  vite: {
+    ssr: {
+      // SSR 时让 Vite 处理 element-plus 的 ESM（而非当作外部依赖）
+      noExternal: ["element-plus", "@element-plus/icons-vue"],
+    },
+  },
 });
