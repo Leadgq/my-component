@@ -1,9 +1,14 @@
 import DefaultTheme from 'vitepress/theme'
-import { watch } from 'vue'
-import { useData } from 'vitepress'
+import { ID_INJECTION_KEY } from 'element-plus'
 
 export default {
   extends: DefaultTheme,
+  enhanceApp({ app }) {
+    app.provide(ID_INJECTION_KEY, {
+      prefix: 100,
+      current: 0
+    })
+  },
   setup() {
     // // 获取当前主题状态
     // const { isDark } = useData()
