@@ -52,14 +52,20 @@
       </div>
     </div>
 
-    <YoPictureView ref="pictureViewRef"></YoPictureView>
+    <YoPictureView v-if="isMounted" ref="pictureViewRef"></YoPictureView>
     <!-- 预览组件 -->
-    <YoFileView ref="fileViewRef" />
+    <YoFileView v-if="isMounted" ref="fileViewRef" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed, getCurrentInstance } from 'vue'
+
+const isMounted = ref(false)
+onMounted(() => {
+  isMounted.value = true
+})
+
 import { ElImage, ElIcon, ElLink } from 'element-plus'
 import { Picture, Warning } from '@element-plus/icons-vue'
 import { YoFileView } from '../fileView'

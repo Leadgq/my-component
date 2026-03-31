@@ -144,11 +144,11 @@
       </div>
     </div>
 
-    <YoPictureView ref="pictureViewRef" />
-    <YoFileView ref="fileViewRef" />
+    <YoPictureView v-if="isMounted" ref="pictureViewRef" />
+    <YoFileView v-if="isMounted" ref="fileViewRef" />
 
     <!-- 网盘选择对话框 -->
-    <el-dialog v-model="netDiskVisible" title="从网盘选择文件" width="800px" append-to-body>
+    <el-dialog v-if="isMounted" v-model="netDiskVisible" title="从网盘选择文件" width="800px" append-to-body>
       <div v-loading="netDiskLoading" class="yo-net-disk-container">
         <el-table :data="netDiskFiles" height="400px" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="55" />
@@ -182,6 +182,12 @@
 
 <script setup>
 import { ref, computed, watch, getCurrentInstance, onMounted, useAttrs, nextTick } from 'vue'
+
+const isMounted = ref(false)
+onMounted(() => {
+  isMounted.value = true
+})
+
 import { Plus, ZoomIn, Download, Delete, CircleCheck, CircleClose } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { YoFileView } from '../fileView'
