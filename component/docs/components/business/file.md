@@ -4,7 +4,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoFile } from '../../../packages/dist/index.js'
 
 const fileIds = ref([])
 </script>

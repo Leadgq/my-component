@@ -95,7 +95,7 @@ const options = [
 
 <script setup>
 import { ref } from 'vue'
-import { YoSelect } from '../../../packages/src'
+import '../../../packages/dist/style.css'
 
 const val1 = ref('')
 const options1 = [

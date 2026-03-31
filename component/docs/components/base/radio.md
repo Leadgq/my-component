@@ -4,7 +4,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoRadioGroup, YoRadioButton,YoRadio } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 const radio1 = ref('1')
 </script>

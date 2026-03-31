@@ -2,7 +2,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import {YoContent, YoTitle} from '../../../packages/dist/index.js'
+import '../../../packages/dist/style.css'
 </script>
 
 <div>
@@ -23,7 +23,6 @@ import {YoContent, YoTitle} from '../../../packages/dist/index.js'
     <YoTitle :content="'委托代理人信息'" :title-level="2"></YoTitle>
   </YoContent>
 </div>
-
 
 ```vue
 <template>
@@ -49,7 +48,6 @@ import {YoContent, YoTitle} from '../../../packages/dist/index.js'
 ```
 
 ## 插槽
-
 
 | 插槽            | 说明         | 类型      | 默认值      |
 | --------------- | ------------ | --------- | ----------- |

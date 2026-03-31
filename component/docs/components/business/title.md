@@ -6,7 +6,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoTitle } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 </script>
 
@@ -97,8 +96,6 @@ import '../../../packages/dist/style.css'
 
 ### 插槽
 
-
 | 插槽            | 说明         | 类型      | 默认值      |
 | --------------- | ------------ | --------- | ----------- |
 | `second`       | 二级标题     | `string`  | `''`        |
-

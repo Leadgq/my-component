@@ -11,7 +11,7 @@
 
             <!-- 字段设置 (仅在高级搜索模式下显示) -->
             <el-popover placement="bottom-end" :width="210" trigger="click" popper-class="yo-table-setting-popover"
-                v-if="showSetting && isShowSuperSearchArea" :persistent="false">
+                v-if="showSetting && isShowSuperSearchArea && isMounted" :persistent="false">
                 <template #reference>
                     <el-icon class="setting-icon cursor-pointer">
                         <Menu />
@@ -145,6 +145,11 @@ const props = defineProps({
 })
 
 const isShowSuperSearchArea = defineModel('isShowSuperSearchArea', { default: false })
+
+const isMounted = ref(false)
+onMounted(() => {
+    isMounted.value = true
+})
 
 const { saveCache, resetCache, deleteCacheByKey } = useQueryCache(props, props.model, isShowSuperSearchArea)
 const { visibleKeys, visibleConfig, resetFields } = useQueryFields(props)

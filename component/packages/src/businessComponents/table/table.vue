@@ -1,6 +1,6 @@
 <template>
     <div class="yo-table-wrap">
-        <el-table ref="tableRef" :data="displayData" v-loading="loading" v-bind="tableAttrs" :row-key="rowKey"
+        <el-table v-if="isMounted" ref="tableRef" :data="displayData" v-loading="loading" v-bind="tableAttrs" :row-key="rowKey"
             :span-method="resolvedSpanMethod">
             <template #empty>
                 <YoEmpty></YoEmpty>
@@ -13,7 +13,7 @@
             <el-table-column v-if="visibleColumns.length === columns.filter(isSettingColumn).length + 1"
                 min-width="100" />
         </el-table>
-        <div class="yo-table-pagination" v-if="isShowPagination && innerPagination.total > 0">
+        <div class="yo-table-pagination" v-if="isMounted && isShowPagination && innerPagination.total > 0">
             <el-pagination v-model:current-page="innerPagination.pageNum" v-model:page-size="innerPagination.pageSize"
                 :page-sizes="paginSize" :total="innerPagination.total" :layout="layout"
                 @current-change="handlePageChange" @size-change="handleSizeChange" />
@@ -34,6 +34,11 @@ const proxy = getCurrentInstance().proxy;
 const yoGridContext = inject('yoGridContext', null)
 
 defineOptions({ inheritAttrs: false })
+
+const isMounted = ref(false)
+onMounted(() => {
+    isMounted.value = true
+})
 
 const emits = defineEmits(["page-change", "size-change", "column-change"])
 
@@ -204,7 +209,7 @@ const TableColumn = (colProps) => {
                     col.align === 'right' ? 'flex-end' : col.align === 'center' ? 'justify-center' : '']}
             >
                 <span>{scope.column.label}</span>
-                {col.type !== 'expand' && (
+                {col.type !== 'expand' && isMounted.value && (
                     <ElPopover placement="bottom-end" width={200} trigger="click" popper-class="yo-table-setting-popover" persistent={false}>
                         {{
                             reference: () => (

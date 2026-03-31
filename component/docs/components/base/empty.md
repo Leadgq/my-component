@@ -3,7 +3,6 @@
 当无数据时，显示的空状态占位图。内置了统一的业务空状态图标。
 
 <script setup>
-import { YoEmpty } from '../../../packages/src'
 </script>
 
 ## 基础用法
