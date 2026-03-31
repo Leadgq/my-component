@@ -172,54 +172,6 @@ const renderData = ref([
 
 <YoDetailCol :rowData="customRenderData" />
 
-```vue
-<template>
-  <YoDetailCol :rowData="customRenderData" />
-</template>
-
-<script setup lang="jsx">
-import { ref, h } from 'vue';
-import { YoTag, YoButton } from 'yo-pc-ui';
-
-const customRenderData = ref([
-  [
-    {
-        title: '状态',
-        value: 1, // 1: 正常, 0: 停用, 2: 异常
-        render: (cellData) => {
-            const val = cellData.value;
-            const types = { 1: 'success', 0: 'danger', 2: 'warning' };
-            const labels = { 1: '正常', 0: '停用', 2: '异常' };
-            return h(YoTag, { 
-                type: types[val] || 'info', 
-                effect: 'dark' 
-            }, () => labels[val]);
-        }
-    },
-    {
-        title: '信用评级',
-        value: 4.5,
-        render: (cellData) => {
-            return h(ElRate, {
-                modelValue: cellData.value,
-                disabled: true,
-                showScore: true,
-                textColor: '#ff9900'
-            });
-        }
-    },
-    {
-        title: '操作',
-        value: 'btn',
-        render: (cellData) => {
-            return h('div', [
-                h(YoButton, { type: 'primary', size: 'small', onClick: () => alert('编辑') }, () => '编辑用户'),
-                h(YoButton, { type: 'danger', size: 'small', plain: true, onClick: () => alert('删除') }, () => '删除')
-            ]);
-        }
-    },
-  ]
-])
 </script>
 ## 下划线模式
 
