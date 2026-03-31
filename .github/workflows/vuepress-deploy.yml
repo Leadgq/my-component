@@ -18,10 +18,12 @@ jobs:
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           # 选择要使用的 pnpm 版本
           version: 8
+          # 使用 pnpm 安装依赖
+          run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,17 +32,10 @@ jobs:
           node-version: 18
           # 缓存 pnpm 依赖
           cache: pnpm
-          cache-dependency-path: component/pnpm-lock.yaml
-
-      # 运行安装脚本
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: component
 
       # 运行构建脚本
       - name: Build VuePress site
         run: pnpm docs:build
-        working-directory: component
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -49,8 +44,8 @@ jobs:
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
-          # 部署目录为 vitepress 的默认输出目录
-          build_dir: component/docs/.vitepress/dist
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: docs/.vuepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
