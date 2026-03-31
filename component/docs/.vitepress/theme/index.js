@@ -22,5 +22,10 @@ export default {
         post: () => Promise.resolve([]),
       }
     }
+    if (typeof window !== 'undefined') {
+      // 使用自己的包
+      const module = await import("../../../packages/dist/index");
+      app.use(module.default)
+    }
   },
 }

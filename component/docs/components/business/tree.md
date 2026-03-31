@@ -6,7 +6,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoTree } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 
 const treeData = ref([

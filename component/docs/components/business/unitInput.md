@@ -132,7 +132,6 @@ const unitOptions = [
 | (其他) | 其他以 `unit-` 开头的插槽会透传给内部的 `YoSelect` |
 
 <script setup>
-import { YoUnitInput } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 import { ref } from 'vue'
 const val = ref('')

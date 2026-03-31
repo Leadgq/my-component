@@ -4,7 +4,6 @@
 
 <script setup>
 import { withBase } from 'vitepress'
-import { YoTable } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 import { ref } from 'vue'
 import { ElButton } from 'element-plus'

@@ -6,7 +6,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoButton } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 </script>
 
