@@ -15,7 +15,6 @@ export const formatCellValue = (val, format) => {
     }
 
     const d = dayjs(val)
-    console.log(val, format)
     return d.isValid() ? d.format(format) : val
 }
 

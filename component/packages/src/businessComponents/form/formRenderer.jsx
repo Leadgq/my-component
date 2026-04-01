@@ -1,4 +1,4 @@
-import { cloneVNode, defineComponent, ref, onMounted } from 'vue'
+import { cloneVNode } from 'vue'
 import {
     ElDatePicker,
     ElInputNumber,
@@ -14,21 +14,10 @@ import { YoTitle } from "../title"
 import { YoContent } from "../content"
 import { YoMaterialFile } from "../yoMaterialFile"
 
-// Wrapper to prevent ElDatePicker from rendering during SSR (which causes window is not defined error in element-plus < 2.4.x)
-const ClientOnlyDatePicker = defineComponent({
-    setup(props, { attrs, slots }) {
-        const isMounted = ref(false)
-        onMounted(() => {
-            isMounted.value = true
-        })
-        return () => isMounted.value ? <ElDatePicker {...attrs} v-slots={slots} /> : null
-    }
-})
-
 export const componentMap = {
     input: YoInput,
     select: YoSelect,
-    date: ClientOnlyDatePicker,
+    date: ElDatePicker,
     number: ElInputNumber,
     switch: ElSwitch,
     radio: YoRadioGroup,

@@ -4,7 +4,6 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import { YoForm, YoButton } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 
 const formModel = reactive({

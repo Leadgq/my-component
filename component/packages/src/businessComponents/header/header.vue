@@ -62,5 +62,6 @@ function handleClick() {
     justify-content: space-between;
     padding-left: 20px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 </style>

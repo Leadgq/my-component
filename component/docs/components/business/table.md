@@ -415,6 +415,34 @@ const columns = ref([
 />
 ```
 
+## 手动定义列 (Manual Columns)
+
+如果您不想通过 `columns` 配置项，或者想在特定位置插入原生列，可以直接在 `<YoTable>` 内部使用 `<el-table-column>`。
+
+### 1. 后置插入 (默认插槽)
+
+默认情况下，手动编写的列会追加到所有自动生成的业务列**之后**。
+
+```vue
+<YoTable :tableData="data">
+  <el-table-column prop="action" label="操作" width="120" />
+</YoTable>
+```
+
+### 2. 前置插入 (#prepend)
+
+通过 `#prepend` 插槽，您可以将列插入到业务列**之前**（通常在多选框之后）。
+
+```vue
+<YoTable :tableData="data">
+  <template #prepend>
+    <el-table-column type="expand">
+      <template #default="{ row }"> ... </template>
+    </el-table-column>
+  </template>
+</YoTable>
+```
+
 ---
 
 ## API
@@ -491,4 +519,6 @@ const columns = ref([
 
 | 插槽名 | 说明 | 作用域变量 |
 | --- | --- | --- |
+| `prepend` | 前置插槽，位于多选框之后、业务列之前 | — |
+| `default` | 默认插槽，位于业务列之后 | — |
 | `[column.prop]` | 当列配置了 `isSlot: true` 时启用，插槽名为该列的 `prop` 值 | `{ data }` 当前行对象 |

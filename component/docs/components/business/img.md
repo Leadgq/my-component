@@ -4,7 +4,6 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { YoImg } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 
 </script>

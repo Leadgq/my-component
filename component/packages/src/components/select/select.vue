@@ -1,7 +1,7 @@
 <template>
     <div class="yo-select">
-        <el-select v-if="isMounted" v-bind="attrs" v-model="modelValue" popper-class="yo-select-dropdown"
-            :loading="loading" @change="handleSelect">
+        <el-select v-bind="attrs" v-model="modelValue" popper-class="yo-select-dropdown" :loading="loading"
+            @change="handleSelect">
             <template v-for="(_, name) in slots" #[name]="slotData">
                 <slot :name="name" v-bind="slotData" />
             </template>
@@ -13,13 +13,7 @@
 </template>
 <script setup>
 import { ElSelect, ElOption } from 'element-plus'
-import { computed, useAttrs, useSlots, getCurrentInstance, ref, watchEffect, watch, onMounted } from 'vue'
-
-const isMounted = ref(false)
-onMounted(() => {
-    isMounted.value = true
-})
-
+import { computed, useAttrs, useSlots, getCurrentInstance, ref, watchEffect, watch } from 'vue'
 defineOptions({ inheritAttrs: false })
 const props = defineProps({
     enumName: String,

@@ -5,9 +5,7 @@
 <script setup>
 import { withBase } from 'vitepress'
 import { ref, reactive } from 'vue'
-import { YoGrid } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
-import { ElTag, ElInput, ElButton } from 'element-plus'
 
 const searchForm = reactive({
     name: '',
@@ -112,7 +110,6 @@ import { h } from 'vue'
 
 你需要分别对 `YoQuery` 和 `YoTable` 准备所需的属性配置，并通过组合属性传入 `YoGrid`。`YoGrid` 内部已将其 `Search/Reload` 等行为与 `Table` 的重新加载进行了联动。
 
-
 > **注意事项：** 在 `YoGrid` 中，初始化的第一次数据请求是由其内部的 `YoQuery` 的 `onMounted` 钩子发出搜索事件来触发过。为了防止重复请求，`YoGrid` 内部通过 `provide/inject` 机制（`yoGridContext`）与子组件进行了「握手」，自动关闭了子组件的 `autoLoad` 行为。
 
 <div class="demo">
@@ -137,8 +134,6 @@ import { h } from 'vue'
 <template>
   <div style="padding: 20px;">
     <YoGrid
-        cache-key="grid-cache"
-        :is-cache="true"
         :query="{ config: queryConfig, model: searchForm, title: '用户列表', showSetting: true }"
         :table="{ columns: tableColumns, getTableFunction: fetchData, height: 400 }"
     >
@@ -247,8 +242,6 @@ const fetchData = async (params) => {
 ```vue
 <template>
   <YoGrid 
-    :is-cache="true" 
-    cache-key="project_grid"
     :tabs="tabsConfig"
     :query="{ config: queryConfig, model: searchForm }" 
   >
@@ -286,8 +279,8 @@ const tabsConfig = {
 ```vue
 <template>
     <div>
-        <YoGrid :is-cache="true" cache-key="grid-test-cache" ref="gridRef"
-            v-model:isShowSuperSearchArea="showSuperSearch" :query="{
+        <YoGrid  ref="gridRef"
+           :query="{
                 config: queryConfig,
                 model: searchForm,
                 quickSearchKey: 'quickSearch',

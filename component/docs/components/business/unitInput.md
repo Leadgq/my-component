@@ -14,7 +14,8 @@
         { label: '元', value: '元' },
         { label: '万元', value: 'WAN' },
         { label: '千万', value: 'QWAN' }
-      ]"
+      ]",
+    :keyValue="{ label:label,value:value }"
       placeholder="请输入金额"
       style="width: 300px"
     />
@@ -26,6 +27,7 @@
     v-model="amount" 
     v-model:unit="unit"
     :options="unitOptions"
+    :keyValue="{ label:label,value:value }"
     placeholder="请输入金额"
     style="width: 300px"
   />

@@ -5,6 +5,8 @@
             {{ content }}
         </div>
         <slot name="second"></slot>
+        <!-- 默认插槽位置 -->
+        <slot></slot>
     </div>
 </template>
 <script setup>

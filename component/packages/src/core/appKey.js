@@ -15,9 +15,6 @@ export const getLibAppKey = () => _libAppKey
  * 初始化 appKey（在 install 时调用）
  */
 export const initLibAppKey = () => {
-  if (!window) {
-    return
-  }
   const appIdentifier = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
     ?? window.location.origin
 

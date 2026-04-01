@@ -1,5 +1,5 @@
 <template>
-    <ElDrawer v-if="isMounted" v-model="drawer" title="文件预览" size="100%" :z-index="999" append-to-body>
+    <ElDrawer v-model="drawer" title="文件预览" size="100%" :z-index="999" append-to-body>
         <component v-if="currentOfficeComponent" :is="currentOfficeComponent" :src="src" style="height: 85vh"
             @rendered="renderedHandler" @error="handleRenderError" :options="options">
         </component>
@@ -8,15 +8,9 @@
 
 <script setup>
 import { ElDrawer } from "element-plus"
-import { computed, ref, defineAsyncComponent, onMounted } from 'vue'
+import { computed, ref, defineAsyncComponent } from 'vue'
 import '@vue-office/docx/lib/v3/index.css';
 import '@vue-office/excel/lib/v3/index.css';
-
-const isMounted = ref(false)
-onMounted(() => {
-    isMounted.value = true
-})
-
 
 const VueOfficeDocx = defineAsyncComponent(() => import('@vue-office/docx/lib/v3/vue-office-docx.mjs'));
 const vueOfficeXlsx = defineAsyncComponent(() => import('@vue-office/excel/lib/v3/vue-office-excel.mjs'));

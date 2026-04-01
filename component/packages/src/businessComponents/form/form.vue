@@ -46,8 +46,13 @@
                 <FieldItem v-else :model="model" :item="item" />
             </el-form-item>
         </template>
-
+        <!-- 额外默认插槽 -->
         <slot></slot>
+
+        <!-- 表单操作按钮插槽，不属于 form 配置项 -->
+        <div v-if="$slots.footer" class="yo-form-footer" :style="{ textAlign: footerAlign }">
+            <slot name="footer"></slot>
+        </div>
     </el-form>
 </template>
 
@@ -89,6 +94,10 @@ const props = defineProps({
     loading: {
         type: Boolean,
         default: false
+    },
+    footerAlign: {
+        type: String,
+        default: 'right'
     }
 })
 
@@ -230,6 +239,12 @@ defineExpose({
     display: grid;
     grid-template-columns: repeat(var(--form-cols, 3), 1fr);
     gap: var(--form-y-gap, 12px) var(--form-x-gap, 41px);
+    width: 100%;
+}
+
+.yo-form-footer {
+    grid-column: 1 / -1;
+    /* 占据所有列，使其独立于表单项 */
     width: 100%;
 }
 

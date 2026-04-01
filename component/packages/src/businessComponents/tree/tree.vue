@@ -8,7 +8,7 @@
                     </el-icon>
                 </template>
             </el-input>
-            <div v-if="showActions && isMounted" class="yo-tree-actions">
+            <div v-if="showActions" class="yo-tree-actions">
                 <el-tooltip content="展开全部" placement="top">
                     <el-icon class="action-icon" @click="toggleExpandAll(true)">
                         <Expand />
@@ -73,12 +73,6 @@ import {
 import { YoEmpty } from "../../components/empty"
 
 const proxy = getCurrentInstance().proxy
-
-const isMounted = ref(false)
-onMounted(() => {
-    isMounted.value = true
-})
-
 
 defineOptions({ inheritAttrs: false })
 

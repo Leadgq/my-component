@@ -168,7 +168,7 @@ watchEffect(async () => {
   }
 
   :deep(.el-select__selected-item) {
-    color: var(--neutral-color-light-input);
+    // color: var(--neutral-color-light-input);
   }
 }
 </style>

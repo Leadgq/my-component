@@ -4,7 +4,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { YoHeader,YoButton } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 
 const handleBack = () => {
@@ -72,6 +71,7 @@ const handleBack = () => {
 ## 插槽 (Slots)
 
 组件支持 `second` 以及 `action` 插槽。
+
 - **`second`**：用于向自带的 `YoTitle` 传入二级标题内容。
 - **`action`**：用于展示位于右侧的操作功能区（如编辑、保存等操作按钮）。
 
@@ -88,7 +88,6 @@ const handleBack = () => {
         </yo-header>
     </div>
 </div>
-
 
 ```vue
 <template>

@@ -1,10 +1,11 @@
 <template>
     <div class="yo-table-wrap">
-        <el-table v-if="isMounted" ref="tableRef" :data="displayData" v-loading="loading" v-bind="tableAttrs" :row-key="rowKey"
+        <el-table ref="tableRef" :data="displayData" v-loading="loading" v-bind="tableAttrs" :row-key="rowKey"
             :span-method="resolvedSpanMethod">
             <template #empty>
                 <YoEmpty></YoEmpty>
             </template>
+            <slot name="prepend"></slot>
             <el-table-column v-if="showCheckbox" type="selection" :width="checkboxWidth" align="center"
                 :reserve-selection="reserveSelection" />
             <TableColumn v-for="(column, idx) in visibleColumns" :key="column.prop || column.label || idx"
@@ -12,8 +13,9 @@
             <!-- 当所有列都被隐藏时，增加一个占位列撐起剩余空间 -->
             <el-table-column v-if="visibleColumns.length === columns.filter(isSettingColumn).length + 1"
                 min-width="100" />
+            <slot></slot>
         </el-table>
-        <div class="yo-table-pagination" v-if="isMounted && isShowPagination && innerPagination.total > 0">
+        <div class="yo-table-pagination" v-if="isShowPagination">
             <el-pagination v-model:current-page="innerPagination.pageNum" v-model:page-size="innerPagination.pageSize"
                 :page-sizes="paginSize" :total="innerPagination.total" :layout="layout"
                 @current-change="handlePageChange" @size-change="handleSizeChange" />
@@ -24,7 +26,7 @@
 <script setup lang="jsx">
 import { ElTable, ElPagination, ElTableColumn, ElPopover, ElCheckboxGroup, ElCheckbox, ElIcon } from "element-plus"
 import { Setting, Refresh } from "@element-plus/icons-vue"
-import { computed, h, onMounted, reactive, ref, useAttrs, useSlots, watch, getCurrentInstance, inject } from "vue";
+import { computed, h, onMounted, reactive, ref, useAttrs, useSlots, watch, getCurrentInstance, inject, nextTick } from "vue";
 import { useLocalStorage } from "@vueuse/core";
 import { vLoading } from "element-plus"
 import { YoEmpty } from "../../components/empty";
@@ -34,11 +36,6 @@ const proxy = getCurrentInstance().proxy;
 const yoGridContext = inject('yoGridContext', null)
 
 defineOptions({ inheritAttrs: false })
-
-const isMounted = ref(false)
-onMounted(() => {
-    isMounted.value = true
-})
 
 const emits = defineEmits(["page-change", "size-change", "column-change"])
 
@@ -157,6 +154,7 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    // 额外静态参数
     staticParams: {
         type: Object,
         default: () => ({})
@@ -209,7 +207,7 @@ const TableColumn = (colProps) => {
                     col.align === 'right' ? 'flex-end' : col.align === 'center' ? 'justify-center' : '']}
             >
                 <span>{scope.column.label}</span>
-                {col.type !== 'expand' && isMounted.value && (
+                {col.type !== 'expand' && (
                     <ElPopover placement="bottom-end" width={200} trigger="click" popper-class="yo-table-setting-popover" persistent={false}>
                         {{
                             reference: () => (
@@ -263,61 +261,11 @@ const isSettingColumn = (col) => {
  */
 function useTableColumns(props, emit) {
 
-
-    const settingColsList = computed(() => {
-        if (props.settingColumns && props.settingColumns.length > 0) {
-            const keySet = new Set(props.settingColumns)
-            return props.columns.filter(col => keySet.has(col.prop || col.label) && !isSettingColumn(col))
-        }
-
-        return props.columns.filter(col => !isSettingColumn(col))
-    })
-
-    // 可控列的全部 key
-    const allKeys = computed(() => settingColsList.value.map(c => c.prop || c.label).filter(Boolean))
-
-    const visibleKeys = ref([])
-
-    const appKey = getLibAppKey()
-    const pagePath = window.location.pathname
-    const storageKey = `${appKey}${pagePath}${props.isTabs ? '_' + props.tabsKey : ''}_columns`
-    const columnCache = useLocalStorage(storageKey, allKeys.value)
-
-    const isFirstLoadCacheKey = `${appKey}${pagePath}${props.isTabs ? '_' + props.tabsKey : ''}_first_load`
-    const isFirstLoadCache = useLocalStorage(isFirstLoadCacheKey, true)
-
-    if (isFirstLoadCache.value) {
-        visibleKeys.value = [...allKeys.value]
-        isFirstLoadCache.value = false
-    } else {
-        visibleKeys.value = columnCache.value
-    }
-
-    watch(visibleKeys, (newVal, oldVal) => {
-        columnCache.value = newVal
-
-        // 只在勾选（新增）时触发，取消勾选不 emit
-        const added = newVal.find(k => !oldVal.includes(k))
-        if (!added) return
-
-        const changedCol = props.columns.find(col => (col.prop || col.label) === added)
-        emit('column-change', added, changedCol)
-    }, { deep: true })
-
-    // 计算实际显示的列
     const visibleColumns = computed(() => {
-        const settingKeySet = new Set(allKeys.value)
-        const visibleKeySet = new Set(visibleKeys.value)
-        const cols = props.columns.filter(col => {
-            if (isSettingColumn(col)) return true
-            const key = col.prop || col.label
-            if (!settingKeySet.has(key)) return true
-            return visibleKeySet.has(key)
-        })
-
+        const cols = props.columns
         // 注入序号列
         if (props.columns.length > 0) {
-            const indexCol = { type: 'index', label: '序号', width: props.noWidth, align: 'center', prop: '__index' }
+            const indexCol = { type: 'index', label: '序号', width: props.noWidth, align: 'center', prop: '__index', fixed: 'left' }
             const expandIdx = cols.findIndex(c => c.type === 'expand')
             if (expandIdx !== -1) {
                 cols.splice(expandIdx + 1, 0, indexCol)
@@ -328,8 +276,56 @@ function useTableColumns(props, emit) {
         return cols
     })
 
+    // 将外界配置的拿出来
+    const settingColsList = computed(() => {
+        if (props.settingColumns && props.settingColumns.length > 0) {
+            const keySet = new Set(props.settingColumns)
+            return props.columns.filter(col => keySet.has(col.prop || col.label) && !isSettingColumn(col))
+        }
+
+        return props.columns.filter(col => !isSettingColumn(col))
+    })
+
+    const isReset = ref(false)
+    const visibleKeys = ref([])
+
+    // 可控列的全部 key
+    const allKeys = computed(() => settingColsList.value.map(c => c.prop || c.label).filter(Boolean))
+
+    // 只有外界需要缓存的时候checkBox才进行缓存
+    if (props.showSetting) {
+        const appKey = getLibAppKey()
+        const pagePath = window.location.pathname
+        const storageKey = `${appKey}${pagePath}${props.isTabs ? '_' + props.tabsKey : ''}_checkbox`
+        const columnCache = useLocalStorage(storageKey, allKeys.value)
+        const isFirstLoadCacheKey = `${appKey}${pagePath}${props.isTabs ? '_' + props.tabsKey : ''}_first_load`
+        const isFirstLoadCache = useLocalStorage(isFirstLoadCacheKey, true)
+        if (isFirstLoadCache.value) {
+            visibleKeys.value = [...allKeys.value]
+            isFirstLoadCache.value = false
+        } else {
+            visibleKeys.value = columnCache.value
+        }
+        watch(visibleKeys, (newVal, oldVal) => {
+            columnCache.value = newVal
+            if (isReset.value) {
+                return
+            }
+            // 只在勾选（新增）时触发，取消勾选不 emit
+            const added = newVal.find(k => !oldVal.includes(k))
+            if (!added) return
+            const changedCol = props.columns.find(col => (col.prop || col.label) === added)
+            emit('column-change', added, changedCol)
+        }, { deep: true })
+    }
+
     const resetColumns = () => {
+        isReset.value = true
         visibleKeys.value = [...allKeys.value]
+        emit('column-change', visibleKeys.value)
+        nextTick(() => {
+            isReset.value = false
+        })
     }
 
     return {
@@ -509,6 +505,10 @@ onMounted(() => {
     }
     // 你不传tableData 并且还是使用默认插槽配出来
     if (!isExternalMode.value && !yoGridContext?.isInsideGrid) {
+        loadData()
+    }
+    // 如果不是在grid组件内部，而是在外界自己配置的api
+    if (!yoGridContext?.isInsideGrid && props.api) {
         loadData()
     }
 })

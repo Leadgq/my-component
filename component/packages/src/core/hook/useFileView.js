@@ -2,12 +2,6 @@ import { render, createVNode } from "vue";
 import { YoFileView } from "../../businessComponents/index.js";
 
 export function useFileView(container) {
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
-        return {
-            previewFile: () => {},
-            downLoadFille: () => {}
-        }
-    }
     const vNode = createVNode(YoFileView)
     render(vNode, container || document.body)
     return {

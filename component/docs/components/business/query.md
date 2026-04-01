@@ -4,7 +4,6 @@
 
 <script setup>
 import { ref, reactive, h, onMounted } from 'vue'
-import { YoQuery, YoTitle } from '../../../packages/dist/index.js'
 import '../../../packages/dist/style.css'
 import { ElTag, ElRate, ElInput, ElTreeSelect } from 'element-plus'
 import { withBase } from 'vitepress'
@@ -79,26 +78,22 @@ const treeModel = reactive({
     deptId: null
 })
 const treeOptions = ref([])
-
-const isMounted1 = ref(false)
-
 const treeConfig = [
     {
         label: '部门',
         prop: 'deptId',
-        render: (model) => isMounted1.value ? h(ElTreeSelect, {
+        render: (model) => h(ElTreeSelect, {
             modelValue: model.deptId,
             'onUpdate:modelValue': (val) => model.deptId = val,
             data: treeOptions.value,
             placeholder: treeOptions.value.length ? '请选择部门' : '加载中...',
             checkStrictly: true,
             style: { width: '100%' }
-        }) : null
+        })
     }
 ]
 
 onMounted(() => {
-    isMounted1.value = true
     setTimeout(() => {
         treeOptions.value = [
             {
@@ -343,7 +338,6 @@ const searchForm = reactive({
 
 const asyncOptions = ref([])
 const treeOptions = ref([])
-const isMounted2 = ref(false)
 
 const simulateFetch = () => {
     // 模拟网络请求
@@ -373,7 +367,6 @@ const simulateFetch = () => {
 }
 
 onMounted(() => {
-    isMounted2.value = true
     simulateFetch()
 })
 
@@ -513,7 +506,7 @@ const queryConfig = ref([
         label: '异步加载 (Render)',
         prop: 'asyncValue',
         render: (model) => {
-            return isMounted2.value ? (
+            return (
                 <ElSelect
                     v-model={model.asyncValue}
                     placeholder={asyncOptions.value.length ? '请选择' : '数据加载中...'}
@@ -526,13 +519,13 @@ const queryConfig = ref([
                         />
                     ))}
                 </ElSelect>
-            ) : null
+            )
         }
     },
     {
         label: '部门 (Async Tree)',
         prop: 'deptId',
-        render: (model) => isMounted2.value ? (
+        render: (model) => (
             <el-tree-select
                 onChange={(val) => {
                     console.log('选择值：', val)
@@ -543,7 +536,7 @@ const queryConfig = ref([
                 check-strictly
                 style={{ width: '100%' }}
             />
-        ) : null
+        )
     }
 ])
 </script>

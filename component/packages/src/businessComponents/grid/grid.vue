@@ -53,6 +53,10 @@ const props = defineProps({
     staticParams: {
         type: Object,
         default: () => ({})
+    },
+    api: {
+        type: String,
+        required: false
     }
 })
 
@@ -204,7 +208,7 @@ const fetchData = async () => {
     if (hasDefaultSlot.value) {
         return;
     }
-    const api = currentTabConfig.value.api || props.table.api
+    const api = currentTabConfig.value.api || props.table.api || props.api
     if (!api) {
         throw new Error('Grid API is not defined')
     }
