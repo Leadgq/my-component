@@ -260,7 +260,7 @@ const isSettingColumn = (col) => {
  * 列显示/隐藏逻辑封装
  */
 function useTableColumns(props, emit) {
-
+    const visibleKeys = ref([])
     const visibleColumns = computed(() => {
         // 创建副本，避免直接修改 props.columns 导致死循环
         let cols = [...props.columns]
@@ -303,7 +303,6 @@ function useTableColumns(props, emit) {
     })
 
     const isReset = ref(false)
-    const visibleKeys = ref([])
 
     // 可控列的全部 key
     const allKeys = computed(() => settingColsList.value.map(c => c.prop || c.label).filter(Boolean))
