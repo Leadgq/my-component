@@ -570,19 +570,6 @@ const tableColumns = [
   {
     label: '姓名',
     prop: 'name',
-    // 表头自定义：标题 + 筛选框
-    renderHeader: (column) => (
-      <div style="display:flex; align-items:center; gap:6px;">
-        <span>{column.label}</span>
-        <ElInput
-          v-model={filterName.value}
-          size="small"
-          placeholder="筛选"
-          style="width:90px;"
-          onClick={(e) => e.stopPropagation()}
-        />
-      </div>
-    )
   },
   { label: '状态', prop: 'status' }
 ]
@@ -612,3 +599,14 @@ const tableColumns = [
 | `deleteCacheByKey(key)` | 删除 Query中某个字段特定的缓存记录 | `key: String` |
 | `queryRef` | **YoQuery** 组件实例的引用 | — |
 | `tableRef` | **YoTable** 组件实例的引用 | — |
+
+### 组件事件
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `column-change`| 表格中checkbox发生变化(只有选中会触发) | `(item, selectedItem)` 那个字段和那个对象 |
+| `page-change`| 表格分页发生变化 | `(pageIndex, pageSize)` |
+|`size-change`| 表格每页数量发生变化 | `(pageSize)` |
+| `search` | 点击搜索按钮时触发 | `(model)`
+| `reload` | 点击重置按钮时触发 | `(model)`
+| `quick-search` | 点击快速搜索按钮时触发 | `(model)`

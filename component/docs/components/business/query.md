@@ -552,8 +552,6 @@ const queryConfig = ref([
 
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `cacheKey` | 搜索条件缓存 Key，开启缓存时必填 | `String` | `''` |
-| `isCache` | 是否开启搜索条件缓存 | `Boolean` | `false` |
 | `showSetting` | 是否显示字段展示设置图标 | `Boolean` | `false` |
 | `title` | 标题文本 | `String` | `''` |
 | `config` | 配置项数组 | `Array` | `[]` |
@@ -602,11 +600,3 @@ const queryConfig = ref([
 | `quickSearch` | 快速搜索输入回车或点击搜索时触发，仅返回快速搜索字段参数，同时保存这部分缓存 | `(filteredModel: Object)` |
 | `reload` | 点击重置或清空搜索条件时触发，返回完整的模型数据（排除被移除的缓存） | `(model: Object)` |
 | `change` | 内部搜索条件受控改变时的预留事件（部分内部组件透传触发） | — |
-
-### Methods
-
-通过 `ref` 访问组件实例调用：
-
-| 方法名 | 说明 | 参数 |
-| --- | --- | --- |
-| `deleteCacheByKey(key)` | 删除缓存中特定字段的数据 | `key: String` |

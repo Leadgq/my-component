@@ -504,6 +504,9 @@ const columns = ref([
 | `sort-change` | 当表格的排序条件发生变化的时候会触发该事件 | `{ column, prop, order }` |
 | `row-click` | 当某一行被点击时会触发该事件 | `(row, column, event)` |
 | `...el-table 原生事件` | 所有 `el-table` 支持的事件均可直接绑定 | — |
+| `column-change`| 表格中checkbox发生变化(只有选中会触发) | `(item, selectedItem)` 那个字段和那个对象 |
+| `page-change`| 表格分页发生变化 | `(pageIndex, pageSize)` |
+|`size-change`| 表格每页数量发生变化 | `(pageSize)` |
 
 ### Methods 方法
 
