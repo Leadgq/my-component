@@ -1586,7 +1586,7 @@ const Yx = ["src"], jx = ["src", "data-viewer-id", "alt"], xc = {
             const h = n.image.src;
             fetch(h).then((g) => g.blob()).then(async (g) => {
               let w = h.split("?")[0].split("/").pop() || "download";
-              (await import("./FileSaver.min-9JBwrKZY.js").then((C) => C.F)).default.saveAs(g, w);
+              (await import("./FileSaver.min-rlBlTlUv.js").then((C) => C.F)).default.saveAs(g, w);
             });
           }
         },
@@ -42526,7 +42526,7 @@ const tX = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       u("finish-render");
     }
     const f = D(!1), m = D(), y = D(""), p = async (b, C) => {
-      (await import("./FileSaver.min-9JBwrKZY.js").then((k) => k.F)).default.saveAs(b, C);
+      (await import("./FileSaver.min-rlBlTlUv.js").then((k) => k.F)).default.saveAs(b, C);
     }, v = A(() => {
       const b = {
         "application/pdf": "pdf",
@@ -43405,17 +43405,21 @@ const DM = /* @__PURE__ */ Object.assign({
     };
     function p(j, Q) {
       const q = A(() => {
-        const X = j.columns;
-        if (j.columns.length > 0) {
-          const K = {
+        let X = [...j.columns];
+        if (j.showSetting && ie.value.length > 0 && (X = X.filter((K) => {
+          if (y(K)) return !0;
+          const le = K.prop || K.label;
+          return ie.value.includes(le);
+        })), X.length > 0 && !X.some((le) => le.type === "index" || le.prop === "__index")) {
+          const le = {
             type: "index",
             label: "序号",
             width: j.noWidth,
             align: "center",
             prop: "__index",
             fixed: "left"
-          }, le = X.findIndex((he) => he.type === "expand");
-          le !== -1 ? X.splice(le + 1, 0, K) : X.unshift(K);
+          }, he = X.findIndex((Ae) => Ae.type === "expand");
+          he !== -1 ? X.splice(he + 1, 0, le) : X.unshift(le);
         }
         return X;
       }), ee = A(() => {
@@ -43553,7 +43557,7 @@ const DM = /* @__PURE__ */ Object.assign({
     }, {
       deep: !0
     }), st(() => {
-      u.isShowPagination && (Object.assign(O, u.paginationOptions), B = u.pageSizesOption), !k.value && !(o != null && o.isInsideGrid) && I(), !(o != null && o.isInsideGrid) && u.api && I();
+      u.isShowPagination && (Object.assign(O, u.paginationOptions), B.splice(0, B.length, ...u.pageSizesOption)), !k.value && !(o != null && o.isInsideGrid) && I(), !(o != null && o.isInsideGrid) && u.api && I();
     });
     const Y = D(null);
     return t({

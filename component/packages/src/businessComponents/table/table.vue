@@ -262,15 +262,31 @@ const isSettingColumn = (col) => {
 function useTableColumns(props, emit) {
 
     const visibleColumns = computed(() => {
-        const cols = props.columns
+        // 创建副本，避免直接修改 props.columns 导致死循环
+        let cols = [...props.columns]
+
+        // 如果开启了列设置，则根据 visibleKeys 过滤显示的列
+        if (props.showSetting && visibleKeys.value.length > 0) {
+            cols = cols.filter(col => {
+                // 固定列、操作列、expand列等始终显示
+                if (isSettingColumn(col)) return true
+                // 只有在已选 keys 中的才显示
+                const key = col.prop || col.label
+                return visibleKeys.value.includes(key)
+            })
+        }
+
         // 注入序号列
-        if (props.columns.length > 0) {
-            const indexCol = { type: 'index', label: '序号', width: props.noWidth, align: 'center', prop: '__index', fixed: 'left' }
-            const expandIdx = cols.findIndex(c => c.type === 'expand')
-            if (expandIdx !== -1) {
-                cols.splice(expandIdx + 1, 0, indexCol)
-            } else {
-                cols.unshift(indexCol)
+        if (cols.length > 0) {
+            const hasIndex = cols.some(c => c.type === 'index' || c.prop === '__index')
+            if (!hasIndex) {
+                const indexCol = { type: 'index', label: '序号', width: props.noWidth, align: 'center', prop: '__index', fixed: 'left' }
+                const expandIdx = cols.findIndex(c => c.type === 'expand')
+                if (expandIdx !== -1) {
+                    cols.splice(expandIdx + 1, 0, indexCol)
+                } else {
+                    cols.unshift(indexCol)
+                }
             }
         }
         return cols
@@ -501,7 +517,8 @@ watch(() => props.queryParams, () => {
 onMounted(() => {
     if (props.isShowPagination) {
         Object.assign(selfPagination, props.paginationOptions)
-        paginSize = props.pageSizesOption
+        // 清空并重新填充，保持响应式引用
+        paginSize.splice(0, paginSize.length, ...props.pageSizesOption)
     }
     // 你不传tableData 并且还是使用默认插槽配出来
     if (!isExternalMode.value && !yoGridContext?.isInsideGrid) {
